@@ -13,11 +13,11 @@ export default function MainHeader(props) {
                     <Link className={styles.titleText} href='/'>Nicholas Yoon</Link>
                 </div>
                 <div id="tabContainer" className={styles.tabContainer}>
-                    <Link id="tabHome" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabHome')} href='/'>Home</Link>
-                    <Link id="tabProjects" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabProjects')} href='/'>Projects</Link>
-                    <Link id="tabResume" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabResume')} href='/'>Resume</Link>
-                    <Link id="tabMusic" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabMusic')} href='/'>Music Likes</Link>
-                    <Link id="tabSocials" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabSocials')} href='/'>Socials</Link>
+                    <div id="tabHome" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabHome')} href='/'>Home</div>
+                    <div id="tabProjects" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabProjects')} href='/'>Projects</div>
+                    <div id="tabResume" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabResume')} href='/'>Resume</div>
+                    <div id="tabMusic" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabMusic')} href='/'>Music Likes</div>
+                    <div id="tabSocials" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabSocials')} href='/'>Socials</div>
                 </div>
             </div>
         </div>
