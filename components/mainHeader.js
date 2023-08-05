@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import styles from './mainHeader.module.css';
 
-export default function MainHeader() {
+var transitionFunction;
+
+export default function MainHeader(props) {
+    transitionFunction = props.transitionFunction;
+
     return (
         <div id='mainContainer'>
             <div className={styles.headerContainer}>
@@ -15,8 +19,6 @@ export default function MainHeader() {
                     <Link id="tabMusic" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabMusic')} href='/'>Music Likes</Link>
                     <Link id="tabSocials" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabSocials')} href='/'>Socials</Link>
                 </div>
-            </div>
-            <div id='transitionContainer' className={styles.transitionContainer}>
             </div>
         </div>
     );
@@ -44,31 +46,8 @@ function handleTabClick(event, tabId) {
 
     fallingTab.style.left = Math.max(0, tabXcoord);
 
-    fallingTab.addEventListener('animationend',(event) => {
-
-        let transitionContainer = document.getElementById('transitionContainer');
-
-        let canvas = document.createElement('canvas');
-        canvas.width = 1000;
-        canvas.height = 1000;
-        let ctx = canvas.getContext('2d');
-
-        //canvas.className = styles.circle;
-
-        ctx.beginPath()
-        ctx.arc(500, 500, 500, 0, 2 * Math.PI);
-        ctx.fillStyle = '#3f51b5';
-        ctx.fill();
-
-        canvas.style.position = 'absolute';
-        canvas.style.left = (Math.max(0, tabXcoord) + (parseFloat(tabComputedStyle.width.slice(0, -2))/2)) + "px";
-        console.log(canvas.style.left);
-        console.log(Math.round((parseFloat(tabComputedStyle.width.slice(0, -2))/2)));
-        canvas.style.top = '100vh';
-
-        canvas.className = styles.circle;
-
-        transitionContainer.appendChild(canvas);
+    fallingTab.addEventListener('animationend', () => {
+        transitionFunction(tabElement);
     });
 
     tabContainer.appendChild(fallingTab);

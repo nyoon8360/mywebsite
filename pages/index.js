@@ -7,6 +7,7 @@ export default function HomePage() {
     return (
         <Layout>
             <p>Lorem Ipsum</p>
+            <p>sadge</p>
         </Layout>
     )
 }
