@@ -20,6 +20,26 @@
     height: 100%;
 }
 
+.circle {
+    width: 600vmax;
+    height: 600vmax;
+    position: sticky;
+
+    animation: 1s ease-in 0s 1 expandCircle
+}
+
+@keyframes expandCircle {
+    0% {
+        width: 1vmax;
+        height: 1vmax;
+    }
+
+    100% {
+        width: 600vmax;
+        height: 600vmax;
+    }
+}
+
 .divCircle {
     /*animation: 1s ease-in 0s 1 expandDivCircle;*/
     transform: scale(1);

@@ -44,10 +44,14 @@ function handleTabClick(event, tabId) {
 
     fallingTab.textContent = tabElement.textContent;
 
-    fallingTab.style.left = Math.max(0, tabXcoord);
+    fallingTab.style.left = Math.max(0, tabXcoord) + 'px';
+
+    console.log(tabXcoord);
 
     fallingTab.addEventListener('animationend', () => {
         transitionFunction(tabElement);
+
+        tabElement.style.color = '#b2b2b2';
     });
 
     tabContainer.appendChild(fallingTab);
