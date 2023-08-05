@@ -13,11 +13,11 @@ export default function MainHeader(props) {
                     <Link className={styles.titleText} href='/'>Nicholas Yoon</Link>
                 </div>
                 <div id="tabContainer" className={styles.tabContainer}>
-                    <div id="tabHome" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabHome')} href='/'>Home</div>
-                    <div id="tabProjects" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabProjects')} href='/'>Projects</div>
-                    <div id="tabResume" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabResume')} href='/'>Resume</div>
-                    <div id="tabMusic" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabMusic')} href='/'>Music Likes</div>
-                    <div id="tabSocials" className={styles.tab} onClick={(event) => handleTabClick(event, 'tabSocials')} href='/'>Socials</div>
+                    <div id="tabHome" pageRoute='/' className={styles.tab} onClick={(event) => handleTabClick(event, 'tabHome')} href='/'>Home</div>
+                    <div id="tabProjects" pageRoute='/projects' className={styles.tab} onClick={(event) => handleTabClick(event, 'tabProjects')} href='/'>Projects</div>
+                    <div id="tabResume" pageRoute='/resume' className={styles.tab} onClick={(event) => handleTabClick(event, 'tabResume')} href='/'>Resume</div>
+                    <div id="tabMusic" pageRoute='/music-likes' className={styles.tab} onClick={(event) => handleTabClick(event, 'tabMusic')} href='/'>Music Likes</div>
+                    <div id="tabSocials" pageRoute='/socials' className={styles.tab} onClick={(event) => handleTabClick(event, 'tabSocials')} href='/'>Socials</div>
                 </div>
             </div>
         </div>

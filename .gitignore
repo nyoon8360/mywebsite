@@ -1,3 +1,6 @@
+#ignore self
+.gitignore
+
 #ignore node modules folder
 node_modules/
 
