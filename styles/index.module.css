@@ -1,0 +1,12 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+
+}
+
+.content {
+    z-index: -2;
+}
