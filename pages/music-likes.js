@@ -1,4 +1,3 @@
-
 import Layout from '../components/layout';
 
 export default function MusicLikes() {
@@ -6,7 +5,7 @@ export default function MusicLikes() {
     return (
         <Layout>
             <p>Lorem Ipsum</p>
-            <p>moosic page</p>
+            <p>music page</p>
         </Layout>
     )
 }

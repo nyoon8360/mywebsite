@@ -5,7 +5,8 @@ export default function HomePage() {
     return (
         <Layout>
             <p>Lorem Ipsum</p>
-            <p>sadge</p>
+            <p>Home Page</p>
+            <p>hai</p>
         </Layout>
     )
 }
