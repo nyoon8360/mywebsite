@@ -44,6 +44,7 @@
     line-height: 30px;
     height: 30px;
     flex-grow: 1;
+    cursor: pointer;
 
     transition: background-color .3s ease-in;
 }
@@ -73,29 +74,5 @@
     }
     100% {
         transform: translateY(100vh);
-    }
-}
-
-.circle {
-    width: 500vw;
-    height: 500vw;
-    transform: translate(-50%, -50%);
-
-    z-index: -1;
-
-    animation: 1s ease-in 0s 1 expandCircle;
-
-    overflow: hidden;
-}
-
-@keyframes expandCircle {
-    0% {
-        width: 0vw;
-        height: 0vw;
-    }
-
-    100% {
-        width: 500vw;
-        height: 500vw;
     }
 }

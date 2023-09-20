@@ -1,15 +1,26 @@
 import MainHeader from '../components/mainHeader';
 import styles from './layout.module.css';
 import { useRouter } from 'next/router';
+import { useTransitionContext } from '../context/transition';
+import { useEffect } from 'react';
+
+var blockFadeIn = false;
+var fadeColor = 'transparent';
+var transitionContainerZ = -2;
+var fadePlaying = false;
 
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
     const router = useRouter();
+    const [tColor, setTColor] = useTransitionContext();
 
+    //function creating and playing transition animation
     function transition(clickedTabEle) {
         //get styles and coords from passed tab element
         let tabXcoord = clickedTabEle.getBoundingClientRect().left;
         let tabComputedStyle = getComputedStyle(clickedTabEle);
+
+        blockFadeIn = true;
     
         //get transition container
         let transitionContainer = document.getElementById('transitionContainer');
@@ -27,7 +38,9 @@ export default function Layout({ children }) {
     
         ctx.beginPath();
         ctx.arc(500, 500, 500, 0, 2 * Math.PI);
-        ctx.fillStyle = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        ctx.fillStyle = randomColor;
+        setTColor(randomColor);
         ctx.fill();
     
         //add styles to canvas then append to and display transition container
@@ -36,20 +49,28 @@ export default function Layout({ children }) {
         transitionContainer.appendChild(canvas);
     
         transitionContainer.style.zIndex = 2;
+
+        transitionContainer.style.animationFillMode = 'none';
+        transitionContainer.style.backgroundColor = 'transparent';
     
         canvas.addEventListener('animationend', () => {
-            
-            console.log(clickedTabEle.getAttribute('pageRoute'));
-            router.push(clickedTabEle.getAttribute('pageRoute'));
-    
+            router.push(clickedTabEle.getAttribute('page-route'));
+            blockFadeIn = false;
         });
+    }
+
+    if (tColor && !blockFadeIn) {
+        fadeColor = tColor;
+        transitionContainerZ = 2;
+        fadePlaying = true;
+        console.log(tColor);
     }
 
     return (
         <div>
-            <div className={styles.mainContainer}>
+            <div className={styles.overlayContainer}>
                 <MainHeader transitionFunction={transition}></MainHeader>
-                <div className={styles.transitionContainer} id='transitionContainer'>
+                <div className={styles.transitionContainer} id='transitionContainer' style={{backgroundColor: fadeColor, animationPlayState: fadePlaying ? 'running' : 'paused', zIndex: transitionContainerZ}}>
                 </div>
             </div>
             <div className={styles.contentContainer}>
@@ -58,5 +79,3 @@ export default function Layout({ children }) {
         </div>
     );
 }
-
-//function creating and playing transition animation
