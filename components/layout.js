@@ -2,7 +2,6 @@ import MainHeader from '../components/mainHeader';
 import styles from './layout.module.css';
 import { useRouter } from 'next/router';
 import { useTransitionContext } from '../context/transition';
-import { useEffect } from 'react';
 
 var blockFadeIn = false;
 var fadeColor = 'transparent';
@@ -15,7 +14,7 @@ export default function Layout({ children }) {
     const [tColor, setTColor] = useTransitionContext();
 
     //function creating and playing transition animation
-    function transition(clickedTabEle) {
+    function transition(clickedTabEle, transitionColor) {
         //get styles and coords from passed tab element
         let tabXcoord = clickedTabEle.getBoundingClientRect().left;
         let tabComputedStyle = getComputedStyle(clickedTabEle);
@@ -38,9 +37,9 @@ export default function Layout({ children }) {
     
         ctx.beginPath();
         ctx.arc(500, 500, 500, 0, 2 * Math.PI);
-        let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-        ctx.fillStyle = randomColor;
-        setTColor(randomColor);
+        //let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        ctx.fillStyle = transitionColor;
+        setTColor(transitionColor);
         ctx.fill();
     
         //add styles to canvas then append to and display transition container
