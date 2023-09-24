@@ -1,19 +1,4 @@
-/*
-z-indices key:
--1 page content
--2 transition layer
--5 header
-*/
-
-.mainContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-.header {
-
-}
-
-.content {
-    z-index: -2;
+.profilePic {
+    border-radius: 9999px;
+    
 }

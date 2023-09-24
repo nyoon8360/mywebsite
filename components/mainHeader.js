@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styles from './mainHeader.module.css';
 import { useRouter } from 'next/router';
 import { useTransitionContext } from '../context/transition';
+import { useEffect } from 'react';
 
 var transitionFunction;
 let blockTabClickEvent = false;
@@ -14,12 +15,20 @@ export default function MainHeader(props) {
     transitionFunction = props.transitionFunction;
     blockTabClickEvent = false;
 
+    useEffect(() => {
+        let headerPositionerElement = document.getElementById('headerPositioner');
+
+        let headerContainerElement = document.getElementById('headerContainer');
+        headerContainerElement.style.height = getComputedStyle(headerPositionerElement).height;
+    });
+
     return (
-        <div>
-            <div className={styles.headerContainer}>
-                <div className={styles.title}>
+        <header id='headerContainer'>
+            <div className={styles.headerContainer} id='headerPositioner'>
+                <h1 className={styles.title}>
                     <Link className={styles.titleText} href='/' onClick={() => {setTColor('#ECEE81')}}>Nicholas Yoon</Link>
-                </div>
+                </h1>
+                <h2 className={styles.subtitleText}>Software Developer</h2>
                 <div id="containerTabs" className={styles.tabContainer}>
                     {tabBuilder('Home', 'tabHome', '#ECEE81', '/', currentPath)}
                     {tabBuilder('Projects', 'tabProjects', '#8DDFCB', '/projects', currentPath)}
@@ -28,7 +37,7 @@ export default function MainHeader(props) {
                     {tabBuilder('Socials', 'tabSocials', '#AF62E3', '/socials', currentPath)}
                 </div>
             </div>
-        </div>
+        </header>
     );
 }
 

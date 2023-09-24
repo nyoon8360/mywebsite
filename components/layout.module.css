@@ -4,9 +4,8 @@
 }
 
 .contentContainer {
-    margin-top: 80px;
-    z-index: -1;
-    /*background-color: rgb(184, 92, 92); */
+    z-index: 1;
+    margin: 10px;
 }
 
 .transitionContainer {
@@ -23,8 +22,6 @@
 }
 
 .transitionContainerFadeIn {
-
-
     animation: 1s ease-in 0s 1 normal forwards paused fadeIn;
 }
 
