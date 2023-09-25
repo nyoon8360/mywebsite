@@ -12,9 +12,8 @@ export default function HomePage() {
             <p>Hey I'm Nick, a {calc_age(new Date(1998, 7, 27))} years old software developer, tattoo enthusiast, and massive music fan!</p>
             <p>I made this website to house my interests, show off some of my personal projects I've enjoyed working 
                 on, and to learn the Next.JS framework through hands-on experience.</p>
-
+            <p></p>
             <p>Intro, Age, Bday, College, Degree, Interests</p>
-            <p>I am {calc_age(new Date(1998, 7, 27))} years old.</p>
         </Layout>
     )
 }

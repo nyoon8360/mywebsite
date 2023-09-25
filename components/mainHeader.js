@@ -34,25 +34,13 @@ export default function MainHeader(props) {
                 <div id="containerTabs" className={styles.tabContainer}>
                     <HeaderTab tabId='tabHome' underlineColor='#ECEE81' destinationPath='/' currentPath={currentPath} onClickEvent={handleTabClick}>Home</HeaderTab>
                     <HeaderTab tabId='tabProjects' underlineColor='#8DDFCB' destinationPath='/projects' currentPath={currentPath} onClickEvent={handleTabClick}>Projects</HeaderTab>
-                    <HeaderTab tabId='tabResume' underlineColor='#82A0D8' destinationPath='/resume' currentPath={currentPath} onClickEvent={handleTabClick}>Resume</HeaderTab>
+                    <HeaderTab tabId='tabInterests' underlineColor='#82A0D8' destinationPath='/interests' currentPath={currentPath} onClickEvent={handleTabClick}>Interests</HeaderTab>
                     <HeaderTab tabId='tabMusic' underlineColor='#EDB7ED' destinationPath='/music-likes' currentPath={currentPath} onClickEvent={handleTabClick}>Music Likes</HeaderTab>
                     <HeaderTab tabId='tabSocials' underlineColor='#AF62E3' destinationPath='/socials' currentPath={currentPath} onClickEvent={handleTabClick}>Socials</HeaderTab>
                 </div>
             </div>
         </header>
     );
-}
-
-//function to build a tab element
-function tabBuilder(name, id, underlineColor, path, currentPath) {
-    let tabStyle = {
-        backgroundColor: '#393939',
-        cursor: 'default',
-        textDecorationColor: underlineColor
-    }
-    return (
-        <div id={id} style={currentPath == path ? tabStyle : {textDecorationColor: underlineColor}} page-route={path} className={styles.tab} onClick={currentPath == path ? null : () => handleTabClick(id)}>{name}</div>
-    )
 }
 
 function handleTabClick(tabId) {
