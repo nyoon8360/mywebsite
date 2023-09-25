@@ -13,3 +13,7 @@
 
     transition: background-color .3s ease-in;
 }
+
+.tab:hover {
+    background-color: #393939;
+}

@@ -51,26 +51,6 @@
     justify-content: space-evenly;
 }
 
-.tab {
-    text-decoration: none;
-    color: #b2b2b2;
-    font-size: 20px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 30px;
-    height: 30px;
-    flex-grow: 1;
-    cursor: pointer;
-
-    text-decoration: underline;
-
-    transition: background-color .3s ease-in;
-}
-
-.tab:hover {
-    background-color: #393939;
-}
-
 .fallingTab {
     text-decoration: none;
     color: #b2b2b2;

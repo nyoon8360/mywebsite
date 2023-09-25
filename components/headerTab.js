@@ -1,4 +1,4 @@
-import styles from './headertab.module.css';
+import styles from './headerTab.module.css';
 
 export default function headerTab({tabId, underlineColor, destinationPath, currentPath, onClickEvent, children}) {
     //throw error if component has child that is not just inner text
