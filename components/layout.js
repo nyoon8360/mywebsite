@@ -7,6 +7,7 @@ var blockFadeIn = false;
 var fadeColor = 'transparent';
 var transitionContainerZ = -2;
 var fadePlaying = false;
+var transitionContainerOnAnimEnd;
 
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
@@ -49,27 +50,36 @@ export default function Layout({ children }) {
     
         transitionContainer.style.zIndex = 2;
 
+        //reset transition container's animation fill mode and background color
         transitionContainer.style.animationFillMode = 'none';
         transitionContainer.style.backgroundColor = 'transparent';
     
+        //navigate to clicked tab's page after transition animation completes
         canvas.addEventListener('animationend', () => {
             router.push(clickedTabEle.getAttribute('page-route'));
             blockFadeIn = false;
         });
     }
 
+    //if navigated to current page through transition animation, play fade in animation using color of clicked tab
     if (tColor && !blockFadeIn) {
         fadeColor = tColor;
         transitionContainerZ = 2;
         fadePlaying = true;
-        console.log(tColor);
+
+        //on fade-in animation end, push transition container behind page's content
+        transitionContainerOnAnimEnd = (event) => {
+            if (event.animationName == styles.fadeIn) {
+                document.getElementById('transitionContainer').style.zIndex = -2;
+            }
+        }
     }
 
     return (
         <div>
             <div className={styles.overlayContainer}>
                 <MainHeader transitionFunction={transition}></MainHeader>
-                <div className={styles.transitionContainer} id='transitionContainer' style={{backgroundColor: fadeColor, animationPlayState: fadePlaying ? 'running' : 'paused', zIndex: transitionContainerZ}}>
+                <div className={styles.transitionContainer} onAnimationEnd={transitionContainerOnAnimEnd} id='transitionContainer' style={{backgroundColor: fadeColor, animationPlayState: fadePlaying ? 'running' : 'paused', zIndex: transitionContainerZ}}>
                 </div>
             </div>
             <div className={styles.contentContainer}>

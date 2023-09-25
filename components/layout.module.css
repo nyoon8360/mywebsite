@@ -27,10 +27,6 @@
     animation: 1s ease-in 0s 1 forwards fadeIn;
 }
 
-.transitionContainerFadeIn {
-    animation: 1s ease-in 0s 1 normal forwards paused fadeIn;
-}
-
 /* Styling for canvas composing transition animation. */
 .circle {
     width: 600vmax;
