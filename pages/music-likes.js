@@ -1,4 +1,5 @@
 import Layout from '../components/layout';
+import Collapsible from '../components/collapsible';
 import styles from '../styles/music-likes.module.css';
 import Image from 'next/image';
 import {Reveal} from 'react-awesome-reveal';
@@ -35,9 +36,22 @@ export default function MusicLikes() {
             <h3 className={styles.category}>Favorite Genres</h3>
 
             <Reveal keyframes={fadeUpAnimation} delay={500}>
-                <button className={styles.collapsible} onClick={toggleCollapsible}>
-                    <Image className={styles.collapsibleSvg} src='/svgs/down-arrow.svg' height={50} width={50} alt='arrow'/>
-                </button>
+                <Collapsible title='RnB (Rhythm and Blues)'>
+                    <p>hai there</p>
+                </Collapsible>
+                <Collapsible title='KRnB (Korean Rhythm and Blues)'>
+                    <p>hai there</p>
+                </Collapsible>
+                <Collapsible title='Alternative / Indie'>
+                    <p>hai there</p>
+                </Collapsible>
+                <Collapsible title='Electronic'>
+                    <p>hai there</p>
+                </Collapsible>
+                <Collapsible title='EDM (Electronic Dance Music)'>
+                    <p>hai there</p>
+                </Collapsible>
+
             </Reveal>
 
             <hr className={styles.divider}/>
@@ -46,10 +60,3 @@ export default function MusicLikes() {
     )
 }
 
-function toggleCollapsible(event) {
-    let collapsibleElement = event.target;
-    
-    collapsibleElement.classList.toggle('.activeCollapsible');
-
-    collapsibleElement.children[0].src = collapsibleElement.children[0].getAttribute('src') == '/svgs/down-arrow.svg' ? '/svgs/up-arrow.svg' : '/svgs/down-arrow.svg';
-}
