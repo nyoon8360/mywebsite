@@ -20,13 +20,10 @@ function toggleCollapsible(event) {
     let collapsibleElement = event.target;
     let contentContainer = collapsibleElement.nextElementSibling;
     
-    collapsibleElement.classList.toggle('.activeCollapsible');
+    //collapsibleElement.classList.toggle('.activeCollapsible');
 
-    collapsibleElement.children[0].src = collapsibleElement.children[0].getAttribute('src') == '/svgs/down-arrow.svg' ? '/svgs/up-arrow.svg' : '/svgs/down-arrow.svg';
+    collapsibleElement.children[2].src = collapsibleElement.children[2].getAttribute('src') == '/svgs/down-arrow.svg' ? '/svgs/up-arrow.svg' : '/svgs/down-arrow.svg';
 
-    //contentContainer.style.display = contentContainer.style.display == 'block' ? 'none' : 'block';
-    
-    console.log(contentContainer.style.maxHeight);
     if (contentContainer.style.maxHeight) {
         contentContainer.style.maxHeight = null;
     } else {

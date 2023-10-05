@@ -32,3 +32,23 @@
     align-self: flex-end;
     padding-right: 5px;
 }
+
+.toggleSwitch {
+    margin-bottom: 15px;
+}
+
+.iconContainer {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.spotifySongEmbeds {
+    overflow: hidden;
+}
+
+.soundcloudSongEmbeds {
+    overflow: hidden;
+    display: block;
+}

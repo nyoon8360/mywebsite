@@ -24,7 +24,7 @@ export default function HomePage() {
                 <Image className={styles.profilePic} src='/images/profile_pic_rain_car.jpg' height={250} width={250} alt='My Pic'/>
             </div>
             <hr className={styles.divider}/>
-            <Reveal keyframes={fadeUpAnimation} delay={500}>
+            <Reveal keyframes={fadeUpAnimation} delay={200} triggerOnce='true'>
                 <p className={styles.textBodyContent}>Hey I'm Nick, a {calc_age(new Date(1998, 7, 27))} years old software developer, tattoo enthusiast, and massive music fan!</p>
 
                 <p className={styles.textBodyContent}>I made this website to house my interests, show off some of my personal projects I've enjoyed working 
