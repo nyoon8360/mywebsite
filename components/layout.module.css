@@ -19,7 +19,7 @@
     overflow: hidden;
     flex-grow: 1;
 
-    position: absolute;
+    position: fixed;
 
     width: 100vw;
     height: 100%;

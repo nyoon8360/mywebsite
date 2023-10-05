@@ -13,7 +13,7 @@ export default function headerTab({tabId, underlineColor, destinationPath, curre
     
     return (
         <div id={tabId} style={currentPath == destinationPath ? tabStyle : {textDecorationColor: underlineColor}}
-         page-route={destinationPath} className={styles.tab} onClick={currentPath == destinationPath ? null : () => onClickEvent(tabId)}>{children}
+         page-route={destinationPath} className={styles.tab} onClick={currentPath == destinationPath ? null : onClickEvent}>{children}
          </div>
     )
 }

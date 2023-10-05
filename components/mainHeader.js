@@ -43,11 +43,11 @@ export default function MainHeader(props) {
     );
 }
 
-function handleTabClick(tabId) {
+function handleTabClick(event) {
     if (!blockTabClickEvent) {
         blockTabClickEvent = true;
 
-        let tabElement = document.getElementById(tabId);
+        let tabElement = event.target;
         let tabContainer = document.getElementById('containerTabs');
 
         //get tabElement's size and position

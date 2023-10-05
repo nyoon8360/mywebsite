@@ -1,0 +1,54 @@
+.category {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.divider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    height: 5px;
+    background-color: black;
+    color: black;
+}
+
+.collapsible {
+    height: 50px;
+    width: 100%;
+    background-color: #257171;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.collapsible:hover, .activeCollapsible {
+    cursor: pointer;
+}
+
+.collapsibleSvg {
+    align-self: flex-end;
+    padding-right: 5px;
+}
+
+.toggleSwitch {
+    margin-bottom: 15px;
+}
+
+.iconContainer {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.spotifySongEmbeds {
+    overflow: hidden;
+}
+
+.soundcloudSongEmbeds {
+    overflow: hidden;
+    display: block;
+}
