@@ -50,5 +50,8 @@
 
 .soundcloudSongEmbeds {
     overflow: hidden;
-    display: block;
+}
+
+.displayNone {
+    display: none;
 }

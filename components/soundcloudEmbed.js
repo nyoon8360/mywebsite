@@ -1,12 +1,10 @@
 
-export default function SoundcloudEmbed({ src }) {
+export default function SoundcloudEmbed({ src, marginLeftRight = '0px' }) {
     return (
-        <div>
-            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
-                src={src}>
+        <div style={{marginTop: '8px', marginBottom: '8px', marginLeft: marginLeftRight, marginRight: marginLeftRight}}>
+            <iframe width='100%' height="152" scrolling="no" frameborder="no" allow="autoplay" 
+                src={src} loading="eager">
             </iframe>
-            <div style={{fontSize: '10px', color: '#cccccc', lineBreak: 'anywhere', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', 
-                fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: 100}}></div>
         </div>
     )
 }

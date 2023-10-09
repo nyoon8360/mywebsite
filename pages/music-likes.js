@@ -37,6 +37,18 @@ export default function MusicLikes() {
 
     function toggleSwitchChange() {
         setSwitchState(!switchState);
+
+        let spotifyEmbeds = document.getElementsByClassName(styles.spotifySongEmbeds);
+        let soundcloudEmbeds = document.getElementsByClassName(styles.soundcloudSongEmbeds);
+
+        for (let i = 0; i < spotifyEmbeds.length; i++) {
+            spotifyEmbeds[i].classList.toggle(styles.displayNone);
+        }
+
+        for (let i = 0; i < soundcloudEmbeds.length; i++) {
+            soundcloudEmbeds[i].classList.toggle(styles.displayNone);
+        }
+        
     }
 
     return (
@@ -58,25 +70,46 @@ export default function MusicLikes() {
             <Reveal keyframes={fadeUpAnimation} delay={200} triggerOnce='true'>
                 <Collapsible title='RnB (Rhythm and Blues)'>
                     <div className={styles.spotifySongEmbeds}>
-                        <SpotifyEmbed width='98%' leftMargin='1%' src="https://open.spotify.com/embed/track/3iqlzKw1tLt6tXZyKWV0fZ?utm_source=generator"></SpotifyEmbed>
-                        <SpotifyEmbed width='98%' leftMargin='1%' src="https://open.spotify.com/embed/track/60O330MwrWVWCp9fpxzulM?utm_source=generator"></SpotifyEmbed>
+                        <SpotifyEmbed width='98%' marginLeft='1%' src="https://open.spotify.com/embed/track/3iqlzKw1tLt6tXZyKWV0fZ?utm_source=generator"></SpotifyEmbed>
+                        <SpotifyEmbed width='98%' marginLeft='1%' src="https://open.spotify.com/embed/track/68OnIh4v10tWxZYJTsHJWX?utm_source=generator"></SpotifyEmbed>
+                        <SpotifyEmbed width='98%' marginLeft='1%' src="https://open.spotify.com/embed/track/30nzm88lmvORdgiw7Wm9rV?utm_source=generator"></SpotifyEmbed>
                     </div>
 
-                    <div className={styles.soundcloudSongEmbeds}>
-                        
+                    <div className={`${styles.soundcloudSongEmbeds} ${styles.displayNone}`}>
+                        <SoundcloudEmbed width='98%' marginLeftRight='1%' src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1142067895&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></SoundcloudEmbed>
+                        <SoundcloudEmbed width='98%' marginLeftRight='1%' src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/794754367&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></SoundcloudEmbed>
+                        <SoundcloudEmbed width='98%' marginLeftRight='1%' src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/266251146&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></SoundcloudEmbed>
                     </div>
                 </Collapsible>
                 <Collapsible title='KRnB (Korean Rhythm and Blues)'>
-                    <p>hai there</p>
+                    <div className={styles.spotifySongEmbeds}>
+                        <SpotifyEmbed width='98%' marginLeft='1%' src="https://open.spotify.com/embed/track/7GLn0324YKGYxbYN7GH8Ip?utm_source=generator"></SpotifyEmbed>
+                        <SpotifyEmbed width='98%' marginLeft='1%' src="https://open.spotify.com/embed/track/6UBURyvj5cLC4UjhOQWzHa?utm_source=generator"></SpotifyEmbed>
+                    </div>
+                    <div className={`${styles.soundcloudSongEmbeds} ${styles.displayNone}`}>
+                        <SoundcloudEmbed width='98%' marginLeftRight='1%' src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1065734599&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></SoundcloudEmbed>
+                        <SoundcloudEmbed width='98%' marginLeftRight='1%' src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1384775962&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></SoundcloudEmbed>
+                    </div>
                 </Collapsible>
                 <Collapsible title='Alternative / Indie'>
-                    <p>hai there</p>
+                    <div className={styles.spotifySongEmbeds}>
+                        <SpotifyEmbed width='98%' marginLeft='1%' src="https://open.spotify.com/embed/track/1mCjixRL3A4CDqUROKyMhT?utm_source=generator"></SpotifyEmbed>
+                    </div>
+                    <div className={`${styles.soundcloudSongEmbeds} ${styles.displayNone}`}>
+                        <SoundcloudEmbed width='98%' marginLeftRight='1%' src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1257704701&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></SoundcloudEmbed>
+                    </div>
                 </Collapsible>
                 <Collapsible title='Electronic'>
-                    <p>hai there</p>
+                <div className={styles.spotifySongEmbeds}>
+                    </div>
+                    <div className={`${styles.soundcloudSongEmbeds} ${styles.displayNone}`}>
+                    </div>
                 </Collapsible>
                 <Collapsible title='EDM (Electronic Dance Music)'>
-                    <p>hai there</p>
+                    <div className={styles.spotifySongEmbeds}>
+                    </div>
+                    <div className={`${styles.soundcloudSongEmbeds} ${styles.displayNone}`}>
+                    </div>
                 </Collapsible>
 
             </Reveal>
