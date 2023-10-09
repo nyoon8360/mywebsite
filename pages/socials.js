@@ -6,6 +6,8 @@ export default function Socials() {
         <Layout>
             <p>Lorem Ipsum</p>
             <p>socials page</p>
+            
+            
         </Layout>
     )
 }
