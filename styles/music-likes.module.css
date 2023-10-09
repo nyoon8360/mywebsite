@@ -1,15 +1,16 @@
 .category {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
+    margin-top: 100px;
 }
 
 .divider {
     margin-top: 20px;
     margin-bottom: 20px;
     border: none;
-    height: 5px;
+    height: 2px;
     background-color: black;
     color: black;
 }
@@ -35,6 +36,7 @@
 
 .toggleSwitch {
     margin-bottom: 15px;
+    margin-right: 5px;
 }
 
 .iconContainer {
@@ -54,4 +56,16 @@
 
 .displayNone {
     display: none;
+}
+
+.toggleSwitchContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.toggleSwitchLabel {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 30px;
+    font-weight: bold;
 }
