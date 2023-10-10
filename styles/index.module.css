@@ -9,7 +9,7 @@
     margin-bottom: 20px;
 }
 
-.textBodyContent {
+.bodyText {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     margin: 30px 0px 30px 0px
@@ -22,4 +22,23 @@
     height: 2px;
     background-color: black;
     color: black;
+}
+
+.githubLogo {
+    transform: translateY(2px);
+    margin-right: 2px;
+}
+
+.githubLink {
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.githubLink:hover {
+    cursor: pointer;
+}
+
+.githubLinkLabel {
+    pointer-events: none;
 }

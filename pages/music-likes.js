@@ -3,6 +3,7 @@ import Collapsible from '../components/collapsible';
 import SpotifyEmbed from '../components/spotifyEmbed';
 import SoundcloudEmbed from '../components/soundcloudEmbed';
 
+
 import Image from 'next/image';
 import styles from '../styles/music-likes.module.css';
 import { Reveal } from 'react-awesome-reveal';
@@ -11,7 +12,10 @@ import Switch from 'react-switch';
 import { useState, createContext, useContext } from "react";
 
 export default function MusicLikes() {
+    //state of toggle switch
     const [switchState, setSwitchState] = useState(true);
+
+    //animation key frames for fading up animation on elements entering view port
     const fadeUpAnimation = keyframes`
         from {
             opacity: 0;
@@ -23,6 +27,8 @@ export default function MusicLikes() {
             transform: translateY(0);
         }
     `;
+
+    //logo elements for spotify and soundcloud
     const spotifyIcon = (
         <div className={styles.iconContainer}>
             <Image src='/images/spotify-logo.png' height={25} width={25} alt='spotify'/>
@@ -35,9 +41,11 @@ export default function MusicLikes() {
         </div>
     )
 
+    //event handler when embed switch is toggled
     function toggleSwitchChange() {
         setSwitchState(!switchState);
 
+        //toggle between showing spotify and soundcloud embeds in collapsibles
         let spotifyEmbeds = document.getElementsByClassName(styles.spotifySongEmbeds);
         let soundcloudEmbeds = document.getElementsByClassName(styles.soundcloudSongEmbeds);
 
@@ -53,11 +61,10 @@ export default function MusicLikes() {
 
     return (
         <Layout>
-
             <h3 className={styles.category} style={{marginTop: '30px'}}>Favorite Artist</h3>
             <hr className={styles.divider}/>
 
-            <Reveal keyframes={fadeUpAnimation} duration={2000} delay={200} triggerOnce='true'>
+            <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
                 <SpotifyEmbed src="https://open.spotify.com/embed/artist/3pc0bOVB5whxmD50W79wwO?utm_source=generator"></SpotifyEmbed>
             </Reveal>
 
@@ -70,7 +77,7 @@ export default function MusicLikes() {
                 <label for='embedToggleSwitch' className={styles.toggleSwitchLabel}>Embed Mode</label>
             </div>
 
-            <Reveal keyframes={fadeUpAnimation} duration={2000} delay={200} triggerOnce='true'>
+            <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
                 <Collapsible title='RnB (Rhythm and Blues)'>
                     <div className={styles.spotifySongEmbeds}>
                         <SpotifyEmbed width='98%' marginLeft='1%' src="https://open.spotify.com/embed/track/3iqlzKw1tLt6tXZyKWV0fZ?utm_source=generator"></SpotifyEmbed>
@@ -141,7 +148,7 @@ export default function MusicLikes() {
             <h3 className={styles.category}>Other Artists I Like</h3>
             <hr className={styles.divider}/>
             
-            <Reveal keyframes={fadeUpAnimation} duration={2000} delay={200} triggerOnce='true'>
+            <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
                 <SpotifyEmbed src="https://open.spotify.com/embed/artist/3GFO1X5LAHduvR314sXnqI?utm_source=generator"></SpotifyEmbed>
                 <SpotifyEmbed src="https://open.spotify.com/embed/artist/33crDRqANd3NQHJagZkQ7O?utm_source=generator"></SpotifyEmbed>
                 <SpotifyEmbed src="https://open.spotify.com/embed/artist/2o8gT0fQmFxGNbowbdgeZe?utm_source=generator"></SpotifyEmbed>
