@@ -43,6 +43,7 @@ export default function MainHeader(props) {
     );
 }
 
+//function that plays animation of a falling tab when tab is clicked
 function handleTabClick(event) {
     if (!blockTabClickEvent) {
         blockTabClickEvent = true;
@@ -72,7 +73,7 @@ function handleTabClick(event) {
         tabElement.style.color = 'transparent';
         tabElement.style.textDecoration = '';
 
-        //when the animation of the falling tab ends, invoke the transition function
+        //when the animation of the falling tab ends, invoke the expanding circle transition function
         fallingTab.addEventListener('animationend', () => {
             transitionFunction(tabElement, fallingTab.style.textDecorationColor);
         });

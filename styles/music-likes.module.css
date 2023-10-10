@@ -15,25 +15,6 @@
     color: black;
 }
 
-.collapsible {
-    height: 50px;
-    width: 100%;
-    background-color: #257171;
-    border: 0;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-}
-
-.collapsible:hover, .activeCollapsible {
-    cursor: pointer;
-}
-
-.collapsibleSvg {
-    align-self: flex-end;
-    padding-right: 5px;
-}
-
 .toggleSwitch {
     margin-bottom: 15px;
     margin-right: 5px;

@@ -14,7 +14,7 @@ export default function Layout({ children }) {
     const router = useRouter();
     const [tColor, setTColor] = useTransitionContext();
 
-    //function creating and playing transition animation
+    //function creating and playing expanding circle transition animation
     function transition(clickedTabEle, transitionColor) {
         //get styles and coords from passed tab element
         let tabXcoord = clickedTabEle.getBoundingClientRect().left;
