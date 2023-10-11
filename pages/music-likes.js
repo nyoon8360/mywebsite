@@ -3,7 +3,6 @@ import Collapsible from '../components/collapsible';
 import SpotifyEmbed from '../components/spotifyEmbed';
 import SoundcloudEmbed from '../components/soundcloudEmbed';
 
-
 import Image from 'next/image';
 import styles from '../styles/music-likes.module.css';
 import { Reveal } from 'react-awesome-reveal';
@@ -74,7 +73,7 @@ export default function MusicLikes() {
 
             <div className={styles.toggleSwitchContainer}>
                 <Switch id='embedToggleSwitch' className={styles.toggleSwitch} checkedIcon={spotifyIcon} uncheckedIcon={soundcloudIcon} onColor='#2ea616' offColor='#eb8705' onChange={toggleSwitchChange} checked={switchState}></Switch>
-                <label for='embedToggleSwitch' className={styles.toggleSwitchLabel}>Embed Mode</label>
+                <label htmlFor='embedToggleSwitch' className={styles.toggleSwitchLabel}>Embed Mode</label>
             </div>
 
             <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>

@@ -1,7 +1,23 @@
+.sectionText {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0px;
+}
+
 .bodyText {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    margin: 30px 0px 30px 0px
+    margin-bottom: 30px;
+    margin-top: 3px;
+}
+
+.unorderedListText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-bottom: 30px;
+    margin-top: 3px;
+    padding-left: 16px;
 }
 
 .projectTitle {
@@ -25,11 +41,6 @@
     border-color: black;
     border-width: 3px;
     border-style: solid;
-}
-
-.boldSpan {
-    font-size: 20px;
-    font-weight: bold;
 }
 
 .githubLogoP2 {

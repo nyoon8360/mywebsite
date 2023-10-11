@@ -34,7 +34,7 @@ export default function HomePage() {
                 <p className={styles.bodyText}>Feel free to explore around or check out the source code for the website here: 
                     <a id='githubSourceCodeLink' className={styles.githubLink} target='_blank' href='https://github.com/nyoon8360/mywebsite'>
                         <Image className={styles.githubLogo} src='/images/github-mark.png' alt='github logo' width={18} height={18}/>
-                        <label for='githubSourceCodeLink' className={styles.githubLinkLabel}>Source Code</label>
+                        <label htmlFor='githubSourceCodeLink' className={styles.githubLinkLabel}>Source Code</label>
                     </a>
                     
                 </p>
