@@ -20,53 +20,70 @@ export default function Projects() {
     return (
         <Layout>
             <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
-            <h3 className={styles.projectTitle} style={{marginTop: '30px'}}>Personal Website</h3>
-            <Image className={styles.projectThumbnail} src='/images/personal_website_thumbnail.png' alt='Personal Project Website' height={300} width={400}/>
-            <p className={styles.bodyText}>
-                <span className={styles.boldSpan}>Description</span><br/>
-                Website to display my personal interests, projects, and music tastes.
-            </p>
-            <p className={styles.bodyText}>
-                <span className={styles.boldSpan}>Technologies Used</span><br/>
-                - HTML, CSS, JS <br/>
-                - Next.JS framework <br/>
-                - Vercel web hosting <br/>
-                - CSS Modules
-            </p>
-            <p className={styles.bodyText}>
-                <span className={styles.boldSpan}>Source Code</span><br/>
-                <a id='githubSourceCodeLink' className={styles.githubLink} target='_blank' href='https://github.com/nyoon8360/mywebsite'>
-                    <Image src='/images/github-mark.png' alt='github logo' width={30} height={30}/>
-                    <Image className={styles.githubLogoP2} src='/images/github_logo.png' alt='github logo' width={90} height={30}/>
-                </a>
-            </p>
+
+                <h3 className={styles.projectTitle} style={{marginTop: '30px'}}>Personal Website</h3>
+                <Image className={styles.projectThumbnail} src='/images/personal_website_thumbnail.png' alt='Personal Project Website' height={300} width={400}/>
+                
+                <h4 className={styles.sectionText}>Description</h4>
+                <p className={styles.bodyText}>
+                    Website to display my personal interests, projects, and music tastes.
+                </p>
+
+                <h4 className={styles.sectionText}>Technologies Used</h4>
+                <ul className={styles.unorderedListText}>
+                    <li>HTML, CSS, Javascript</li>
+                    <li>Next.JS Framework</li>
+                    <li>Vercel Web Hosting</li>
+                    <li>CSS Modules</li>
+                </ul>
+
+                <h4 className={styles.sectionText}>Source Code</h4>
+                <p className={styles.bodyText}>
+                    <a id='githubSourceCodeLink' className={styles.githubLink} target='_blank' href='https://github.com/nyoon8360/mywebsite'>
+                        <Image src='/images/github-mark.png' alt='github logo' width={30} height={30}/>
+                        <Image className={styles.githubLogoP2} src='/images/github_logo.png' alt='github logo' width={90} height={30}/>
+                    </a>
+                </p>
             </Reveal>
 
             <hr className={styles.divider}></hr>
 
             <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
-            <h3 className={styles.projectTitle} style={{marginTop: '30px'}}>Bank of Edwin Discord Bot</h3>
+                <h3 className={styles.projectTitle} style={{marginTop: '30px'}}>Bank of Edwin Discord Bot</h3>
 
-            <Image className={styles.projectThumbnail} src='/images/bank_of_edwin_thumbnail.png' alt='Bank of Edwin Discord Bot' height={300} width={400}/>
+                <Image className={styles.projectThumbnail} src='/images/bank_of_edwin_thumbnail.png' alt='Bank of Edwin Discord Bot' height={300} width={400}/>
 
-            <p className={styles.bodyText}>
-                <span className={styles.boldSpan}>Description</span><br/>
-                A discord chat bot inspired by an inside joke that facilitates an economy revolving around fake currency. <br/>
-                Currency can be used to purchase joke items to mess with users and invest in stocks using near realtime prices.
-            </p>
-            <p className={styles.bodyText}>
-                <span className={styles.boldSpan}>Technologies Used</span><br/>
-                - Node.JS <br/>
-                - Discord.JS<br/>
-                - Twelve Data API
-            </p>
-            <p className={styles.bodyText}>
-                <span className={styles.boldSpan}>Source Code</span><br/>
-                <a id='githubSourceCodeLink' className={styles.githubLink} target='_blank' href='https://github.com/nyoon8360/BoEBot'>
-                    <Image src='/images/github-mark.png' alt='github logo' width={30} height={30}/>
-                    <Image className={styles.githubLogoP2} src='/images/github_logo.png' alt='github logo' width={90} height={30}/>
-                </a>
-            </p>
+                <h4 className={styles.sectionText}>Description</h4>
+                <p className={styles.bodyText}>
+                    A discord chat bot inspired by an inside joke that facilitates an economy revolving around fake currency. <br/>
+                    Currency can be used to purchase joke items to mess with users and invest in stocks using near realtime prices.
+                </p>
+
+                <h4 className={styles.sectionText}>Features</h4>
+                <ul className={styles.unorderedListText}>
+                    <li>All interaction with bot is done through the main menu UI with buttons. No commands necessary.</li>
+                    <li>Gain currency through active participation in voice chats or reactions to text messages.</li>
+                    <li>Buy and use items with various effects like temporarily timing out users or temporarily lowering bitrate for voice channels.</li>
+                    <li>Buy equipment to increase currency gain or augment item effects.</li>
+                    <li>Invest in real world stocks with near real time stock prices.</li>
+                    <li>View list of messages with highest amount of reactions.</li>
+                    <li>View leaderboard of users in respect to total value of currency and stock holdings.</li>
+                </ul>
+
+                <h4 className={styles.sectionText}>Technologies Used</h4>
+                <ul className={styles.unorderedListText}>
+                    <li>Node.JS</li>
+                    <li>Discord.JS</li>
+                    <li>Twelve Data API</li>
+                </ul>
+
+                <h4 className={styles.sectionText}>Source Code</h4>
+                <p className={styles.bodyText}>
+                    <a id='githubSourceCodeLink' className={styles.githubLink} target='_blank' href='https://github.com/nyoon8360/BoEBot'>
+                        <Image src='/images/github-mark.png' alt='github logo' width={30} height={30}/>
+                        <Image className={styles.githubLogoP2} src='/images/github_logo.png' alt='github logo' width={90} height={30}/>
+                    </a>
+                </p>
             </Reveal>
         </Layout>
     )
