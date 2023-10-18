@@ -4,12 +4,12 @@ import Image from 'next/image';
 export default function Collapsible({ title, children }) {
     return (
         <div className={styles.collapsibleContainer}>
-            <button className={styles.collapsible} onClick={toggleCollapsible}>
+            <button id='collapsible' className={styles.collapsible} onClick={toggleCollapsible}>
                 <div className={styles.spaceHolder}></div>
                 <p className={styles.buttonTitle}>{title}</p>
                 <Image className={styles.collapsibleSvg} src='/svgs/down-arrow.svg' height={50} width={50} alt='arrow'/>
             </button>
-            <div className={styles.content}>
+            <div className={styles.content} onTransitionEnd={toggleCollapsibleBorderRadius}>
                 {children}
             </div>
         </div>
@@ -28,5 +28,15 @@ function toggleCollapsible(event) {
         contentContainer.style.maxHeight = null;
     } else {
         contentContainer.style.maxHeight = contentContainer.scrollHeight + 'px';
+        collapsibleElement.style.borderRadius = '10px 10px 0 0';
+    }
+}
+
+function toggleCollapsibleBorderRadius(event) {
+    let contentContainer = event.target;
+    let collapsibleElement = document.getElementById('collapsible');
+
+    if (!contentContainer.style.maxHeight) {
+        collapsibleElement.style.borderRadius = '10px';
     }
 }

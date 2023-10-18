@@ -1,10 +1,4 @@
-.overlayContainer {
-    display: flex;
-    flex-direction: column;
-}
-
 .contentContainer {
-    z-index: 1;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: auto;
@@ -15,8 +9,8 @@
     overflow: hidden;
 }
 
-.transitionContainer {
-    z-index: -2;
+.overlay {
+    z-index: 6;
     overflow: hidden;
     flex-grow: 1;
 
@@ -25,36 +19,52 @@
     width: 100vw;
     height: 100%;
 
-    animation: 1s ease-in 0s 1 forwards fadeIn;
+    pointer-events: none;
 }
 
-/* Styling for canvas composing transition animation. */
-.circle {
-    width: 600vmax;
-    height: 600vmax;
-    position: sticky;
+.rippleTransition {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    bottom: 0%;
 
-    animation: 1s ease-in 0s 1 expandCircle
+    border-radius: 9000px 9000px 0 0;
+
+    opacity: 1;
+    transform: translateX(-50%);
+
+    transition: width 1s ease-in, height 1s ease-in;
+    transition-delay: .25s;
 }
 
-@keyframes expandCircle {
-    0% {
-        width: 1vmax;
-        height: 1vmax;
-    }
+.rippleTransitionRing {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    bottom: 0%;
 
-    100% {
-        width: 600vmax;
-        height: 600vmax;
-    }
+    transform: translateX(-50%);
+
+    border-radius: 9000px 9000px 0 0;
+
+    transition: width 1s ease-in, height 1s ease-in;
+}
+
+.fadeTransition {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    background-color: red;
+
+    animation: 1.5s ease-in 0s 1 forwards fadeIn;
 }
 
 @keyframes fadeIn {
     0% {
-        filter: opacity(1);
+        opacity: 1;
     }
-
     100% {
-        filter: opacity(0);
+        opacity: 0;
     }
 }
