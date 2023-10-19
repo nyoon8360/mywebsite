@@ -65,13 +65,14 @@ export default function Projects() {
                     <li>Gain currency through active participation in voice chats or reactions to text messages.</li>
                     <li>Buy and use items with various effects like temporarily timing out users or temporarily lowering bitrate for voice channels.</li>
                     <li>Buy equipment to increase currency gain or augment item effects.</li>
-                    <li>Invest in real world stocks with near real time stock prices.</li>
+                    <li>Invest in real world stocks using fake currency with near real time stock prices.</li>
                     <li>View list of messages with highest amount of reactions.</li>
                     <li>View leaderboard of users in respect to total value of currency and stock holdings.</li>
                 </ul>
 
                 <h4 className={styles.sectionText}>Technologies Used</h4>
                 <ul className={styles.unorderedListText}>
+                    <li>Javascript</li>
                     <li>Node.JS</li>
                     <li>Discord.JS</li>
                     <li>Twelve Data API</li>
@@ -84,6 +85,8 @@ export default function Projects() {
                         <Image className={styles.githubLogoP2} src='/images/github_logo.png' alt='github logo' width={90} height={30}/>
                     </a>
                 </p>
+
+                
             </Reveal>
         </Layout>
     )
