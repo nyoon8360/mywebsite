@@ -1,6 +1,6 @@
 .tab {
     text-decoration: none;
-    color: #b2b2b2;
+    color: #000000;
     font-size: 20px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -12,8 +12,12 @@
     text-decoration: underline;
 
     transition: background-color .3s ease-in;
+
+    border-bottom: black;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
 }
 
 .tab:hover {
-    background-color: #393939;
+    background-color: #78bfe8;
 }

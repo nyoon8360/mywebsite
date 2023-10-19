@@ -1,7 +1,7 @@
 .headerContainer {
     display: flex;
     flex-direction: column;
-    background-color: #1c1c1c;
+    background-color: #A2D4F0;
 
     z-index: 5;
 
@@ -27,7 +27,7 @@
     display: table-cell;
     vertical-align: middle;
 
-    color: #b2b2b2;
+    color: #000000;
 }
 
 .subtitleText {
@@ -42,7 +42,7 @@
     margin-bottom: 5px;
     margin-top: 0px;
 
-    color: #b2b2b2;
+    color: #000000;
 }
 
 .tabContainer {
@@ -53,14 +53,14 @@
 
 .fallingTab {
     text-decoration: none;
-    color: #b2b2b2;
+    color: #000000;
     font-size: 20px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 30px;
     height: 30px;
 
-    background-color: #1c1c1c;
+    background-color: #A2D4F0;
     animation: 0.8s cubic-bezier(.26,.02,.47,.17) 0s 1 dropTab;
 
     transform: translateY(100vh);

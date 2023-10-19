@@ -1,11 +1,14 @@
 .collapsible {
     height: 50px;
     width: 100%;
-    background-color: #257171;
-    border: 0;
+    background-color: #49A7A7;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    border-radius: 10px;
+    border-width: 0px;
+    border-style: hidden;
 }
 
 .collapsible:hover, .activeCollapsible {
@@ -25,9 +28,10 @@
 .content {
     overflow: hidden;
     max-height: 0;
-    background-color: #2b8888;
+    background-color: #49A7A7;
 
     transition: max-height 0.5s ease-out;
+    border-radius: 0 0 10px 10px;
 }
 
 .buttonTitle {

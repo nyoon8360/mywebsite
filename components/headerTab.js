@@ -6,7 +6,7 @@ export default function headerTab({tabId, underlineColor, destinationPath, curre
 
     //tab style definition of a tab that is active as the current page
     let tabStyle = {
-        backgroundColor: '#393939',
+        backgroundColor: '#78bfe8',
         cursor: 'default',
         textDecorationColor: underlineColor
     }
