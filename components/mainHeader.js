@@ -33,7 +33,7 @@ export default function MainHeader(props) {
                 <h2 className={styles.subtitleText}>Software Developer</h2>
                 <div id="containerTabs" className={styles.tabContainer}>
                     <HeaderTab tabId='tabHome' underlineColor='#ECEE81' destinationPath='/' currentPath={currentPath} onClickEvent={handleTabClick}>Home</HeaderTab>
-                    <HeaderTab tabId='tabProjects' underlineColor='#8DDFCB' destinationPath='/projects' currentPath={currentPath} onClickEvent={handleTabClick}>Projects</HeaderTab>
+                    <HeaderTab tabId='tabProjects' underlineColor='#56fcc2' destinationPath='/projects' currentPath={currentPath} onClickEvent={handleTabClick}>Projects</HeaderTab>
                     <HeaderTab tabId='tabInterests' underlineColor='#82A0D8' destinationPath='/interests' currentPath={currentPath} onClickEvent={handleTabClick}>Interests</HeaderTab>
                     <HeaderTab tabId='tabMusic' underlineColor='#EDB7ED' destinationPath='/music-likes' currentPath={currentPath} onClickEvent={handleTabClick}>Music Likes</HeaderTab>
                     <HeaderTab tabId='tabSocials' underlineColor='#AF62E3' destinationPath='/socials' currentPath={currentPath} onClickEvent={handleTabClick}>Socials</HeaderTab>
