@@ -66,6 +66,16 @@
     transform: translateY(100vh);
 }
 
+.headerUnderline {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: none;
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    color: black;
+}
+
 @keyframes dropTab {
     0% {
         transform: translateY(0);

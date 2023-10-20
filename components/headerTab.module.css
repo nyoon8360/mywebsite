@@ -12,12 +12,40 @@
     text-decoration: underline;
 
     transition: background-color .3s ease-in;
-
-    border-bottom: black;
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
 }
 
-.tab:hover {
-    background-color: #78bfe8;
+.mainContainer {
+    height: 30px;
+    flex-grow: 1;
+    
+    position: relative;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+
+    height: 30px;
+    width: 1000px;
+
+    pointer-events: none;
+
+    background-image: url('../public/svgs/homeWave.svg');
+    background-repeat: repeat-x;
+    background-size: 300px 30px;
+
+    animation: 3s linear 0s infinite forwards animateWave;
+    top: 30px;
+    transition: top 1s linear;
+
+    opacity: .7;
+}
+
+@keyframes animateWave {
+    0% {
+        transform: translateX(0%)
+    }
+    100% {
+        transform: translateX(-60%)
+    }
 }
