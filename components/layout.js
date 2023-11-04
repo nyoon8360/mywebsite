@@ -40,13 +40,6 @@ export default function Layout({ children }) {
         })
     }
 
-    //if navigated to current page through transition animation, play fade in animation using color of clicked tab
-    /* if (tColor && !blockFadeIn) {
-        fadeColor = tColor;
-        transitionContainerZ = 2;
-        fadePlaying = true;
-    } */
-
     if (tColor) {
         fadeColor = tColor;
     } 

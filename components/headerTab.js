@@ -11,7 +11,6 @@ export default function headerTab({tabId, underlineColor, destinationPath, curre
         cursor: 'default',
         textDecorationColor: underlineColor
     }
-    
 
     return (
         <div className={styles.mainContainer}>
@@ -23,8 +22,7 @@ export default function headerTab({tabId, underlineColor, destinationPath, curre
                 className={styles.tab} 
                 onClick={currentPath == destinationPath ? null : onClickEvent}
                 onMouseEnter={tabMouseEnterEvent}
-                onMouseLeave={tabMouseLeaveEvent}
-            >
+                onMouseLeave={tabMouseLeaveEvent}>
                 {children}
             </div>
         </div>

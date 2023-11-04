@@ -3,15 +3,16 @@ import styles from './mainHeader.module.css';
 import HeaderTab from './headerTab';
 import { useRouter } from 'next/router';
 import { useTransitionContext } from '../context/transition';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 var transitionFunction;
 let blockTabClickEvent = false;
 
 export default function MainHeader(props) {
     const router = useRouter();
-    let currentPath = router.pathname;
     const [tColor, setTColor] = useTransitionContext();
+
+    let currentPath = router.pathname;
 
     transitionFunction = props.transitionFunction;
     blockTabClickEvent = false;
@@ -37,6 +38,7 @@ export default function MainHeader(props) {
                     <HeaderTab tabId='tabInterests' underlineColor='#82A0D8' destinationPath='/interests' currentPath={currentPath} waveSvgUrl={'./svgs/interestsWave.svg'} onClickEvent={handleTabClick}>Interests</HeaderTab>
                     <HeaderTab tabId='tabMusic' underlineColor='#EDB7ED' destinationPath='/music-likes' currentPath={currentPath} waveSvgUrl={'./svgs/musicWave.svg'} onClickEvent={handleTabClick}>Music Likes</HeaderTab>
                     <HeaderTab tabId='tabSocials' underlineColor='#AF62E3' destinationPath='/socials' currentPath={currentPath} waveSvgUrl={'./svgs/socialsWave.svg'} onClickEvent={handleTabClick}>Socials</HeaderTab>
+                    <div id='fallingTab' className={styles.fallingTab}></div>
                 </div>
                 <hr className={styles.headerUnderline}></hr>
             </div>
@@ -50,36 +52,33 @@ function handleTabClick(event) {
         blockTabClickEvent = true;
 
         let tabElement = event.target;
-        let tabContainer = document.getElementById('containerTabs');
 
         //get tabElement's size and position
         let tabComputedStyle = getComputedStyle(tabElement);
         let tabXcoord = tabElement.getBoundingClientRect().left;
 
         //create falling tab element that matches the visual of the clicked tab
-        let fallingTab = document.createElement('div');
-        fallingTab.className = styles.fallingTab;
+        let fallingTabElement = document.getElementById('fallingTab');
+        fallingTabElement.style.width = tabComputedStyle.width;
 
-        fallingTab.style.position = 'absolute';
-        fallingTab.style.width = tabComputedStyle.width;
+        fallingTabElement.textContent = tabElement.textContent;
 
-        fallingTab.textContent = tabElement.textContent;
+        fallingTabElement.style.textDecoration = tabComputedStyle.textDecoration;
+        fallingTabElement.style.textDecorationColor = tabComputedStyle.textDecorationColor;
 
-        fallingTab.style.textDecoration = tabComputedStyle.textDecoration;
-        fallingTab.style.textDecorationColor = tabComputedStyle.textDecorationColor;
+        fallingTabElement.style.left = Math.max(0, tabXcoord) + 'px';
 
-        fallingTab.style.left = Math.max(0, tabXcoord) + 'px';
-
-        //remove text and styling from clicked tab
-        tabElement.style.color = 'transparent';
-        tabElement.style.textDecoration = '';
+        //hide clicked tab
+        tabElement.style.visibility = 'hidden';
+        tabElement.previousSibling.style.visibility = 'hidden';
 
         //when the animation of the falling tab ends, invoke the expanding circle transition function
-        fallingTab.addEventListener('animationend', () => {
+        fallingTabElement.addEventListener('animationend', () => {
             transitionFunction(tabElement, fallingTab.style.textDecorationColor);
         });
 
-        //attach the created falling tab element to the tab container
-        tabContainer.appendChild(fallingTab);
+        //show falling tab element and start falling animation
+        fallingTabElement.style.animationPlayState = 'running';
+        fallingTabElement.style.visibility = 'visible';
     }
 }

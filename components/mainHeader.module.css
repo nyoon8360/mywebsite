@@ -52,6 +52,7 @@
 }
 
 .fallingTab {
+    position: absolute;
     text-decoration: none;
     color: #000000;
     font-size: 20px;
@@ -59,9 +60,12 @@
     font-family: Arial, Helvetica, sans-serif;
     line-height: 30px;
     height: 30px;
+    visibility: hidden;
 
     background-color: #A2D4F0;
     animation: 0.8s cubic-bezier(.26,.02,.47,.17) 0s 1 dropTab;
+
+    animation-play-state: paused;
 
     transform: translateY(100vh);
 }
