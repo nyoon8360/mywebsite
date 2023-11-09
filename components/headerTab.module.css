@@ -25,14 +25,14 @@
 .wave {
     position: absolute;
 
-    height: 30px;
+    height: 80px;
     width: 1000px;
 
     pointer-events: none;
 
     background-image: url('../public/svgs/homeWave.svg');
     background-repeat: repeat-x;
-    background-size: 300px 30px;
+    background-size: 300px 50px;
 
     animation: 3s linear 0s infinite forwards animateWave;
     top: 30px;
