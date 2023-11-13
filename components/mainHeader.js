@@ -33,11 +33,11 @@ export default function MainHeader(props) {
                 </h1>
                 <h2 className={styles.subtitleText}>Software Developer</h2>
                 <div id="containerTabs" className={styles.tabContainer}>
-                    <HeaderTab tabId='tabHome' underlineColor='#ECEE81' destinationPath='/' currentPath={currentPath} waveSvgUrl={'./svgs/homeWave.svg'} onClickEvent={handleTabClick}>Home</HeaderTab>
-                    <HeaderTab tabId='tabProjects' underlineColor='#56fcc2' destinationPath='/projects' currentPath={currentPath} waveSvgUrl={'./svgs/projectsWave.svg'} onClickEvent={handleTabClick}>Projects</HeaderTab>
-                    <HeaderTab tabId='tabInterests' underlineColor='#82A0D8' destinationPath='/interests' currentPath={currentPath} waveSvgUrl={'./svgs/interestsWave.svg'} onClickEvent={handleTabClick}>Interests</HeaderTab>
-                    <HeaderTab tabId='tabMusic' underlineColor='#EDB7ED' destinationPath='/music-likes' currentPath={currentPath} waveSvgUrl={'./svgs/musicWave.svg'} onClickEvent={handleTabClick}>Music Likes</HeaderTab>
-                    <HeaderTab tabId='tabSocials' underlineColor='#AF62E3' destinationPath='/socials' currentPath={currentPath} waveSvgUrl={'./svgs/socialsWave.svg'} onClickEvent={handleTabClick}>Socials</HeaderTab>
+                    <HeaderTab tabId='tabHome' underlineColor='#ECEE81' destinationPath='/' currentPath={currentPath} waveSvgColor={'ECEE81'} onClickEvent={handleTabClick}>Home</HeaderTab>
+                    <HeaderTab tabId='tabProjects' underlineColor='#56fcc2' destinationPath='/projects' currentPath={currentPath} waveSvgColor={'56fcc2'} onClickEvent={handleTabClick}>Projects</HeaderTab>
+                    <HeaderTab tabId='tabInterests' underlineColor='#82A0D8' destinationPath='/interests' currentPath={currentPath} waveSvgColor={'82A0D8'} onClickEvent={handleTabClick}>Interests</HeaderTab>
+                    <HeaderTab tabId='tabMusic' underlineColor='#EDB7ED' destinationPath='/music-likes' currentPath={currentPath} waveSvgColor={'EDB7ED'} onClickEvent={handleTabClick}>Music Likes</HeaderTab>
+                    <HeaderTab tabId='tabSocials' underlineColor='#AF62E3' destinationPath='/socials' currentPath={currentPath} waveSvgColor={'AF62E3'} onClickEvent={handleTabClick}>Socials</HeaderTab>
                     <div id='fallingTab' className={styles.fallingTab}></div>
                 </div>
                 <hr className={styles.headerUnderline}></hr>
