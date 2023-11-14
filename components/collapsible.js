@@ -34,7 +34,7 @@ function toggleCollapsible(event) {
 
 function toggleCollapsibleBorderRadius(event) {
     let contentContainer = event.target;
-    let collapsibleElement = document.getElementById('collapsible');
+    let collapsibleElement = contentContainer.previousSibling;
 
     if (!contentContainer.style.maxHeight) {
         collapsibleElement.style.borderRadius = '10px';

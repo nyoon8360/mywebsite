@@ -39,7 +39,6 @@ export default function HomePage() {
                     
                 </p>
 
-                <p className={styles.bodyText}></p>
             </Reveal>
             
         </Layout>
