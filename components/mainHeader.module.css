@@ -1,7 +1,7 @@
 .headerContainer {
     display: flex;
     flex-direction: column;
-    background-color: #A2D4F0;
+    background-color: #d2eeff;
 
     z-index: 5;
 
@@ -60,7 +60,7 @@
     line-height: 30px;
     height: 30px;
 
-    background-color: #A2D4F0;
+    background-color: #d2eeff;
 }
 
 .fallingTabContainer {
