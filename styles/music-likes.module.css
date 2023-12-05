@@ -4,6 +4,7 @@
     font-weight: bold;
     text-align: left;
     margin-top: 100px;
+    color: var(--main-text-color);
 }
 
 .divider {
@@ -11,8 +12,7 @@
     margin-bottom: 20px;
     border: none;
     height: 2px;
-    background-color: black;
-    color: black;
+    background-color: var(--main-text-color);
 }
 
 .toggleSwitch {
@@ -49,4 +49,5 @@
     font-size: 13px;
     line-height: 30px;
     font-weight: bold;
+    color: var(--main-text-color);
 }

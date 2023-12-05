@@ -13,7 +13,7 @@ export default function headerTab({tabState, underlineColor, destinationPath, on
             return (
                 <div className={styles.mainContainer}>
                     <div 
-                        style={{textDecorationColor: underlineColor, backgroundColor: '#A2D4F0', cursor: 'default'}}
+                        style={{textDecorationColor: underlineColor, backgroundColor: '#101010', cursor: 'default'}}
                         className={styles.tab}>
                         {children}
                     </div>
