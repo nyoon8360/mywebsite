@@ -19,8 +19,6 @@ export default function Collapsible({ title, children }) {
 function toggleCollapsible(event) {
     let collapsibleElement = event.target;
     let contentContainer = collapsibleElement.nextElementSibling;
-    
-    //collapsibleElement.classList.toggle('.activeCollapsible');
 
     collapsibleElement.children[2].src = collapsibleElement.children[2].getAttribute('src') == '/svgs/down-arrow.svg' ? '/svgs/up-arrow.svg' : '/svgs/down-arrow.svg';
 

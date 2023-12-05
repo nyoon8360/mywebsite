@@ -12,7 +12,8 @@
 .bodyText {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    margin: 30px 0px 30px 0px
+    margin: 30px 0px 30px 0px;
+    color: var(--main-text-color);
 }
 
 .divider {
@@ -20,19 +21,21 @@
     margin-bottom: 20px;
     border: none;
     height: 2px;
-    background-color: black;
-    color: black;
+    background-color: var(--main-text-color);
 }
 
 .githubLogo {
     transform: translateY(2px);
     margin-right: 2px;
+    background-color: var(--main-text-color);
+    border-radius: 20px;
+    padding: 1px;
 }
 
 .githubLink {
     margin-left: 5px;
     text-decoration: none;
-    color: black;
+    color: var(--main-text-color);
 }
 
 .githubLink:hover {

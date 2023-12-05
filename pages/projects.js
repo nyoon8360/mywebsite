@@ -40,7 +40,7 @@ export default function Projects() {
                 <h4 className={styles.sectionText}>Source Code</h4>
                 <p className={styles.bodyText}>
                     <a id='githubSourceCodeLink' className={styles.githubLink} target='_blank' href='https://github.com/nyoon8360/mywebsite'>
-                        <Image src='/images/github-mark.png' alt='github logo' width={30} height={30}/>
+                        <Image className={styles.githubLogoP1} src='/images/github-mark.png' alt='github logo' width={30} height={30}/>
                         <Image className={styles.githubLogoP2} src='/images/github_logo.png' alt='github logo' width={90} height={30}/>
                     </a>
                 </p>
@@ -81,12 +81,10 @@ export default function Projects() {
                 <h4 className={styles.sectionText}>Source Code</h4>
                 <p className={styles.bodyText}>
                     <a id='githubSourceCodeLink' className={styles.githubLink} target='_blank' href='https://github.com/nyoon8360/BoEBot'>
-                        <Image src='/images/github-mark.png' alt='github logo' width={30} height={30}/>
-                        <Image className={styles.githubLogoP2} src='/images/github_logo.png' alt='github logo' width={90} height={30}/>
+                        <Image className={styles.githubLogoP1} src='/images/github-mark.png' alt='github logo' width={30} height={30}/>
+                        <Image className={styles.githubLogoP2} src='/images/github_logo.png' alt='github logo p2' width={90} height={30}/>
                     </a>
                 </p>
-
-                
             </Reveal>
         </Layout>
     )
