@@ -28,7 +28,7 @@
 .content {
     overflow: hidden;
     max-height: 0;
-    background-color: #49A7A7;
+    background-color: var(--secondary-text-color);
 
     transition: max-height 0.5s ease-out;
     border-radius: 0 0 10px 10px;

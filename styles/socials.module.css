@@ -1,0 +1,16 @@
+.socialTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 100px;
+    color: var(--main-text-color);
+}
+
+.divider {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: none;
+    height: 2px;
+    background-color: var(--main-text-color);
+}
