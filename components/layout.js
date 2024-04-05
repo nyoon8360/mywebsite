@@ -44,15 +44,32 @@ export default function Layout({ children }) {
 
     return (
         <div>
-            <div className={styles.overlay} onAnimationEnd={transitionContainerOnAnimEnd} id='overlay'>
-                <div id='rippleTransition' className={styles.rippleTransition}></div>
-                <div id='rippleTransitionRing' className={styles.rippleTransitionRing}></div>
-                <div id='fadeTransition' className={styles.fadeTransition} style={{backgroundColor: fadeColor}}></div>
+            <div className={styles.backgroundContainer}>
+                <div className={styles.sky}>
+                </div>
+                <div className={styles.lake}>
+                    <div className={styles.folliage}>
+
+                    </div>
+                </div>
+                <div className={styles.mountainsContainer}>
+                    <div className={styles.testMountain}>
+
+                    </div>
+                    <div className={styles.testMountain}>
+                        
+                    </div>
+                </div>
+                <div className={styles.sunMoonContainer}>
+                    <div className={styles.sun}>
+
+                    </div>
+                </div>
             </div>
-            <MainHeader transitionFunction={transition}></MainHeader>
-            <div className={styles.contentContainer}>
-                {children}
+            <div className={styles.headerContainer}>
+
             </div>
         </div>
+        
     );
 }
