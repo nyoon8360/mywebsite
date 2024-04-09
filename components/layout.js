@@ -1,5 +1,6 @@
 import MainHeader from '../components/mainHeader';
 import styles from './layout.module.css';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useTransitionContext } from '../context/transition';
 
@@ -8,6 +9,7 @@ var transitionContainerOnAnimEnd;
 
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
+    /*
     const router = useRouter();
     const [tColor, setTColor] = useTransitionContext();
 
@@ -41,15 +43,37 @@ export default function Layout({ children }) {
     if (tColor) {
         fadeColor = tColor;
     } 
+    */
+
+    /*
+        Midday:
+
+        Sunset/Moonrise:
+
+        Midnight:
+
+        Sunrise:
+            .lake | background: radial-gradient(circle at top, rgba(255, 240, 33, 0.5), rgba(213, 121, 250, .5) 60%);
+            .sky | background: linear-gradient(1turn, rgba(255, 240, 33), rgba(213, 121, 250) 60%);
+
+    */
 
     return (
         <div>
             <div className={styles.backgroundContainer}>
                 <div className={styles.sky}>
+                    <div className={styles.skyFilter}>
+
+                    </div>
                 </div>
                 <div className={styles.lake}>
                     <div className={styles.folliage}>
 
+                    </div>
+                    <div className={styles.lakeFilter}>
+                    </div>
+                    <div className={styles.lakeMoonReflection}>
+                            
                     </div>
                 </div>
                 <div className={styles.mountainsContainer}>
@@ -64,12 +88,17 @@ export default function Layout({ children }) {
                     <div className={styles.sun}>
 
                     </div>
+                    <Image className={styles.moon} src="/images/background/moon.png" alt="moon" height={200} width={200}/>
                 </div>
             </div>
-            <div className={styles.headerContainer}>
-
+            <MainHeader></MainHeader>
+            <div className={styles.scrollContainer}>
+                <div className={styles.contentMask}>
+                    <div className={styles.contentContainer}>
+                        { children }
+                    </div>
+                </div>
             </div>
         </div>
-        
     );
 }

@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 var transitionFunction;
 
 export default function MainHeader(props) {
-    const router = useRouter();
+    /* const router = useRouter();
     const [tColor, setTColor] = useTransitionContext();
     const [transitionPlaying, setTransitionPlaying] = useState(false);
 
@@ -66,11 +66,13 @@ export default function MainHeader(props) {
         //show falling tab element and start falling animation
         fallingTabContainerElement.style.animationPlayState = 'running';
         fallingTabContainerElement.style.visibility = 'visible';
-    }
+    } */
 
     return (
         <header id='headerContainer'>
-            <div className={styles.headerContainer} id='headerPositioner'>
+            
+
+            {/* <div className={styles.headerContainer} id='headerPositioner'>
                 <h1 className={styles.title}>
                     <Link className={styles.titleText} href='/' onClick={() => {setTColor('#ECEE81')}}>Nicholas Yoon</Link>
                 </h1>
@@ -88,7 +90,7 @@ export default function MainHeader(props) {
                     </div>
                 </div>
                 <hr className={styles.headerUnderline}></hr>
-            </div>
+            </div> */}
         </header>
     );
 }
