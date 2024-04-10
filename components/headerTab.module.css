@@ -1,6 +1,15 @@
+.mainContainer {
+    height: 30px;
+    flex-grow: 1;
+    
+    position: relative;
+
+    pointer-events: all;
+}
+
 .tab {
     text-decoration: none;
-    color: var(--main-text-color);
+    color: black;
     font-size: min(3vw, 20px);
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -10,47 +19,58 @@
     cursor: pointer;
 
     text-decoration: underline;
-}
-
-.mainContainer {
-    height: 30px;
-    flex-grow: 1;
-    
-    position: relative;
-    overflow: hidden;
-}
-
-.mainContainerFalling {
-    height: 30px;
-    
-    position: absolute;
-    overflow: hidden;
-}
-
-.wave {
-    position: absolute;
-
-    height: 80px;
-    width: 1000px;
 
     pointer-events: none;
 
-    background-image: url('../public/svgs/homeWave.svg');
-    background-repeat: repeat-x;
-    background-size: 300px 50px;
-
-    animation: 3s linear 0s infinite forwards animateWave;
-    top: 30px;
-    transition: top 1s linear;
-
-    opacity: .7;
+    text-shadow: 0px 0px 2px white;
 }
 
-@keyframes animateWave {
-    0% {
-        transform: translateX(0%)
-    }
-    100% {
-        transform: translateX(-60%)
-    }
+.cloudContainer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cloudCircle {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+
+    pointer-events: none;
+
+    border-radius: 100%;
+    background-color: rgb(255, 255, 255);
+    opacity: 0;
+
+    transition: all .5s linear;
+}
+
+.cloudCircle.cloudCirclePath1 {
+    transform: translate(-70px, -2px);
+}
+
+.cloudCircle.cloudCirclePath2 {
+    transform: translate(70px, -2px);
+}
+
+.cloudCircle.cloudCirclePath3 {
+    transform: translate(-30px, -42px);
+}
+
+.cloudCircle.cloudCirclePath4 {
+    transform: translate(30px, -42px);
+}
+
+.cloudCircle.cloudCirclePath5 {
+    transform: translate(-30px, 40px);
+}
+
+.cloudCircle.cloudCirclePath6 {
+    transform: translate(30px, 38px);
 }

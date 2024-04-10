@@ -70,11 +70,8 @@ export default function Layout({ children }) {
                     <div className={styles.folliage}>
 
                     </div>
-                    <div className={styles.lakeFilter}>
-                    </div>
-                    <div className={styles.lakeMoonReflection}>
-                            
-                    </div>
+                    <div className={styles.lakeFilter}/>
+                    <div className={styles.lakeMoonReflection}/>
                 </div>
                 <div className={styles.mountainsContainer}>
                     <div className={styles.testMountain}>
@@ -85,9 +82,7 @@ export default function Layout({ children }) {
                     </div>
                 </div>
                 <div className={styles.sunMoonContainer}>
-                    <div className={styles.sun}>
-
-                    </div>
+                    <div className={styles.sun}/>
                     <Image className={styles.moon} src="/images/background/moon.png" alt="moon" height={200} width={200}/>
                 </div>
             </div>
