@@ -5,6 +5,8 @@
     position: relative;
 
     pointer-events: all;
+
+    cursor: pointer;
 }
 
 .tab {
