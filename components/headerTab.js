@@ -1,4 +1,5 @@
 import styles from './headerTab.module.css';
+import { useRouter } from 'next/router';
 
 const cloudCirclesTransformList = [
     "translate(-40px, -2px)",
@@ -13,8 +14,14 @@ export default function headerTab({tabState, underlineColor, destinationPath, on
     //throw error if component has child that is not just inner text
     if (typeof children != 'string') throw new Error('Children must only be inner text.');
 
+    const router = useRouter();
+
+    function mouseClickEvent() {
+        router.push(destinationPath);
+    }
+
     return (
-        <div className={styles.mainContainer} onMouseEnter={tabMouseEnterEvent} onMouseLeave={tabMouseLeaveEvent}>
+        <div className={styles.mainContainer} onMouseEnter={tabMouseEnterEvent} onMouseLeave={tabMouseLeaveEvent} onClick={mouseClickEvent}>
             <div 
                 style={{textDecorationColor: underlineColor}}
                 page-route={destinationPath} 

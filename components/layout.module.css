@@ -207,13 +207,13 @@
 
 @keyframes animateLakeFilter {
     0% {
-        background: linear-gradient(white, transparent 20%);
-        opacity: .5;
+        background: linear-gradient(white, transparent 15%);
+        opacity: .6;
     }
 
     14% {
         background: linear-gradient(white, transparent 15%);
-        opacity: 0;
+        opacity: .2;
     }
 
     65% {
@@ -367,10 +367,48 @@
     justify-content: space-between;
 }
 
-.testMountain {
-    width: 200px;
-    height: 200px;
+.leftMountain {
+    width: max(200px, 30vw);
+    height: max(200px, 30vw);
 
-    background-color: gray;
-    border-radius: 50%;
+    background-color: rgb(66, 66, 66);
+
+    mask-image: url('/images/background/mountainLeftMask.png');
+    mask-size: max(200px, 30vw) max(200px, 30vw);
+}
+
+.leftMountainSnow {
+    width: max(200px, 30vw);
+    height: max(200px, 30vw);
+
+    background:
+    linear-gradient(.43turn,white 27% , transparent 33%),
+    linear-gradient(.55turn, white 36%, transparent 42%);
+
+    mask-image: url('/images/background/mountainLeftMask.png');
+    mask-size: max(200px, 30vw) max(200px, 30vw);
+
+
+}
+
+.rightMountain {
+    width: max(200px, 30vw);
+    height: max(200px, 30vw);
+
+    background-color: rgb(66, 66, 66);
+
+    mask-image: url('/images/background/mountainRightMask.png');
+    mask-size: max(200px, 30vw) max(200px, 30vw);
+}
+
+.rightMountainSnow {
+    width: max(200px, 30vw);
+    height: max(200px, 30vw);
+
+    background:
+    linear-gradient(.46turn,white 37% , transparent 43%),
+    linear-gradient(.53turn, white 29%, transparent 34%);
+
+    mask-image: url('/images/background/mountainRightMask.png');
+    mask-size: max(200px, 30vw) max(200px, 30vw);
 }

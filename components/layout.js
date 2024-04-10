@@ -45,19 +45,6 @@ export default function Layout({ children }) {
     } 
     */
 
-    /*
-        Midday:
-
-        Sunset/Moonrise:
-
-        Midnight:
-
-        Sunrise:
-            .lake | background: radial-gradient(circle at top, rgba(255, 240, 33, 0.5), rgba(213, 121, 250, .5) 60%);
-            .sky | background: linear-gradient(1turn, rgba(255, 240, 33), rgba(213, 121, 250) 60%);
-
-    */
-
     return (
         <div>
             <div className={styles.backgroundContainer}>
@@ -74,11 +61,11 @@ export default function Layout({ children }) {
                     <div className={styles.lakeMoonReflection}/>
                 </div>
                 <div className={styles.mountainsContainer}>
-                    <div className={styles.testMountain}>
-
+                    <div className={styles.leftMountain}>
+                        <div className={styles.leftMountainSnow}></div>
                     </div>
-                    <div className={styles.testMountain}>
-                        
+                    <div className={styles.rightMountain}>
+                        <div className={styles.rightMountainSnow}></div>
                     </div>
                 </div>
                 <div className={styles.sunMoonContainer}>

@@ -76,11 +76,6 @@ export default function MainHeader(props) {
                 <HeaderTab tabState={currentPath == '/interests' ? 'selected' : transitionPlaying ? 'disabled' : 'normal'} underlineColor='#495978' destinationPath='/interests' onClickEvent={handleTabClick}>Interests</HeaderTab>
                 <HeaderTab tabState={currentPath == '/music-likes' ? 'selected' : transitionPlaying ? 'disabled' : 'normal'} underlineColor='#691515' destinationPath='/music-likes' onClickEvent={handleTabClick}>Music Likes</HeaderTab>
                 <HeaderTab tabState={currentPath == '/socials' ? 'selected' : transitionPlaying ? 'disabled' : 'normal'} underlineColor='#48295c' destinationPath='/socials' onClickEvent={handleTabClick}>Socials</HeaderTab>
-                <HeaderTab tabState='falling' underlineColor='#ECEE81'>Home</HeaderTab>
-                <div id='fallingTabContainer' className={styles.fallingTabContainer}>
-                    <div id='fallingTabWave' className={styles.fallingTabWave}></div>
-                    <div id='fallingTab' className={styles.fallingTab}></div>
-                </div>
             </div>
 
             {/* <div className={styles.headerContainer} id='headerPositioner'>
