@@ -17,12 +17,12 @@ export default function MainHeader(props) {
     transitionFunction = props.transitionFunction;
 
     //expand header positioner's height to match the total height of it's contained content
-    useEffect(() => {
+/*     useEffect(() => {
         let headerPositionerElement = document.getElementById('headerPositioner');
 
         let headerContainerElement = document.getElementById('headerContainer');
         headerContainerElement.style.height = getComputedStyle(headerPositionerElement).height;
-    });
+    }); */
 
     //function that plays animation of a falling tab when tab is clicked
     function handleTabClick(event) {
@@ -66,11 +66,19 @@ export default function MainHeader(props) {
         //show falling tab element and start falling animation
         fallingTabContainerElement.style.animationPlayState = 'running';
         fallingTabContainerElement.style.visibility = 'visible';
-    }
+    } 
 
     return (
-        <header id='headerContainer'>
-            <div className={styles.headerContainer} id='headerPositioner'>
+        <header id='headerContainer' className={styles.headerContainer}>
+            <div id="containerTabs" className={styles.tabContainer}>
+                <HeaderTab tabState={currentPath == '/' ? 'selected' : transitionPlaying ? 'disabled' : 'normal'} underlineColor='#94801c' destinationPath='/' onClickEvent={handleTabClick}>Home</HeaderTab>
+                <HeaderTab tabState={currentPath == '/projects' ? 'selected' : transitionPlaying ? 'disabled' : 'normal'} underlineColor='#026643' destinationPath='/projects' onClickEvent={handleTabClick}>Projects</HeaderTab>
+                <HeaderTab tabState={currentPath == '/interests' ? 'selected' : transitionPlaying ? 'disabled' : 'normal'} underlineColor='#495978' destinationPath='/interests' onClickEvent={handleTabClick}>Interests</HeaderTab>
+                <HeaderTab tabState={currentPath == '/music-likes' ? 'selected' : transitionPlaying ? 'disabled' : 'normal'} underlineColor='#691515' destinationPath='/music-likes' onClickEvent={handleTabClick}>Music Likes</HeaderTab>
+                <HeaderTab tabState={currentPath == '/socials' ? 'selected' : transitionPlaying ? 'disabled' : 'normal'} underlineColor='#48295c' destinationPath='/socials' onClickEvent={handleTabClick}>Socials</HeaderTab>
+            </div>
+
+            {/* <div className={styles.headerContainer} id='headerPositioner'>
                 <h1 className={styles.title}>
                     <Link className={styles.titleText} href='/' onClick={() => {setTColor('#ECEE81')}}>Nicholas Yoon</Link>
                 </h1>
@@ -88,7 +96,7 @@ export default function MainHeader(props) {
                     </div>
                 </div>
                 <hr className={styles.headerUnderline}></hr>
-            </div>
+            </div> */}
         </header>
     );
 }

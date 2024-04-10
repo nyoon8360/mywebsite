@@ -20,7 +20,8 @@ export default function HomePage() {
     `;
 
     return (
-        <Layout>
+        
+        <Layout> 
             <div className={styles.profilePicContainer}>
                 <Image className={styles.profilePic} src='/images/profile_pic_rain_car.jpg' height={250} width={250} alt='My Pic'/>
             </div>
@@ -40,8 +41,8 @@ export default function HomePage() {
                 </p>
 
             </Reveal>
-            
         </Layout>
+        
     )
 }
 

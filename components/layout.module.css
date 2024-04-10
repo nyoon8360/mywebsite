@@ -1,70 +1,414 @@
-.contentContainer {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 800px;
-    padding-left: 20px;
-    padding-right: 20px;
-    overflow: hidden;
+.contentMask::-webkit-scrollbar {
+    display: block;
 }
 
-.overlay {
-    z-index: 6;
-    overflow: hidden;
-    flex-grow: 1;
+.contentMask::-webkit-scrollbar-track {
+    background: transparent;
+}
 
+.contentMask::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+
+    background-clip: content-box;
+    border: 3px solid transparent
+}
+
+.contentMask::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 60px;
+}
+
+.contentMask::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 70px;
+}
+
+.backgroundContainer {
     position: fixed;
-
-    width: 100vw;
     height: 100%;
-
-    pointer-events: none;
+    width: 100%;
 }
 
-.rippleTransition {
-    position: absolute;
-    width: 0px;
-    height: 0px;
-    bottom: 0%;
-
-    border-radius: 9000px 9000px 0 0;
-
-    opacity: 1;
-    transform: translateX(-50%);
-
-    transition: width 1s ease-in, height 1s ease-in;
-    transition-delay: .25s;
+.scrollContainer {
+    position: fixed;
+    height: 100%;
+    width: 100%;
 }
 
-.rippleTransitionRing {
-    position: absolute;
-    width: 0px;
-    height: 0px;
-    bottom: 0%;
-
-    transform: translateX(-50%);
-
-    border-radius: 9000px 9000px 0 0;
-
-    transition: width 1s ease-in, height 1s ease-in;
-}
-
-.fadeTransition {
-    position: absolute;
+.contentMask {
+    position: fixed;
     width: 100%;
     height: 100%;
-    
-    background-color: red;
 
-    animation: 1.5s ease-in 0s 1 forwards fadeIn;
+    overflow-y: scroll;
+
+    mask-image: 
+        linear-gradient(transparent, transparent 80px, black 100px, black 90%, transparent 92%, transparent),
+        linear-gradient(to left, black 17px, transparent 18px);
 }
 
-@keyframes fadeIn {
+.contentContainer {
+    position: static;
+    margin-top: 94vh;
+
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 8vh;
+
+    padding: 20px;
+
+    min-height: 80vh;
+
+    background: linear-gradient(.25turn, transparent, transparent 1%, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0.7) 98%, transparent 99%, transparent);
+}
+
+.sky {
+    position: fixed;
+    height: 50%;
+    width: 100%;
+
+    z-index: 0;
+
+    overflow: hidden;
+    
+    background: rgb(192, 255, 255);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards animateSky;
+}
+
+@keyframes animateSky {
     0% {
+        background: rgb(192, 250, 250);
+    }
+
+    25% {
+        background: rgb(32, 31, 133);
+    }
+
+    50% {
+        background: rgb(12, 2, 48);
+    }
+
+    75% {
+        background: rgb(57, 55, 160);
+    }
+
+    100% {
+        background: rgb(192, 250, 250);
+    }
+}
+
+.skyFilter {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+
+    background: linear-gradient(transparent, transparent 80%, rgba(255, 167, 3, 0.726) 100%);
+
+    animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards animateSkyFilter;
+}
+
+@keyframes animateSkyFilter {
+    0% {
+        opacity: 0;
+        
+    }
+
+    15% {
+        opacity: 0;
+        background: linear-gradient(transparent, transparent 60%, rgba(255, 255, 255, 0.5));
+    }
+
+    25% {
+        background: linear-gradient(transparent, transparent 60%, rgba(255, 255, 255, 0.5));
         opacity: 1;
     }
+
+    50% {
+        opacity: 0.6;
+        background: linear-gradient(transparent, transparent 60%, rgba(255, 255, 255, 0.5));
+    }
+
+    65% {
+        opacity: 0;
+        background: linear-gradient(transparent, transparent 60%, rgba(255, 255, 255, 0.5));
+    }
+
+    66%, 85% {
+        opacity: 0;
+        background: linear-gradient(transparent, transparent 80%, rgba(255, 167, 3, 0.726) 100%);
+    }
+
+    75% {
+        opacity: 1;
+        background: linear-gradient(transparent, transparent 80%, rgba(255, 167, 3, 0.726) 100%);
+    }
+
     100% {
         opacity: 0;
     }
+}
+
+.lake {
+    position: fixed;
+    height: 50%;
+    width: 100%;
+    top: 50%;
+
+    z-index: 3;
+
+    overflow: hidden;
+    background: rgba(14, 167, 214, 0.5);
+
+    backdrop-filter: blur(4px);
+
+    animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards animateLake;
+}
+
+@keyframes animateLake {
+    0% {
+        background: rgba(14, 167, 214, 0.5);
+    }
+
+    25% {
+        background: rgba(1, 20, 80, 0.5);
+    }
+
+    50% {
+        background: rgba(14, 3, 31, 0.8);
+    }
+
+    75% {
+        background: rgba(1, 20, 80, 0.5)
+    }
+
+    100% {
+        background: rgba(14, 167, 214, 0.5);
+    }
+}
+
+.lakeFilter {
+    position: fixed;
+    height: 50%;
+    width: 100%;
+
+    overflow: hidden;
+
+    background: radial-gradient(ellipse at top, rgba(255, 240, 33, 0.5), transparent 60%);
+
+    animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards animateLakeFilter;
+}
+
+@keyframes animateLakeFilter {
+    0% {
+        background: linear-gradient(white, transparent 15%);
+        opacity: .6;
+    }
+
+    14% {
+        background: linear-gradient(white, transparent 15%);
+        opacity: .2;
+    }
+
+    65% {
+        background: radial-gradient(ellipse at top, rgba(255, 240, 33, 0.5), transparent 60%);
+        opacity: 0;
+    }
+
+    75% {
+        background: radial-gradient(ellipse at top, rgba(255, 240, 33, 0.5), transparent 60%);
+        opacity: 1;
+    }
+
+    85% {
+        background: radial-gradient(ellipse at top, rgba(255, 240, 33, 0.5), transparent 60%);
+        opacity: 0;
+    }
+
+    86% {
+        background: linear-gradient(white, transparent 15%);
+        opacity: 0;
+    }
+
+    100% {
+        background: linear-gradient(white, transparent 15%);
+        opacity: .5;
+    }
+}
+
+.lakeMoonReflection {
+    position: relative;
+    height: 250px;
+    width: 250px;
+
+    top: -125px;
+
+    left: 50%;
+    transform: translate(-50%, 0vh);
+
+    background: radial-gradient(white, transparent 60%);
+
+    animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards animateLakeMoonReflection;
+}
+
+@keyframes animateLakeMoonReflection {
+    0% {
+        transform: translate(-50%, -150vh);
+    }
+
+    25% {
+        transform: translate(-50%, 0vh);
+        height: 250px;
+    }
+
+    50% {
+        height: 1000px;
+        transform: translate(-50%, 150vh);
+        opacity: 0;
+    }
+
+    75%, 100% {
+        transform: translate(-50%, 300vh);
+    }
+}
+
+.sunMoonContainer {
+    position: fixed;
+    width: 200px;
+    height: 50%;
+    overflow: hidden;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 1;
+}
+
+.sun {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+
+    background-color: rgb(253, 253, 115);
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    top: -100px;
+    transform: translateY(50vh);
+
+    animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards animateSun;
+}
+
+@keyframes animateSun {
+    0%, 50% {
+        transform: translateY(250vh);
+        background-color: rgb(255, 166, 0);
+    }
+    75% {
+        transform: translateY(50vh);
+        background-color: rgb(255, 166, 0);
+    }
+    80% {
+        transform: translateY(20vh);
+        background-color: rgb(255, 255, 255);
+    }
+    100% {
+        transform: translateY(-100vh);
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+.moon {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+
+    background-color: rgb(212, 212, 212);
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    top: -100px;
+    transform: translateY(50vh);
+
+    animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards animateMoon;
+}
+
+@keyframes animateMoon {
+    0% {
+        transform: translateY(200vh);
+    }
+    25% {
+        transform: translateY(50vh)
+    }
+    75%, 100% {
+        transform: translateY(-250vh);
+    }
+}
+
+.mountainsContainer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.leftMountain {
+    width: max(200px, 30vw);
+    height: max(200px, 30vw);
+
+    background-color: rgb(66, 66, 66);
+
+    mask-image: url('/images/background/mountainLeftMask.png');
+    mask-size: max(200px, 30vw) max(200px, 30vw);
+}
+
+.leftMountainSnow {
+    width: max(200px, 30vw);
+    height: max(200px, 30vw);
+
+    background:
+    linear-gradient(.43turn,white 27% , transparent 33%),
+    linear-gradient(.55turn, white 36%, transparent 42%);
+
+    mask-image: url('/images/background/mountainLeftMask.png');
+    mask-size: max(200px, 30vw) max(200px, 30vw);
+
+
+}
+
+.rightMountain {
+    width: max(200px, 30vw);
+    height: max(200px, 30vw);
+
+    background-color: rgb(66, 66, 66);
+
+    mask-image: url('/images/background/mountainRightMask.png');
+    mask-size: max(200px, 30vw) max(200px, 30vw);
+}
+
+.rightMountainSnow {
+    width: max(200px, 30vw);
+    height: max(200px, 30vw);
+
+    background:
+    linear-gradient(.46turn,white 37% , transparent 43%),
+    linear-gradient(.53turn, white 29%, transparent 34%);
+
+    mask-image: url('/images/background/mountainRightMask.png');
+    mask-size: max(200px, 30vw) max(200px, 30vw);
 }

@@ -1,5 +1,6 @@
 import MainHeader from '../components/mainHeader';
 import styles from './layout.module.css';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useTransitionContext } from '../context/transition';
 
@@ -8,6 +9,7 @@ var transitionContainerOnAnimEnd;
 
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
+    /*
     const router = useRouter();
     const [tColor, setTColor] = useTransitionContext();
 
@@ -41,17 +43,43 @@ export default function Layout({ children }) {
     if (tColor) {
         fadeColor = tColor;
     } 
+    */
 
     return (
         <div>
-            <div className={styles.overlay} onAnimationEnd={transitionContainerOnAnimEnd} id='overlay'>
-                <div id='rippleTransition' className={styles.rippleTransition}></div>
-                <div id='rippleTransitionRing' className={styles.rippleTransitionRing}></div>
-                <div id='fadeTransition' className={styles.fadeTransition} style={{backgroundColor: fadeColor}}></div>
+            <div className={styles.backgroundContainer}>
+                <div className={styles.sky}>
+                    <div className={styles.skyFilter}>
+
+                    </div>
+                </div>
+                <div className={styles.lake}>
+                    <div className={styles.folliage}>
+
+                    </div>
+                    <div className={styles.lakeFilter}/>
+                    <div className={styles.lakeMoonReflection}/>
+                </div>
+                <div className={styles.mountainsContainer}>
+                    <div className={styles.leftMountain}>
+                        <div className={styles.leftMountainSnow}></div>
+                    </div>
+                    <div className={styles.rightMountain}>
+                        <div className={styles.rightMountainSnow}></div>
+                    </div>
+                </div>
+                <div className={styles.sunMoonContainer}>
+                    <div className={styles.sun}/>
+                    <Image className={styles.moon} src="/images/background/moon.png" alt="moon" height={200} width={200}/>
+                </div>
             </div>
-            <MainHeader transitionFunction={transition}></MainHeader>
-            <div className={styles.contentContainer}>
-                {children}
+            <MainHeader></MainHeader>
+            <div className={styles.scrollContainer}>
+                <div className={styles.contentMask}>
+                    <div className={styles.contentContainer}>
+                        { children }
+                    </div>
+                </div>
             </div>
         </div>
     );
