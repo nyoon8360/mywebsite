@@ -1,0 +1,83 @@
+.mainContainer {
+    height: 100vh;
+    width: 100vw;
+    background: conic-gradient(red,orange,yellow,green,blue,indigo,violet, red);
+}
+
+.tabsContainer {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+
+    width: 100vw;
+}
+
+.tab {
+    font-size: xx-large;
+}
+
+.passionContainer {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+}
+
+.kermit1 {
+    position: fixed;
+    bottom: 0vh;
+}
+
+.kermit2 {
+    position: fixed;
+    bottom: 0vh;
+    transform: scaleX(-1);
+    right: 0vw;
+}
+
+.myPassion {
+    position: absolute;
+    display: block;
+    text-align: center;
+    font-size: 40px;
+
+    margin: 0;
+
+    text-shadow: 
+    white 0 0 20px, 
+    white 0 0 20px, 
+    white 0 0 20px, 
+    white 0 0 20px, 
+    white 0 0 20px, 
+    white 0 0 20px;
+
+    transform: translate(-50%, -50%) rotate(180deg);
+
+    transform-origin: center;
+
+    animation: 3s linear 0s infinite forwards passion;
+
+    overflow: hidden;
+}
+
+@keyframes passion {
+    0% {
+        transform-origin: center;
+        transform: rotate(0);
+        font-size: 20px;
+    }
+    50% {
+        transform-origin: center;
+        transform: rotate(180deg);
+        font-size: 40px;
+    }
+    100% {
+        transform-origin: center;
+        transform: rotate(360deg);
+        font-size: 20px;
+    }
+}
