@@ -13,7 +13,7 @@ export default function WebDesignIsMyPassion() {
                 <Link href='/socials' className={styles.tab}>Socials</Link>
             </div>
             <div className={styles.passionContainer}>
-                <p className={styles.myPassion}>GRAPHICS DESIGN IS MY PASSION</p>
+                <p className={styles.myPassion}>WEB DESIGN IS MY PASSION</p>
             </div>
             <Image src='/images/invisKermit.png' className={styles.kermit1} alt='kermit' height={300} width={300}></Image>
             <Image src='/images/invisKermit.png' className={styles.kermit2} alt='kermit' height={300} width={300}></Image>
