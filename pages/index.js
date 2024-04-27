@@ -40,6 +40,8 @@ export default function HomePage() {
                     
                 </p>
 
+                <p className={styles.bodyText}>My website is currently going through a redesign so there may be some missing features or elements!</p>
+
             </Reveal>
         </Layout>
         

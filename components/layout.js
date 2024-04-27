@@ -82,11 +82,12 @@ export default function Layout({ children }) {
     }
 
     function handleMinimizeButtonClicked() {
+        document.getElementById('contentContainer').style.transition = 'all 1s linear';
         document.getElementById('contentContainer').style.minHeight = '0px';
         document.getElementById('contentContainer').style.height = '0px';
         document.getElementById('contentContainer').style.marginTop = '95vh';
         document.getElementById('contentContainer').style.padding = '0 40px 0 40px';
-        //after transition, remove transition to prevent reactive styling from triggering transition
+        //TODO: after transition, remove transition to prevent reactive styling from triggering transition
     }
     
     //get --background-animation-delay css var
