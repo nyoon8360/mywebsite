@@ -80,6 +80,14 @@ export default function Layout({ children }) {
             animatedTimeElementCollection.item(i).style.animation = null;
         }
     }
+
+    function handleMinimizeButtonClicked() {
+        document.getElementById('contentContainer').style.minHeight = '0px';
+        document.getElementById('contentContainer').style.height = '0px';
+        document.getElementById('contentContainer').style.marginTop = '95vh';
+        document.getElementById('contentContainer').style.padding = '0 40px 0 40px';
+        //after transition, remove transition to prevent reactive styling from triggering transition
+    }
     
     //get --background-animation-delay css var
     useEffect(() => {
@@ -118,12 +126,12 @@ export default function Layout({ children }) {
             <MainHeader></MainHeader>
             <div className={styles.scrollContainer}>
                 <div className={styles.contentMask}>
-                    <div className={styles.contentContainer}>
+                    <div id='contentContainer' className={styles.contentContainer}>
                         <div className={styles.controlsContainer}>
                             <div className={styles.controlButtons} onClick={handleSunriseButtonClicked}>
                                 <Image className={styles.buttonImage} src="/images/buttons/SunRiseButton.jpg" alt="sunrise button" height={200} width={200}/>
                             </div>
-                            <div className={styles.controlButtons}>
+                            <div className={styles.controlButtons} onClick={handleMinimizeButtonClicked}>
                                 <Image className={styles.buttonImage} src="/images/buttons/MinimizeButton.jpg" alt="minimize button" height={200} width={200}/>
                             </div>
                             <div className={styles.controlButtons} onClick={handleMoonriseButtonClicked}>
