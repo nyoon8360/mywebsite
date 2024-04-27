@@ -3,6 +3,7 @@ import styles from './layout.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useTransitionContext } from '../context/transition';
+import { useEffect } from 'react';
 
 var fadeColor = 'transparent';
 var transitionContainerOnAnimEnd;
@@ -45,20 +46,61 @@ export default function Layout({ children }) {
     } 
     */
 
+    var backgroundAnimationDuration = 0;
+    var backgroundAnimationDelay = 0;
+
+    //change background time to sunrise
+    function handleSunriseButtonClicked() {
+        let animatedTimeElementCollection = document.getElementsByClassName(styles.animatedTimeElement);
+
+        let newDelay = Math.floor((-2/3) * backgroundAnimationDuration);
+
+        console.log(newDelay);
+
+        document.documentElement.style.setProperty('--background-animation-delay', `${newDelay}s`);
+
+        for (let i = 0; i < animatedTimeElementCollection.length; i++) {
+            animatedTimeElementCollection.item(i).style.animation = 'none';
+            animatedTimeElementCollection.item(i).offsetHeight;
+            animatedTimeElementCollection.item(i).style.animation = null;
+        }
+    }
+
+    //change background time to moonrise
+    function handleMoonriseButtonClicked() {
+        let animatedTimeElementCollection = document.getElementsByClassName(styles.animatedTimeElement);
+
+        let newDelay = Math.floor(-0.21 * backgroundAnimationDuration);
+
+        document.documentElement.style.setProperty('--background-animation-delay', `${newDelay}s`);
+
+        for (let i = 0; i < animatedTimeElementCollection.length; i++) {
+            animatedTimeElementCollection.item(i).style.animation = 'none';
+            animatedTimeElementCollection.item(i).offsetHeight;
+            animatedTimeElementCollection.item(i).style.animation = null;
+        }
+    }
+    
+    //get --background-animation-delay css var
+    useEffect(() => {
+        backgroundAnimationDuration = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-duration').slice(0, -1));
+        backgroundAnimationDelay = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-delay').slice(0, -1));
+    });
+
     return (
         <div>
             <div className={styles.backgroundContainer}>
-                <div className={styles.sky}>
-                    <div className={styles.skyFilter}>
+                <div className={`${styles.sky} ${styles.animatedTimeElement}`}>
+                    <div className={`${styles.skyFilter} ${styles.animatedTimeElement}`}>
 
                     </div>
                 </div>
-                <div className={styles.lake}>
+                <div className={`${styles.lake} ${styles.animatedTimeElement}`}>
                     <div className={styles.folliage}>
 
                     </div>
-                    <div className={styles.lakeFilter}/>
-                    <div className={styles.lakeMoonReflection}/>
+                    <div className={`${styles.lakeFilter} ${styles.animatedTimeElement}`}/>
+                    <div className={`${styles.lakeMoonReflection} ${styles.animatedTimeElement}`}/>
                 </div>
                 <div className={styles.mountainsContainer}>
                     <div className={styles.leftMountain}>
@@ -69,14 +111,25 @@ export default function Layout({ children }) {
                     </div>
                 </div>
                 <div className={styles.sunMoonContainer}>
-                    <div className={styles.sun}/>
-                    <Image className={styles.moon} src="/images/background/moon.png" alt="moon" height={200} width={200}/>
+                    <div className={`${styles.sun} ${styles.animatedTimeElement}`}/>
+                    <Image className={`${styles.moon} ${styles.animatedTimeElement}`} src="/images/background/moon.png" alt="moon" height={200} width={200}/>
                 </div>
             </div>
             <MainHeader></MainHeader>
             <div className={styles.scrollContainer}>
                 <div className={styles.contentMask}>
                     <div className={styles.contentContainer}>
+                        <div className={styles.controlsContainer}>
+                            <div className={styles.controlButtons} onClick={handleSunriseButtonClicked}>
+                                <Image className={styles.buttonImage} src="/images/buttons/SunRiseButton.jpg" alt="sunrise button" height={200} width={200}/>
+                            </div>
+                            <div className={styles.controlButtons}>
+                                <Image className={styles.buttonImage} src="/images/buttons/MinimizeButton.jpg" alt="minimize button" height={200} width={200}/>
+                            </div>
+                            <div className={styles.controlButtons} onClick={handleMoonriseButtonClicked}>
+                                <Image className={styles.buttonImage} src="/images/buttons/MoonRiseButton.jpg" alt="moonrise button" height={200} width={200}/>
+                            </div>
+                        </div>
                         { children }
                     </div>
                 </div>

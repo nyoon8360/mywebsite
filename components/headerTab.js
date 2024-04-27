@@ -39,55 +39,9 @@ export default function headerTab({tabState, underlineColor, destinationPath, on
             </div>
         </div>
     )
-
-    //depending on tabState parameter, return corresponding tab element
-    switch (tabState) {
-        //tab that is selected as the current page
-        case 'selected':
-            return (
-                <div className={styles.mainContainer}>
-                    <div 
-                        style={{textDecorationColor: underlineColor, backgroundColor: '#101010', cursor: 'default'}}
-                        className={styles.tab}>
-                        {children}
-                    </div>
-                </div>
-            )
-
-        //normal clickable tab element
-        case 'normal':
-            return (
-                <div className={styles.mainContainer}>
-                    <div className={styles.wave} style={{backgroundImage: backgroundSvgUri}}></div>
-                    <div 
-                        style={{textDecorationColor: underlineColor}}
-                        page-route={destinationPath} 
-                        className={styles.tab} 
-                        onClick={onClickEvent}
-                        onMouseEnter={tabMouseEnterEvent}
-                        onMouseLeave={tabMouseLeaveEvent}>
-                        {children}
-                    </div>
-                </div>
-            )
-        
-        //disabled tab with normal styling but can not be clicked or interacted with
-        case 'disabled':
-            return (
-                <div className={styles.mainContainer}>
-                    <div 
-                        style={{textDecorationColor: underlineColor, cursor: 'default'}}
-                        page-route={destinationPath} 
-                        className={styles.tab}>
-                        {children}
-                    </div>
-                </div>
-            )
-    }
 }
 
 function tabMouseEnterEvent(event) {
-    //console.log(event.target.children[1].children);
     let cloudCirclesCollection = event.target.children[1].children;
 
     for (let i = 0; i < cloudCirclesCollection.length; i++) {

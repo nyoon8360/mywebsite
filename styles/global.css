@@ -2,14 +2,12 @@
     --main-bg-color: #232323;
     --main-text-color: #ffffff;
     --secondary-text-color: #989898;
-    --background-animation-duration: 60s;
-    --background-animation-delay: 0s;
+    --background-animation-duration: 240s;
+    --background-animation-delay: -160s;
 }
 
 html, body {
     margin: 0;
     
-
     overflow-x: hidden;
 }
-

@@ -1,6 +1,6 @@
 .mainContainer {
     height: 30px;
-    flex-grow: 1;
+    flex: 1 1 0px;
     
     position: relative;
 
