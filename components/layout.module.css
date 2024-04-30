@@ -54,13 +54,20 @@
 .contentContainer {
     position: static;
 
-    margin: 70px 10vw 0 calc(10vw + 17px);
+    margin: 70px 10vw 70px calc(10vw + 17px);
 
     padding: 20px 40px 20px 40px;
 
     min-height: 79.8vh;
 
     background: linear-gradient(.25turn, transparent, transparent 1%, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0.7) 98%, transparent 99%, transparent);
+
+    overflow: hidden;
+}
+
+.contentOverflowContainer {
+    height: 100%;
+    width: 100%;
 
     overflow: hidden;
 }
