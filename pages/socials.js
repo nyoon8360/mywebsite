@@ -37,6 +37,8 @@ export default function Socials() {
         return () => {
             document.head.removeChild(linkedinScript);
             document.head.removeChild(instagramScript);
+
+            if (window.instgrm) delete window.instgrm;
         }
     });
 
