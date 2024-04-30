@@ -139,6 +139,8 @@ export default function Socials() {
                 </div>{" "}
             </blockquote>
         </div>
+
+        <hr className={styles.divider}></hr>
         
       </Layout>
     );
