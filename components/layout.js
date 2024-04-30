@@ -82,15 +82,20 @@ export default function Layout({ children }) {
     }
 
     function handleMinimizeButtonClicked() {
-        document.getElementById('contentContainer').style.transition = 'all 1s linear';
-        document.getElementById('contentContainer').style.minHeight = '0px';
-        document.getElementById('contentContainer').style.height = '0px';
-        document.getElementById('contentContainer').style.marginTop = '95vh';
-        document.getElementById('contentContainer').style.padding = '0 40px 0 40px';
-        //TODO: after transition, remove transition to prevent reactive styling from triggering transition
+        let contentContainerElementStyle = document.getElementById('contentContainer').style;
+
+        contentContainerElementStyle.transition = 'all 1s cubic-bezier(.25,-0.08,.87,.43)';
+        contentContainerElementStyle.minHeight = '0px';
+        contentContainerElementStyle.height = '0px';
+        contentContainerElementStyle.marginTop = '95vh';
+        contentContainerElementStyle.padding = '0 40px 0 40px';
+
+        setTimeout(() => {
+            contentContainerElementStyle.transition = null;
+        }, 1000);
     }
     
-    //get --background-animation-delay css var
+    //get --background-animation-delay and --background-animation-duration css var
     useEffect(() => {
         backgroundAnimationDuration = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-duration').slice(0, -1));
         backgroundAnimationDelay = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-delay').slice(0, -1));
@@ -106,7 +111,7 @@ export default function Layout({ children }) {
                 </div>
                 <div className={`${styles.lake} ${styles.animatedTimeElement}`}>
                     <div className={styles.folliage}>
-
+                        
                     </div>
                     <div className={`${styles.lakeFilter} ${styles.animatedTimeElement}`}/>
                     <div className={`${styles.lakeMoonReflection} ${styles.animatedTimeElement}`}/>

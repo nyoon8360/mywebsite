@@ -14,3 +14,8 @@
     height: 2px;
     background-color: var(--main-text-color);
 }
+
+.instagramEmbedContainer {
+    margin-bottom: 80px;
+    
+}
