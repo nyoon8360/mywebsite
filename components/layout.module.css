@@ -65,6 +65,13 @@
     overflow: hidden;
 }
 
+.contentOverflowContainer {
+    height: 100%;
+    width: 100%;
+    
+    overflow: hidden;
+}
+
 .controlsContainer {
     display: flex;
     justify-content: space-around;

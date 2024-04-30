@@ -111,7 +111,7 @@ export default function Layout({ children }) {
                 </div>
                 <div className={`${styles.lake} ${styles.animatedTimeElement}`}>
                     <div className={styles.folliage}>
-                        
+
                     </div>
                     <div className={`${styles.lakeFilter} ${styles.animatedTimeElement}`}/>
                     <div className={`${styles.lakeMoonReflection} ${styles.animatedTimeElement}`}/>
@@ -133,18 +133,20 @@ export default function Layout({ children }) {
             <div className={styles.scrollContainer}>
                 <div className={styles.contentMask}>
                     <div id='contentContainer' className={styles.contentContainer}>
-                        <div className={styles.controlsContainer}>
-                            <div className={styles.controlButtons} onClick={handleSunriseButtonClicked}>
-                                <Image className={styles.buttonImage} src="/images/buttons/SunRiseButton.jpg" alt="sunrise button" height={200} width={200}/>
+                        <div className={styles.contentOverflowContainer}>
+                            <div className={styles.controlsContainer}>
+                                <div className={styles.controlButtons} onClick={handleSunriseButtonClicked}>
+                                    <Image className={styles.buttonImage} src="/images/buttons/SunRiseButton.jpg" alt="sunrise button" height={200} width={200}/>
+                                </div>
+                                <div className={styles.controlButtons} onClick={handleMinimizeButtonClicked}>
+                                    <Image className={styles.buttonImage} src="/images/buttons/MinimizeButton.jpg" alt="minimize button" height={200} width={200}/>
+                                </div>
+                                <div className={styles.controlButtons} onClick={handleMoonriseButtonClicked}>
+                                    <Image className={styles.buttonImage} src="/images/buttons/MoonRiseButton.jpg" alt="moonrise button" height={200} width={200}/>
+                                </div>
                             </div>
-                            <div className={styles.controlButtons} onClick={handleMinimizeButtonClicked}>
-                                <Image className={styles.buttonImage} src="/images/buttons/MinimizeButton.jpg" alt="minimize button" height={200} width={200}/>
-                            </div>
-                            <div className={styles.controlButtons} onClick={handleMoonriseButtonClicked}>
-                                <Image className={styles.buttonImage} src="/images/buttons/MoonRiseButton.jpg" alt="moonrise button" height={200} width={200}/>
-                            </div>
-                        </div>
-                        { children }
+                            { children }
+                        </div>  
                     </div>
                 </div>
             </div>
