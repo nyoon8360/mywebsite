@@ -47,15 +47,12 @@ export default function Layout({ children }) {
     */
 
     var backgroundAnimationDuration = 0;
-    var backgroundAnimationDelay = 0;
 
     //change background time to sunrise
     function handleSunriseButtonClicked() {
         let animatedTimeElementCollection = document.getElementsByClassName(styles.animatedTimeElement);
 
         let newDelay = Math.floor((-2/3) * backgroundAnimationDuration);
-
-        console.log(newDelay);
 
         document.documentElement.style.setProperty('--background-animation-delay', `${newDelay}s`);
 
@@ -88,6 +85,7 @@ export default function Layout({ children }) {
         contentContainerElementStyle.minHeight = '0px';
         contentContainerElementStyle.height = '0px';
         contentContainerElementStyle.marginTop = '95vh';
+        contentContainerElementStyle.marginBottom = '0';
         contentContainerElementStyle.padding = '0 40px 0 40px';
 
         setTimeout(() => {
@@ -98,7 +96,6 @@ export default function Layout({ children }) {
     //get --background-animation-delay and --background-animation-duration css var
     useEffect(() => {
         backgroundAnimationDuration = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-duration').slice(0, -1));
-        backgroundAnimationDelay = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-delay').slice(0, -1));
     });
 
     return (
@@ -110,6 +107,12 @@ export default function Layout({ children }) {
                     </div>
                 </div>
                 <div className={`${styles.lake} ${styles.animatedTimeElement}`}>
+
+                    <div className={styles.maximizeButtonContainer}>
+                        <div className={styles.lilypad}>
+                        </div>
+                    </div>
+
                     <div className={styles.folliage}>
 
                     </div>

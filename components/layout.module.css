@@ -442,3 +442,18 @@
     mask-image: url('/images/background/mountainRightMask.png');
     mask-size: max(100px, 30vw) max(100px, 30vw);
 }
+
+.maximizeButtonContainer {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+
+    bottom: 100px;
+}
+
+.lilypad {
+    border-radius: 100%;
+    background-color: green;
+    height: 100%;
+    width: 100%;
+}
