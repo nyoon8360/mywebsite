@@ -87,6 +87,7 @@ export default function Layout({ children }) {
 
     function handleMinimizeButtonClicked() {
         let contentContainerElementStyle = document.getElementById('contentContainer').style;
+        document.getElementById('scrollContainer').style.pointerEvents = 'none';
 
         contentContainerElementStyle.transition = 'all 1s cubic-bezier(.25,-0.08,.87,.43)';
         contentContainerElementStyle.minHeight = '0px';
@@ -116,6 +117,8 @@ export default function Layout({ children }) {
 
     function handleMaximizeButtonClicked() {
         let contentContainerElementStyle = document.getElementById('contentContainer').style;
+        document.getElementById('scrollContainer').style.pointerEvents = null;
+
         contentContainerElementStyle.transition = 'all 1s cubic-bezier(.11,.83,.58,.98)';
         contentContainerElementStyle.minHeight = null;
         contentContainerElementStyle.height = null;
@@ -190,7 +193,7 @@ export default function Layout({ children }) {
                 </div>
             </div>
             <MainHeader></MainHeader>
-            <div className={styles.scrollContainer}>
+            <div id='scrollContainer' className={styles.scrollContainer}>
                 <div className={styles.contentMask}>
                     <div id='contentContainer' className={styles.contentContainer}>
                         <div className={styles.contentOverflowContainer}>
