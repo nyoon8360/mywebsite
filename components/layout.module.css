@@ -37,6 +37,8 @@
     position: fixed;
     height: 100%;
     width: 100%;
+
+    pointer-events: none;
 }
 
 .contentMask {
@@ -53,6 +55,8 @@
 
 .contentContainer {
     position: static;
+
+    pointer-events: all;
 
     margin: 70px 10vw 70px calc(10vw + 17px);
 
@@ -405,7 +409,7 @@
 
     background-color: rgb(66, 66, 66);
 
-    mask-image: url('/images/background/mountainLeftMask.png');
+    mask-image: url('/images/masks/mountainLeftMask.png');
     mask-size: max(100px, 30vw) max(100px, 30vw);
 }
 
@@ -417,7 +421,7 @@
     linear-gradient(.43turn,white 27% , transparent 33%),
     linear-gradient(.55turn, white 36%, transparent 42%);
 
-    mask-image: url('/images/background/mountainLeftMask.png');
+    mask-image: url('/images/masks/mountainLeftMask.png');
     mask-size: max(100px, 30vw) max(100px, 30vw);
 }
 
@@ -427,7 +431,7 @@
 
     background-color: rgb(66, 66, 66);
 
-    mask-image: url('/images/background/mountainRightMask.png');
+    mask-image: url('/images/masks/mountainRightMask.png');
     mask-size: max(100px, 30vw) max(100px, 30vw);
 }
 
@@ -439,21 +443,83 @@
     linear-gradient(.46turn,white 37% , transparent 43%),
     linear-gradient(.53turn, white 29%, transparent 34%);
 
-    mask-image: url('/images/background/mountainRightMask.png');
+    mask-image: url('/images/masks/mountainRightMask.png');
     mask-size: max(100px, 30vw) max(100px, 30vw);
 }
 
 .maximizeButtonContainer {
     position: fixed;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 40px;
 
-    bottom: 100px;
+    opacity: 0;
+
+    pointer-events: none;
+    cursor: pointer;
+
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, -20%);
+
+    transition: all .8s linear;
 }
 
 .lilypad {
-    border-radius: 100%;
-    background-color: green;
+    border-radius: 50%;
+    mask-image: conic-gradient(black 40%, transparent 40%, transparent 60%, black 60%);
+    background: radial-gradient(rgb(60, 141, 60) 0%, rgb(83, 196, 83) 50%, rgb(112, 248, 112));
     height: 100%;
     width: 100%;
+}
+
+.lotusPetal {
+    position: fixed;
+    mask-image: url('/images/masks/lotusPetalMask.png');
+    mask-size: 50px 15px;
+
+    height: 15px;
+    width: 50px;
+
+    transform-origin: 100% 50%;
+    
+    left: 50%;
+
+    bottom: 20px;
+
+    transition: transform .8s linear;
+}
+
+.lotusPetalMiddle {
+    background-color: yellow;
+    transform: translate(-100%, 5px) rotate(90deg);
+}
+
+.lotusPetalRight1 {
+    background: linear-gradient(rgb(197, 87, 105), rgb(255, 182, 194) 80%);
+    transform: translate(-105%, 5px) rotate(100deg);
+}
+
+.lotusPetalRight2 {
+    background: linear-gradient(rgb(201, 101, 117), rgb(255, 146, 164) 70%);
+    transform: translate(-105%, 5px) rotate(110deg);
+}
+
+.lotusPetalRight3 {
+    background: linear-gradient(rgb(204, 83, 103), rgb(255, 123, 145) 60%);
+    transform: translate(-105%, 5px) rotate(120deg);
+}
+
+.lotusPetalLeft1 {
+    background: linear-gradient(to top, rgb(197, 87, 105), rgb(255, 182, 194) 80%);
+    transform: translate(-95%, 5px) rotate(80deg);
+}
+
+.lotusPetalLeft2 {
+    background: linear-gradient(to top, rgb(201, 101, 117), rgb(255, 146, 164) 70%);
+    transform: translate(-95%, 5px) rotate(70deg);
+}
+
+.lotusPetalLeft3 {
+    background: linear-gradient(to top, rgb(204, 83, 103), rgb(255, 123, 145) 60%);
+    transform: translate(-95%, 5px) rotate(60deg);
 }

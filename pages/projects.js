@@ -19,9 +19,9 @@ export default function Projects() {
 
     return (
         <Layout>
-            <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
 
-                <h3 className={styles.projectTitle}>Personal Website</h3>
+            <h3 className={styles.projectTitle}>Personal Website</h3>
+            <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
                 <Image className={styles.projectThumbnail} src='/images/personal_website_thumbnail.png' alt='Personal Project Website' height={300} width={400}/>
                 
                 <h4 className={styles.sectionText}>Description</h4>
@@ -48,8 +48,8 @@ export default function Projects() {
 
             <hr className={styles.divider}></hr>
 
+            <h3 className={styles.projectTitle}>Bank of Edwin Discord Bot</h3>
             <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
-                <h3 className={styles.projectTitle}>Bank of Edwin Discord Bot</h3>
 
                 <Image className={styles.projectThumbnail} src='/images/bank_of_edwin_thumbnail.png' alt='Bank of Edwin Discord Bot' height={300} width={400}/>
 
