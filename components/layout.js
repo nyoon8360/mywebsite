@@ -45,17 +45,21 @@ export default function Layout({ children }) {
         fadeColor = tColor;
     } 
     */
-
+    const petalRotations = [
+        'translate(-95%, 5px) rotate(70deg)',
+        'translate(-105%, 5px) rotate(110deg)',
+        'translate(-95%, 5px) rotate(50deg)',
+        'translate(-105%, 5px) rotate(130deg)',
+        'translate(-95%, 5px) rotate(30deg)',
+        'translate(-105%, 5px) rotate(150deg)'
+    ];
     var backgroundAnimationDuration = 0;
-    var backgroundAnimationDelay = 0;
 
     //change background time to sunrise
     function handleSunriseButtonClicked() {
         let animatedTimeElementCollection = document.getElementsByClassName(styles.animatedTimeElement);
 
         let newDelay = Math.floor((-2/3) * backgroundAnimationDuration);
-
-        console.log(newDelay);
 
         document.documentElement.style.setProperty('--background-animation-delay', `${newDelay}s`);
 
@@ -88,17 +92,57 @@ export default function Layout({ children }) {
         contentContainerElementStyle.minHeight = '0px';
         contentContainerElementStyle.height = '0px';
         contentContainerElementStyle.marginTop = '95vh';
+        contentContainerElementStyle.marginBottom = '0';
         contentContainerElementStyle.padding = '0 40px 0 40px';
 
         setTimeout(() => {
             contentContainerElementStyle.transition = null;
+            showMaximizeButton();
         }, 1000);
+    }
+
+    function showMaximizeButton() {
+        let maxButton = document.getElementById('maxButtonContainer');
+        let petalElements = document.getElementById('petalContainer').children;
+        
+        maxButton.style.opacity = 1;
+        maxButton.style.transform = 'translate(-50%, -50%)';
+        maxButton.style.pointerEvents = 'all';
+        for (let i = 0; i < petalElements.length; i++) {
+
+            petalElements.item(i).style.transform = petalRotations[i];
+        }
+    }
+
+    function handleMaximizeButtonClicked() {
+        let contentContainerElementStyle = document.getElementById('contentContainer').style;
+        contentContainerElementStyle.transition = 'all 1s cubic-bezier(.11,.83,.58,.98)';
+        contentContainerElementStyle.minHeight = null;
+        contentContainerElementStyle.height = null;
+        contentContainerElementStyle.marginTop = null;
+        contentContainerElementStyle.marginBottom = null;
+        contentContainerElementStyle.padding = null;
+
+        hideMaximizeButton();
+        setTimeout(() => {
+            contentContainerElementStyle.transition = null;
+        }, 1000);
+    }
+
+    function hideMaximizeButton() {
+        let maxButton = document.getElementById('maxButtonContainer');
+        let petalElements = document.getElementById('petalContainer').children;
+
+        maxButton.removeAttribute('style');
+        for (let i = 0; i < petalElements.length; i++) {
+
+            petalElements.item(i).removeAttribute('style');
+        }
     }
     
     //get --background-animation-delay and --background-animation-duration css var
     useEffect(() => {
         backgroundAnimationDuration = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-duration').slice(0, -1));
-        backgroundAnimationDelay = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-delay').slice(0, -1));
     });
 
     return (
@@ -110,11 +154,27 @@ export default function Layout({ children }) {
                     </div>
                 </div>
                 <div className={`${styles.lake} ${styles.animatedTimeElement}`}>
+                    <div className={`${styles.lakeFilter} ${styles.animatedTimeElement}`}/>
+                    <div className={`${styles.lakeMoonReflection} ${styles.animatedTimeElement}`}/>
+                    <div id='maxButtonContainer' className={styles.maximizeButtonContainer} onClick={handleMaximizeButtonClicked}>
+                        <div className={styles.lilypad}>
+                            
+                        </div>
+                        <div className={`${styles.lotusPetal} ${styles.lotusPetalMiddle}`}/>
+                        <div id='petalContainer'>
+                            <div className={`${styles.lotusPetal} ${styles.lotusPetalLeft1}`}/>
+                            <div className={`${styles.lotusPetal} ${styles.lotusPetalRight1}`}/>
+                            <div className={`${styles.lotusPetal} ${styles.lotusPetalLeft2}`}/>
+                            <div className={`${styles.lotusPetal} ${styles.lotusPetalRight2}`}/>
+                            <div className={`${styles.lotusPetal} ${styles.lotusPetalLeft3}`}/>
+                            <div className={`${styles.lotusPetal} ${styles.lotusPetalRight3}`}/>
+                        </div>
+                    </div>
+
                     <div className={styles.folliage}>
 
                     </div>
-                    <div className={`${styles.lakeFilter} ${styles.animatedTimeElement}`}/>
-                    <div className={`${styles.lakeMoonReflection} ${styles.animatedTimeElement}`}/>
+                    
                 </div>
                 <div className={styles.mountainsContainer}>
                     <div className={styles.leftMountain}>

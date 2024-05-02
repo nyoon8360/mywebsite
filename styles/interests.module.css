@@ -1,0 +1,31 @@
+.bodyText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 30px 0px 30px 0px;
+    color: var(--main-text-color);
+}
+
+.categoryTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 30px;
+    color: var(--main-text-color);
+}
+
+.sectionText {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0px;
+    color: var(--main-text-color);
+}
+
+.divider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    height: 2px;
+    background-color: var(--main-text-color);
+}
