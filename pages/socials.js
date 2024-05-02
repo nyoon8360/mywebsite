@@ -44,7 +44,7 @@ export default function Socials() {
 
     return (
       <Layout>
-        <h3 className={styles.socialTitle} style={{ marginTop: "30px" }}>
+        <h3 className={styles.socialTitle}>
           LinkedIn
         </h3>
         <div
@@ -63,7 +63,7 @@ export default function Socials() {
         </div>
         <hr className={styles.divider}></hr>
 
-        <h3 className={styles.socialTitle} style={{ marginTop: "30px" }}>
+        <h3 className={styles.socialTitle}>
           Instagram
         </h3>
 
@@ -139,9 +139,6 @@ export default function Socials() {
                 </div>{" "}
             </blockquote>
         </div>
-
-        <hr className={styles.divider}></hr>
-        
       </Layout>
     );
 }
