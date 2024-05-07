@@ -53,6 +53,8 @@ export default function Layout({ children }) {
         'translate(-95%, 5px) rotate(30deg)',
         'translate(-105%, 5px) rotate(150deg)'
     ];
+    const baseRippleSize = 5;
+    const maxRippleSize = 50;
     var backgroundAnimationDuration = 0;
 
     //change background time to sunrise
@@ -85,6 +87,7 @@ export default function Layout({ children }) {
         }
     }
 
+    //hide all main page content and show maximize button
     function handleMinimizeButtonClicked() {
         let contentContainerElementStyle = document.getElementById('contentContainer').style;
         document.getElementById('scrollContainer').style.pointerEvents = 'none';
@@ -102,6 +105,7 @@ export default function Layout({ children }) {
         }, 1000);
     }
 
+    //play appearing animation for maximize button
     function showMaximizeButton() {
         let maxButton = document.getElementById('maxButtonContainer');
         let petalElements = document.getElementById('petalContainer').children;
@@ -115,6 +119,7 @@ export default function Layout({ children }) {
         }
     }
 
+    //show all main page content and hide maximize button
     function handleMaximizeButtonClicked() {
         let contentContainerElementStyle = document.getElementById('contentContainer').style;
         document.getElementById('scrollContainer').style.pointerEvents = null;
@@ -132,6 +137,7 @@ export default function Layout({ children }) {
         }, 1000);
     }
 
+    //play hiding animation for maximize button
     function hideMaximizeButton() {
         let maxButton = document.getElementById('maxButtonContainer');
         let petalElements = document.getElementById('petalContainer').children;
@@ -141,6 +147,33 @@ export default function Layout({ children }) {
 
             petalElements.item(i).removeAttribute('style');
         }
+    }
+
+    //play little ripple effect on lake click
+    function handleLakeClicked(event) {
+        let ripplesContainerElement = document.getElementById('ripplesContainer');
+
+        let lakeHeight = parseInt(getComputedStyle(event.currentTarget).height);
+        let yOffset = event.clientY - lakeHeight;
+        let ratio = yOffset / lakeHeight;
+
+        let rippleBox = document.createElement('div');
+        rippleBox.className = styles.rippleBox;
+        rippleBox.style.left = `${event.clientX}px`;
+        rippleBox.style.top = `${yOffset}px`;
+
+        let ripple = document.createElement('div');
+        ripple.className = styles.ripple;
+        ripple.style.width = `${Math.floor((ratio * (maxRippleSize - baseRippleSize)) + baseRippleSize)}px`;
+        ripple.style.height = `${Math.floor(((ratio * (maxRippleSize - baseRippleSize)) + baseRippleSize) * 0.8)}px`;
+
+        ripple.addEventListener('animationend', (event) => {
+            event.target.parentElement.remove();
+        });
+
+        rippleBox.appendChild(ripple);
+
+        ripplesContainerElement.appendChild(rippleBox);
     }
     
     //get --background-animation-delay and --background-animation-duration css var
@@ -156,9 +189,12 @@ export default function Layout({ children }) {
 
                     </div>
                 </div>
-                <div className={`${styles.lake} ${styles.animatedTimeElement}`}>
+                <div className={`${styles.lake} ${styles.animatedTimeElement}`} onClick={handleLakeClicked}>
                     <div className={`${styles.lakeFilter} ${styles.animatedTimeElement}`}/>
                     <div className={`${styles.lakeMoonReflection} ${styles.animatedTimeElement}`}/>
+                    <div id='ripplesContainer' className={styles.ripplesContainer}>
+                        
+                    </div>
                     <div id='maxButtonContainer' className={styles.maximizeButtonContainer} onClick={handleMaximizeButtonClicked}>
                         <div className={styles.lilypad}>
                             
@@ -176,6 +212,12 @@ export default function Layout({ children }) {
 
                     <div className={styles.folliage}>
 
+                    </div>
+
+                    <div className={styles.shoreContainer}>
+                        <div className={styles.shoreLeft}>
+
+                        </div>
                     </div>
                     
                 </div>

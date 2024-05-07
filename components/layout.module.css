@@ -473,9 +473,9 @@
 .lotusPetal {
     position: fixed;
     mask-image: url('/images/masks/lotusPetalMask.png');
-    mask-size: 50px 15px;
+    mask-size: 50px 20px;
 
-    height: 15px;
+    height: 20px;
     width: 50px;
 
     transform-origin: 100% 50%;
@@ -520,4 +520,78 @@
 .lotusPetalLeft3 {
     background: linear-gradient(to top, rgb(204, 83, 103), rgb(255, 123, 145) 60%);
     transform: translate(-95%, 5px) rotate(60deg);
+}
+
+.shoreContainer {
+    position: fixed;
+    width: 100%;
+
+    pointer-events: none;
+    bottom: 0;
+}
+
+.shoreLeft {
+    height: 15vh;
+    width: 30vw;
+
+    pointer-events: all;
+
+    background-color: rgb(3, 105, 3);
+
+    border-top-style: solid;
+    border-right-style: solid;
+    border-width: 2px;
+    border-color: rgb(1, 63, 1);
+    border-top-right-radius: 100%;
+}
+
+.ripplesContainer {
+    height: 100%;
+    width: 100%;
+
+    pointer-events: none;
+    position: fixed;
+
+    top: 0;
+
+    overflow: hidden;
+}
+
+.rippleBox {
+    position: absolute;
+
+    transform: translate(-50%, -50%);
+    height: 100px;
+    width: 100px;
+
+    overflow: visible;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.ripple {
+    position: relative;
+
+    animation: .5s linear 0s 1 forwards animateRipple;
+
+    border-radius: 100%;
+
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+}
+
+@keyframes animateRipple {
+    0% {
+        opacity: 1;
+        transform: scale(0, 0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1, 1);
+    }
 }
