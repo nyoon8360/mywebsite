@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 
 var fadeColor = 'transparent';
 var transitionContainerOnAnimEnd;
-var lakeElement;
 
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
@@ -54,8 +53,9 @@ export default function Layout({ children }) {
         'translate(-95%, 5px) rotate(30deg)',
         'translate(-105%, 5px) rotate(150deg)'
     ];
-    const baseRippleSize = 5;
+    const baseRippleSize = 2;
     const maxRippleSize = 50;
+    const randomRippleInterval = 5000;
     var backgroundAnimationDuration = 0;
 
     //change background time to sunrise
@@ -177,10 +177,11 @@ export default function Layout({ children }) {
         ripplesContainerElement.appendChild(rippleBox);
     }
     
-    //set vars that can not be found during setup
+    //set vars that can not be accessed before mount
     useEffect(() => {
         backgroundAnimationDuration = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-duration').slice(0, -1));
         
+        //set interval for random ripples on lake
         const interval = setInterval(() => {
             let cTarget = document.getElementById('lake');
             let lakeHeight = parseInt(getComputedStyle(cTarget).height);
@@ -192,7 +193,7 @@ export default function Layout({ children }) {
             handleLakeMouseDown({currentTarget: cTarget, clientX: randX, clientY: randY});
 
             console.log(`randX: ${randX}, randY: ${randY}`)
-        }, 5000);
+        }, randomRippleInterval);
 
         return () => {
             clearInterval(interval);
