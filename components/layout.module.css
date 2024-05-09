@@ -126,7 +126,7 @@
     }
 
     50% {
-        background: rgb(12, 2, 48);
+        background: rgb(4, 0, 15);
     }
 
     75% {
@@ -161,11 +161,11 @@
 
     25% {
         background: linear-gradient(transparent, transparent 60%, rgba(255, 255, 255, 0.5));
-        opacity: 1;
+        opacity: .8;
     }
 
     50% {
-        opacity: 0.6;
+        opacity: 0.4;
         background: linear-gradient(transparent, transparent 60%, rgba(255, 255, 255, 0.5));
     }
 
@@ -416,8 +416,8 @@
     height: max(100px, 30vw);
 
     background:
-    linear-gradient(.43turn,white 27% , transparent 33%),
-    linear-gradient(.55turn, white 36%, transparent 42%);
+    linear-gradient(.43turn,white 28% , transparent 33%),
+    linear-gradient(.55turn, white 37%, transparent 42%);
 
     mask-image: url('/images/masks/mountainLeftMask.png');
     mask-size: max(100px, 30vw) max(100px, 30vw);
@@ -438,8 +438,8 @@
     height: max(100px, 30vw);
 
     background:
-    linear-gradient(.46turn,white 37% , transparent 43%),
-    linear-gradient(.53turn, white 29%, transparent 34%);
+    linear-gradient(.46turn,white 38% , transparent 43%),
+    linear-gradient(.53turn, white 29%, transparent 33%);
 
     mask-image: url('/images/masks/mountainRightMask.png');
     mask-size: max(100px, 30vw) max(100px, 30vw);
@@ -531,7 +531,7 @@
 }
 
 .shoreLeft {
-    height: 15vh;
+    height: min(15vw, 15vh);
     width: 30vw;
 
     pointer-events: all;
@@ -575,7 +575,7 @@
 .ripple {
     position: relative;
 
-    animation: .5s linear 0s 1 forwards animateRipple;
+    animation: 1s ease-out 0s 1 forwards animateRipple;
 
     border-radius: 100%;
 
