@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 
 var fadeColor = 'transparent';
 var transitionContainerOnAnimEnd;
+var lakeElement;
 
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
@@ -150,7 +151,7 @@ export default function Layout({ children }) {
     }
 
     //play little ripple effect on lake click
-    function handleLakeClicked(event) {
+    function handleLakeMouseDown(event) {
         let ripplesContainerElement = document.getElementById('ripplesContainer');
 
         let lakeHeight = parseInt(getComputedStyle(event.currentTarget).height);
@@ -176,9 +177,26 @@ export default function Layout({ children }) {
         ripplesContainerElement.appendChild(rippleBox);
     }
     
-    //get --background-animation-delay and --background-animation-duration css var
+    //set vars that can not be found during setup
     useEffect(() => {
         backgroundAnimationDuration = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-duration').slice(0, -1));
+        
+        const interval = setInterval(() => {
+            let cTarget = document.getElementById('lake');
+            let lakeHeight = parseInt(getComputedStyle(cTarget).height);
+            let lakeWidth = parseInt(getComputedStyle(cTarget).width);
+
+            let randX = Math.floor(lakeWidth * Math.random());
+            let randY = Math.floor(lakeHeight * Math.random()) + lakeHeight;
+
+            handleLakeMouseDown({currentTarget: cTarget, clientX: randX, clientY: randY});
+
+            console.log(`randX: ${randX}, randY: ${randY}`)
+        }, 5000);
+
+        return () => {
+            clearInterval(interval);
+        };
     });
 
     return (
@@ -189,7 +207,7 @@ export default function Layout({ children }) {
 
                     </div>
                 </div>
-                <div className={`${styles.lake} ${styles.animatedTimeElement}`} onClick={handleLakeClicked}>
+                <div id='lake' className={`${styles.lake} ${styles.animatedTimeElement}`} onMouseDown={handleLakeMouseDown}>
                     <div className={`${styles.lakeFilter} ${styles.animatedTimeElement}`}/>
                     <div className={`${styles.lakeMoonReflection} ${styles.animatedTimeElement}`}/>
                     <div id='ripplesContainer' className={styles.ripplesContainer}>
