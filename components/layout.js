@@ -191,8 +191,6 @@ export default function Layout({ children }) {
             let randY = Math.floor(lakeHeight * Math.random()) + lakeHeight;
 
             handleLakeMouseDown({currentTarget: cTarget, clientX: randX, clientY: randY});
-
-            console.log(`randX: ${randX}, randY: ${randY}`)
         }, randomRippleInterval);
 
         return () => {
