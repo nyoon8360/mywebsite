@@ -29,7 +29,7 @@ export default function headerTab({tabState, underlineColor, destinationPath, on
                 onClick={onClickEvent}>
                 {children}
             </div>
-            <div className={styles.cloudContainer} onMouseLeave={tabMouseLeaveEvent}>
+            <div className={styles.cloudContainer}>
                 <div className={`${styles.cloudCircle} ${styles.cloudCirclePath1}`}/>
                 <div className={`${styles.cloudCircle} ${styles.cloudCirclePath2}`}/>
                 <div className={`${styles.cloudCircle} ${styles.cloudCirclePath3}`}/>
@@ -44,19 +44,20 @@ export default function headerTab({tabState, underlineColor, destinationPath, on
 function tabMouseEnterEvent(event) {
     let cloudCirclesCollection = event.target.children[1].children;
 
-    for (let i = 0; i < cloudCirclesCollection.length; i++) {
+    event.target.children[1].style.opacity = '1';
 
+    for (let i = 0; i < cloudCirclesCollection.length; i++) {
         cloudCirclesCollection.item(i).style.transform = cloudCirclesTransformList[i];
-        cloudCirclesCollection.item(i).style.opacity = '1';
     }
 }
 
 function tabMouseLeaveEvent(event) {
     let cloudCirclesCollection = event.target.children[1].children;
 
+    event.target.children[1].style.opacity = null;
+
     for (let i = 0; i < cloudCirclesCollection.length; i++) {
 
         cloudCirclesCollection.item(i).style.transform = null;
-        cloudCirclesCollection.item(i).style.opacity = '0';
     }
 }
