@@ -1,5 +1,8 @@
 import styles from './headerTab.module.css';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+
+import raindrop from '../public/svgs/rain-drop.svg';
 
 const cloudCirclesTransformList = [
     "translate(-40px, -2px)",
@@ -37,6 +40,7 @@ export default function headerTab({tabState, underlineColor, destinationPath, on
                 <div className={`${styles.cloudCircle} ${styles.cloudCirclePath5}`}/>
                 <div className={`${styles.cloudCircle} ${styles.cloudCirclePath6}`}/>
             </div>
+            <Image className={styles.rainDrop} src={raindrop} height={30} width={30} alt='raindrop' />
         </div>
     )
 }
