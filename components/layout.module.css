@@ -33,16 +33,12 @@
     width: 100%;
 }
 
-.scrollContainer {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-}
-
 .contentMask {
     position: fixed;
     width: 100%;
     height: 100%;
+
+    pointer-events: all;
 
     overflow-y: scroll;
 
@@ -68,10 +64,20 @@
 }
 
 .contentOverflowContainer {
-    height: 100%;
     width: 100%;
 
     overflow: hidden;
+}
+
+.bottomContentBlocker {
+    position: fixed;
+    left: 17px;
+    right: 17px;
+    bottom: 0;
+
+    z-index: 2;
+
+    height: 8vh;
 }
 
 .controlsContainer {
@@ -118,7 +124,7 @@
 
 @keyframes animateSky {
     0% {
-        background: rgb(192, 250, 250);
+        background: rgb(135, 227, 255);
     }
 
     25% {
@@ -134,7 +140,7 @@
     }
 
     100% {
-        background: rgb(192, 250, 250);
+        background: rgb(135, 227, 255);
     }
 }
 
@@ -150,8 +156,8 @@
 
 @keyframes animateSkyFilter {
     0% {
-        opacity: 0;
-        
+        opacity: 1;
+        background: linear-gradient(transparent, transparent 60%, rgba(255, 255, 255, 0.5));
     }
 
     15% {
@@ -184,8 +190,14 @@
         background: linear-gradient(transparent, transparent 80%, rgba(255, 167, 3, 0.726) 100%);
     }
 
-    100% {
+    86% {
         opacity: 0;
+        background: linear-gradient(transparent, transparent 60%, rgba(255, 255, 255, 0.5));
+    }
+
+    100% {
+        opacity: 1;
+        background: linear-gradient(transparent, transparent 60%, rgba(255, 255, 255, 0.5));
     }
 }
 

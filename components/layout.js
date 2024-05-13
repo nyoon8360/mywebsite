@@ -90,8 +90,10 @@ export default function Layout({ children }) {
 
     //hide all main page content and show maximize button
     function handleMinimizeButtonClicked() {
+        document.getElementById('contentMask').style.pointerEvents = 'none';
+        document.getElementById('bottomContentBlocker').style.pointerEvents = 'none';
+
         let contentContainerElementStyle = document.getElementById('contentContainer').style;
-        document.getElementById('scrollContainer').style.pointerEvents = 'none';
 
         contentContainerElementStyle.transition = 'all 1s cubic-bezier(.25,-0.08,.87,.43)';
         contentContainerElementStyle.minHeight = '0px';
@@ -122,8 +124,10 @@ export default function Layout({ children }) {
 
     //show all main page content and hide maximize button
     function handleMaximizeButtonClicked() {
+        document.getElementById('contentMask').style.pointerEvents = null;
+        document.getElementById('bottomContentBlocker').style.pointerEvents = null;
+
         let contentContainerElementStyle = document.getElementById('contentContainer').style;
-        document.getElementById('scrollContainer').style.pointerEvents = null;
 
         contentContainerElementStyle.transition = 'all 1s cubic-bezier(.11,.83,.58,.98)';
         contentContainerElementStyle.minHeight = null;
@@ -176,6 +180,23 @@ export default function Layout({ children }) {
 
         ripplesContainerElement.appendChild(rippleBox);
     }
+
+    //play ripple effect even while content mask is clickable in front of lake
+    function handleObstructionMouseDown(event) {
+        let lakeElement = document.getElementById('lake');
+        let lakeHeight = parseInt(getComputedStyle(lakeElement).height);
+
+        //if click is out of bounds of lake then return
+        if (event.clientY < lakeHeight) {
+            return;
+        }
+
+        handleLakeMouseDown({currentTarget: lakeElement, clientX: event.clientX, clientY: event.clientY});
+    }
+
+    function stopEventProp(event) {
+        event.stopPropagation();
+    }
     
     //set vars that can not be accessed before mount
     useEffect(() => {
@@ -183,14 +204,14 @@ export default function Layout({ children }) {
         
         //set interval for random ripples on lake
         const interval = setInterval(() => {
-            let cTarget = document.getElementById('lake');
-            let lakeHeight = parseInt(getComputedStyle(cTarget).height);
-            let lakeWidth = parseInt(getComputedStyle(cTarget).width);
+            let lakeElement = document.getElementById('lake');
+            let lakeHeight = parseInt(getComputedStyle(lakeElement).height);
+            let lakeWidth = parseInt(getComputedStyle(lakeElement).width);
 
             let randX = Math.floor(lakeWidth * Math.random());
             let randY = Math.floor(lakeHeight * Math.random()) + lakeHeight;
 
-            handleLakeMouseDown({currentTarget: cTarget, clientX: randX, clientY: randY});
+            handleLakeMouseDown({currentTarget: lakeElement, clientX: randX, clientY: randY});
         }, randomRippleInterval);
 
         return () => {
@@ -252,23 +273,22 @@ export default function Layout({ children }) {
                 </div>
             </div>
             <MainHeader></MainHeader>
-            <div id='scrollContainer' className={styles.scrollContainer}>
-                <div className={styles.contentMask}>
-                    <div id='contentContainer' className={styles.contentContainer}>
-                        <div className={styles.contentOverflowContainer}>
-                            <div className={styles.controlsContainer}>
-                                <div className={styles.controlButtons} onClick={handleSunriseButtonClicked}>
-                                    <Image className={styles.buttonImage} src="/images/buttons/SunRiseButton.jpg" alt="sunrise button" height={200} width={200}/>
-                                </div>
-                                <div className={styles.controlButtons} onClick={handleMinimizeButtonClicked}>
-                                    <Image className={styles.buttonImage} src="/images/buttons/MinimizeButton.jpg" alt="minimize button" height={200} width={200}/>
-                                </div>
-                                <div className={styles.controlButtons} onClick={handleMoonriseButtonClicked}>
-                                    <Image className={styles.buttonImage} src="/images/buttons/MoonRiseButton.jpg" alt="moonrise button" height={200} width={200}/>
-                                </div>
+            <div id='contentMask' className={styles.contentMask} onMouseDown={handleObstructionMouseDown}>
+                <div id='contentContainer' className={styles.contentContainer} onMouseDown={stopEventProp}>
+                    <div id='bottomContentBlocker' className={styles.bottomContentBlocker} onMouseDown={handleObstructionMouseDown}></div>
+                    <div className={styles.contentOverflowContainer}>
+                        <div className={styles.controlsContainer}>
+                            <div className={styles.controlButtons} onClick={handleSunriseButtonClicked}>
+                                <Image className={styles.buttonImage} src="/images/buttons/SunRiseButton.jpg" alt="sunrise button" height={200} width={200}/>
                             </div>
-                            { children }
-                        </div>  
+                            <div className={styles.controlButtons} onClick={handleMinimizeButtonClicked}>
+                                <Image className={styles.buttonImage} src="/images/buttons/MinimizeButton.jpg" alt="minimize button" height={200} width={200}/>
+                            </div>
+                            <div className={styles.controlButtons} onClick={handleMoonriseButtonClicked}>
+                                <Image className={styles.buttonImage} src="/images/buttons/MoonRiseButton.jpg" alt="moonrise button" height={200} width={200}/>
+                            </div>
+                        </div>
+                        { children }
                     </div>
                 </div>
             </div>
