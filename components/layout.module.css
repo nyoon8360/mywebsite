@@ -47,6 +47,16 @@
         linear-gradient(to left, black 17px, transparent 18px);
 }
 
+.transitionContainer {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
 .contentContainer {
     position: static;
 
@@ -606,4 +616,34 @@
         opacity: 0;
         transform: scale(1, 1);
     }
+}
+
+/*TRANSITION ELEMENTS*/
+
+.shrinkingCircle {
+    height: 0px;
+    width: 0px;
+    position: fixed;
+
+    background-color: rgb(39, 130, 167);
+
+    border-radius: 100%;
+
+    transform: translateX(-50%) translateY(-50%);
+
+    transition: all .8s linear;
+}
+
+.expandingCircle {
+    height: 0px;
+    width: 0px;
+    position: fixed;
+
+    background-color: rgb(39, 130, 167);
+
+    border-radius: 100%;
+
+    transform: translateX(-50%) translateY(-50%);
+
+    transition: height .8s ease-in, width .8s ease-in;
 }
