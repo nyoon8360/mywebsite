@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import raindrop from '../public/svgs/rain-drop.svg';
+import { useTransitionXContext } from '../context/transitionX';
+import { useTransitionYContext } from '../context/transitionY';
 
 const cloudCirclesTransformList = [
     "translate(-40px, -2px)",
@@ -11,7 +13,7 @@ const cloudCirclesTransformList = [
     "translate(16px, -16px)",
     "translate(-12px, 10px)",
     "translate(14px, 8px)"
-]
+];
 
 function tabMouseEnterEvent(event) {
     let cloudCirclesCollection = event.target.children[1].children;
@@ -34,29 +36,35 @@ function tabMouseLeaveEvent(event) {
     }
 }
 
-export default function headerTab({tabState, underlineColor, destinationPath, onClickEvent, children}) {
+export default function headerTab({destinationPath, expandCircleFunction, disabled, children}) {
     //throw error if component has child that is not just inner text
     if (typeof children != 'string') throw new Error('Children must only be inner text.');
+
+    const [transitionX, setTransitionX] = useTransitionXContext();
+    const [transitionY, setTransitionY] = useTransitionYContext();  
 
     const router = useRouter();
 
     function handleTabClicked(event) {
-        event.currentTarget.children[2].style.top = '100vh';
-        event.currentTarget.children[2].style.visibility = 'visible';
+        let currentTarget = event.currentTarget;
 
+        currentTarget.children[2].style.top = '100vh';
+        currentTarget.children[2].style.visibility = 'visible';
+
+        setTransitionY(currentTarget.offsetTop + 15);
+        setTransitionX(currentTarget.offsetLeft + (parseInt(getComputedStyle(currentTarget).width)/2));
     }
 
-    function handleRaindropTransitionEnd() {
-        router.push(destinationPath);
+    function handleRaindropTransitionEnd(event) {
+        //ensure function only fires for 'top' property transition
+        if (event.propertyName != 'top') return;
+
+        expandCircleFunction(destinationPath);
     }
 
     return (
-        <div className={styles.mainContainer} onMouseEnter={tabMouseEnterEvent} onMouseLeave={tabMouseLeaveEvent} onClick={handleTabClicked}>
-            <div 
-                style={{textDecorationColor: underlineColor}}
-                page-route={destinationPath} 
-                className={styles.tab} 
-                onClick={onClickEvent}>
+        <div className={styles.mainContainer} onMouseEnter={disabled ? null : tabMouseEnterEvent} onMouseLeave={disabled ? null :tabMouseLeaveEvent} onClick={disabled ? null : handleTabClicked} style={disabled ? {cursor: 'default'} : null}>
+            <div className={styles.tab}>
                 {children}
             </div>
             <div className={styles.cloudContainer}>

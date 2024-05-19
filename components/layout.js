@@ -2,49 +2,16 @@ import MainHeader from '../components/mainHeader';
 import styles from './layout.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useTransitionContext } from '../context/transition';
+import { useTransitionXContext } from '../context/transitionX';
+import { useTransitionYContext } from '../context/transitionY';
 import { useEffect } from 'react';
 
-var fadeColor = 'transparent';
-var transitionContainerOnAnimEnd;
+var shrinkingCircleRadius;
 
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
-    /*
+
     const router = useRouter();
-    const [tColor, setTColor] = useTransitionContext();
-
-    //function creating and playing expanding circle transition animation
-    function transition(clickedTabEle, clickedTabEleXCoord, clickedTabEleWidth, transitionColor) {
-        //get styles and coords from passed tab element
-        console.log(clickedTabEleWidth);
-    
-        //get ripple transition div
-        let rippleTransitionDiv = document.getElementById('rippleTransition');
-        let rippleTransitionRingDiv = document.getElementById('rippleTransitionRing');
-
-        console.log(`${(Math.max(0, clickedTabEleXCoord) + (parseFloat(clickedTabEleWidth.slice(0, -2))/2))}px`);
-
-        rippleTransitionDiv.style.left = `${(Math.max(0, clickedTabEleXCoord) + (parseFloat(clickedTabEleWidth.slice(0, -2))/2))}px`;
-        rippleTransitionDiv.style.width = '9000px';
-        rippleTransitionDiv.style.height = '4500px';
-        rippleTransitionDiv.style.background = `radial-gradient(circle at 50% 100%,${transitionColor} 20%, rgba(162, 212, 240, 0) 70%)`
-
-        rippleTransitionRingDiv.style.left = `${(Math.max(0, clickedTabEleXCoord) + (parseFloat(clickedTabEleWidth.slice(0, -2))/2))}px`;
-        rippleTransitionRingDiv.style.width = '9000px';
-        rippleTransitionRingDiv.style.height = '4500px';
-        rippleTransitionRingDiv.style.background = `radial-gradient(circle at 50% 100%, rgba(162, 212, 240, 0) 65%, ${transitionColor} 70%)`
-
-        rippleTransitionDiv.addEventListener('transitionend', () => {
-            setTColor(transitionColor);
-            router.push(clickedTabEle.getAttribute('page-route'));
-        })
-    }
-
-    if (tColor) {
-        fadeColor = tColor;
-    } 
-    */
     const petalRotations = [
         'translate(-95%, 5px) rotate(70deg)',
         'translate(-105%, 5px) rotate(110deg)',
@@ -57,6 +24,23 @@ export default function Layout({ children }) {
     const maxRippleSize = 50;
     const randomRippleInterval = 5000;
     var backgroundAnimationDuration = 0;
+
+    const [transitionX, setTransitionX] = useTransitionXContext();
+    const [transitionY, setTransitionY] = useTransitionYContext();
+
+    function expandCircle(destinationPath) {
+        let expandingCircleElement = document.getElementById('expandingCircle');
+        let expandingCircleRadius = Math.max(screen.width, screen.height) * 2;
+
+        expandingCircleElement.style.top = '100vh';
+        expandingCircleElement.style.left = `${transitionX}px`;
+        expandingCircleElement.style.height = `${expandingCircleRadius}px`;
+        expandingCircleElement.style.width = `${expandingCircleRadius}px`;
+
+        setTimeout(() => {
+            router.push(destinationPath);
+        }, 800);
+    }
 
     //change background time to sunrise
     function handleSunriseButtonClicked() {
@@ -198,10 +182,17 @@ export default function Layout({ children }) {
         event.stopPropagation();
     }
     
-    //set vars that can not be accessed before mount
+    //set vars that can not be set before mount
     useEffect(() => {
         backgroundAnimationDuration = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-duration').slice(0, -1));
-        
+        if (transitionX != 0) {
+            let shrinkingCircleElement = document.getElementById('shrinkingCircle');
+            shrinkingCircleElement.style.width = null;
+            shrinkingCircleElement.style.height = null;
+        }
+
+        shrinkingCircleRadius = Math.max(screen.width, screen.height) * 2;
+
         //set interval for random ripples on lake
         const interval = setInterval(() => {
             let lakeElement = document.getElementById('lake');
@@ -272,7 +263,7 @@ export default function Layout({ children }) {
                     <Image className={`${styles.moon} ${styles.animatedTimeElement}`} src="/images/background/moon.png" alt="moon" height={200} width={200}/>
                 </div>
             </div>
-            <MainHeader></MainHeader>
+            <MainHeader expandCircleFunction={expandCircle}></MainHeader>
             <div id='contentMask' className={styles.contentMask} onMouseDown={handleObstructionMouseDown}>
                 <div id='contentContainer' className={styles.contentContainer} onMouseDown={stopEventProp}>
                     <div id='bottomContentBlocker' className={styles.bottomContentBlocker} onMouseDown={handleObstructionMouseDown}></div>
@@ -291,6 +282,10 @@ export default function Layout({ children }) {
                         { children }
                     </div>
                 </div>
+            </div>
+            <div id='transitionContainer' className={styles.transitionContainer}>
+                <div id='shrinkingCircle' className={styles.shrinkingCircle} style={{left: transitionX, top: transitionY, height: shrinkingCircleRadius, width: shrinkingCircleRadius, visibility: transitionX == 0 ? 'hidden' : 'visible'}}></div>
+                <div id='expandingCircle' className={styles.expandingCircle}></div>
             </div>
         </div>
     );
