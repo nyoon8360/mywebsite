@@ -1,4 +1,7 @@
-/*SCROLLBAR STYLING*/
+/*===============
+SCROLLBAR STYLING
+===============*/
+
 .contentMask::-webkit-scrollbar {
     display: block;
 }
@@ -25,7 +28,9 @@
     margin-top: 70px;
 }
 
-/*CONTAINERS AND MAIN COMPONENTS*/
+/*============================
+CONTAINERS AND MAIN COMPONENTS
+============================*/
 
 .backgroundContainer {
     position: fixed;
@@ -112,7 +117,37 @@
     width: 100%;
 }
 
-/*BACKGROUND STYLING*/
+.fireflyContainer {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards hideFireflies;
+}
+
+@keyframes hideFireflies {
+    0%, 24% {
+        opacity: 0;
+    }
+
+    26%, 68% {
+        opacity: 1;
+    }
+
+    70%, 100% {
+        opacity: 0;
+    }
+}
+
+/*=========================
+BACKGROUND ELEMENTS STYLING
+=========================*/
+
+/*Sky and Lake*/
 .sky {
     position: fixed;
     height: 50%;
@@ -334,6 +369,8 @@
     }
 }
 
+/*Sun and Moon*/
+
 .sunMoonContainer {
     position: fixed;
     width: 200px;
@@ -409,6 +446,8 @@
     }
 }
 
+/*Mountains*/
+
 .mountainsContainer {
     position: fixed;
     width: 100%;
@@ -466,6 +505,8 @@
     mask-image: url('/images/masks/mountainRightMask.png');
     mask-size: max(100px, 30vw) max(100px, 30vw);
 }
+
+/*Lilypad with Lotus*/
 
 .maximizeButtonContainer {
     position: fixed;
@@ -567,6 +608,8 @@
     border-top-right-radius: 100%;
 }
 
+/*Ripples*/
+
 .ripplesContainer {
     height: 100%;
     width: 100%;
@@ -618,7 +661,58 @@
     }
 }
 
-/*TRANSITION ELEMENTS*/
+/*Fireflies*/
+
+.baseFirefly {
+    position: relative;
+
+    border-radius: 100%;
+    
+    background: radial-gradient(yellow, yellow 10%, transparent 80%);
+
+    transition-timing-function: ease-in-out;
+    transition-property: top;
+
+    animation: fireflyBlink 4s linear 0s infinite forwards;
+}
+
+@keyframes fireflyBlink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fireflySmall {
+    height: min(3vw, 3vh);
+    width: min(3vw, 3vh);
+}
+
+.fireflyMedium {
+    height: min(5vw, 5vh);
+    width: min(5vw, 5vh);
+}
+
+.fireflyLarge {
+    height: min(7vw, 7vh);
+    width: min(7vw, 7vh);
+}
+
+.fireflyWings {
+    position: fixed;
+    transition-timing-function: ease-in-out;
+    transition-property: left;
+}
+
+/*=================
+TRANSITION ELEMENTS
+=================*/
 
 .shrinkingCircle {
     height: 0px;

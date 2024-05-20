@@ -41,8 +41,7 @@ export default function headerTab({destinationPath, expandCircleFunction, disabl
     if (typeof children != 'string') throw new Error('Children must only be inner text.');
 
     const [transitionX, setTransitionX] = useTransitionXContext();
-    const [transitionY, setTransitionY] = useTransitionYContext();  
-
+    const [transitionY, setTransitionY] = useTransitionYContext();
     const router = useRouter();
 
     function handleTabClicked(event) {

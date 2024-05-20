@@ -11,7 +11,6 @@ var shrinkingCircleRadius;
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
 
-    const router = useRouter();
     const petalRotations = [
         'translate(-95%, 5px) rotate(70deg)',
         'translate(-105%, 5px) rotate(110deg)',
@@ -20,6 +19,7 @@ export default function Layout({ children }) {
         'translate(-95%, 5px) rotate(30deg)',
         'translate(-105%, 5px) rotate(150deg)'
     ];
+    const router = useRouter();
     const baseRippleSize = 2;
     const maxRippleSize = 50;
     const randomRippleInterval = 5000;
@@ -27,7 +27,10 @@ export default function Layout({ children }) {
 
     const [transitionX, setTransitionX] = useTransitionXContext();
     const [transitionY, setTransitionY] = useTransitionYContext();
-
+    
+    //==============================
+    //TRANSITION ANIMATION FUNCTIONS
+    //==============================
     function expandCircle(destinationPath) {
         let expandingCircleElement = document.getElementById('expandingCircle');
         let expandingCircleRadius = Math.max(screen.width, screen.height) * 2;
@@ -41,6 +44,10 @@ export default function Layout({ children }) {
             router.push(destinationPath);
         }, 800);
     }
+
+    //==============
+    //EVENT HANDLERS
+    //==============
 
     //change background time to sunrise
     function handleSunriseButtonClicked() {
@@ -92,20 +99,6 @@ export default function Layout({ children }) {
         }, 1000);
     }
 
-    //play appearing animation for maximize button
-    function showMaximizeButton() {
-        let maxButton = document.getElementById('maxButtonContainer');
-        let petalElements = document.getElementById('petalContainer').children;
-        
-        maxButton.style.opacity = 1;
-        maxButton.style.transform = 'translate(-50%, -50%)';
-        maxButton.style.pointerEvents = 'all';
-        for (let i = 0; i < petalElements.length; i++) {
-
-            petalElements.item(i).style.transform = petalRotations[i];
-        }
-    }
-
     //show all main page content and hide maximize button
     function handleMaximizeButtonClicked() {
         document.getElementById('contentMask').style.pointerEvents = null;
@@ -124,18 +117,6 @@ export default function Layout({ children }) {
         setTimeout(() => {
             contentContainerElementStyle.transition = null;
         }, 1000);
-    }
-
-    //play hiding animation for maximize button
-    function hideMaximizeButton() {
-        let maxButton = document.getElementById('maxButtonContainer');
-        let petalElements = document.getElementById('petalContainer').children;
-
-        maxButton.removeAttribute('style');
-        for (let i = 0; i < petalElements.length; i++) {
-
-            petalElements.item(i).removeAttribute('style');
-        }
     }
 
     //play little ripple effect on lake click
@@ -178,10 +159,86 @@ export default function Layout({ children }) {
         handleLakeMouseDown({currentTarget: lakeElement, clientX: event.clientX, clientY: event.clientY});
     }
 
+    //give firefly wings a new random horizontal path
+    function handleFireflyWingsTransitionEnd(event) {
+        let fireflyWingsElement = event.currentTarget;
+
+        let randomDuration = parseInt(Math.random()*5) + 7;
+
+        //generate random amount of units to move
+        let randomMovementAmount = (Math.round(Math.random()*20) + 10) * (Math.random() > .5 ? -1 : 1);
+        
+        //constrain firefly's new location to < 95vw and > 5vw
+        let newLocation = parseInt(fireflyWingsElement.style.left) + randomMovementAmount;
+        if (newLocation > 95 || newLocation < 5) {
+            newLocation = parseInt(fireflyWingsElement.style.left) + (randomMovementAmount * -1);
+        }
+
+        fireflyWingsElement.style.left = `${newLocation}vw`;
+        fireflyWingsElement.style.transitionDuration = `${randomDuration}s`;
+
+        console.log(`New path: ${newLocation}vw in ${randomDuration} seconds. MA: ${randomMovementAmount}`);
+    }
+
+    //give firefly a new random vertical path
+    function handleFireflyTransitionEnd(event) {
+        let fireflyElement = event.currentTarget;
+
+        let randomDuration = parseInt(Math.random()*5) + 7;
+
+        //generate random amount of units to move
+        let randomMovementAmount = (Math.round(Math.random()*20) + 10) * (Math.random() > 0.5 ? -1 : 1);
+        
+        //constrain firefly's new location to < 95vh and > 5vh
+        let newLocation = parseInt(fireflyElement.style.top) + randomMovementAmount;
+        if (newLocation > 95 || newLocation < 5) {
+            newLocation = parseInt(fireflyElement.style.top) + (randomMovementAmount * -1);
+        }
+
+        fireflyElement.style.top = `${newLocation}vh`;
+        fireflyElement.style.transitionDuration = `${randomDuration}s`;
+
+        console.log(`New path: ${newLocation}vh in ${randomDuration} seconds`);
+    }
+
+    //===============
+    //OTHER FUNCTIONS
+    //===============
+
+    //play appearing animation for maximize button
+    function showMaximizeButton() {
+        let maxButton = document.getElementById('maxButtonContainer');
+        let petalElements = document.getElementById('petalContainer').children;
+        
+        maxButton.style.opacity = 1;
+        maxButton.style.transform = 'translate(-50%, -50%)';
+        maxButton.style.pointerEvents = 'all';
+        for (let i = 0; i < petalElements.length; i++) {
+
+            petalElements.item(i).style.transform = petalRotations[i];
+        }
+    }
+
+    //play hiding animation for maximize button
+    function hideMaximizeButton() {
+        let maxButton = document.getElementById('maxButtonContainer');
+        let petalElements = document.getElementById('petalContainer').children;
+
+        maxButton.removeAttribute('style');
+        for (let i = 0; i < petalElements.length; i++) {
+
+            petalElements.item(i).removeAttribute('style');
+        }
+    }
+
     function stopEventProp(event) {
         event.stopPropagation();
     }
     
+    //=====
+    //HOOKS
+    //=====
+
     //set vars that can not be set before mount
     useEffect(() => {
         backgroundAnimationDuration = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-duration').slice(0, -1));
@@ -204,6 +261,16 @@ export default function Layout({ children }) {
 
             handleLakeMouseDown({currentTarget: lakeElement, clientX: randX, clientY: randY});
         }, randomRippleInterval);
+
+        //initiate random paths for fireflies and random blink delay
+        let fireflies = document.getElementById('fireflyContainer').children;
+
+        for (let i = 0; i < fireflies.length; i++) {
+            handleFireflyWingsTransitionEnd({currentTarget: fireflies[i]});
+            handleFireflyTransitionEnd({currentTarget: fireflies[i].children[0]});
+
+            fireflies[i].children[0].style.animationDelay = `-${Math.round(Math.random()*40)/10}s`;
+        }
 
         return () => {
             clearInterval(interval);
@@ -261,6 +328,33 @@ export default function Layout({ children }) {
                 <div className={styles.sunMoonContainer}>
                     <div className={`${styles.sun} ${styles.animatedTimeElement}`}/>
                     <Image className={`${styles.moon} ${styles.animatedTimeElement}`} src="/images/background/moon.png" alt="moon" height={200} width={200}/>
+                </div>
+                <div id='fireflyContainer' className={`${styles.fireflyContainer} ${styles.animatedTimeElement}`}>
+
+                    <div className={styles.fireflyWings} style={{left: '10vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
+                        <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '10vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                    </div>
+
+                    <div className={styles.fireflyWings} style={{left: '40vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
+                        <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '40vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                    </div>
+
+                    <div className={styles.fireflyWings} style={{left: '10vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
+                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '70vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                    </div>
+
+                    <div className={styles.fireflyWings} style={{left: '80vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
+                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '30vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                    </div>
+
+                    <div className={styles.fireflyWings} style={{left: '60vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
+                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '20vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                    </div>
+
+                    <div className={styles.fireflyWings} style={{left: '70vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
+                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '90vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                    </div>
+                    
                 </div>
             </div>
             <MainHeader expandCircleFunction={expandCircle}></MainHeader>
