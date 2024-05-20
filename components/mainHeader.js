@@ -1,8 +1,6 @@
-import Link from 'next/link';
 import styles from './mainHeader.module.css';
 import HeaderTab from './headerTab';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
 export default function MainHeader({ expandCircleFunction }) {
     const router = useRouter();
