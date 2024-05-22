@@ -23,7 +23,7 @@ export default function HomePage() {
         
         <Layout> 
             <div className={styles.profilePicContainer}>
-                <Image className={styles.profilePic} src='/images/profile_pic_rain_car.jpg' height={250} width={250} alt='My Pic'/>
+                <Image className={styles.profilePic} src='/images/profile_pic.jpg' height={250} width={250} alt='My Pic'/>
             </div>
             <hr className={styles.divider}/>
             <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>

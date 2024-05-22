@@ -339,6 +339,10 @@ export default function Layout({ children }) {
                         <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '40vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
                     </div>
 
+                    <div className={styles.fireflyWings} style={{left: '50vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
+                        <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '50vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                    </div>
+
                     <div className={styles.fireflyWings} style={{left: '10vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
                         <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '70vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
                     </div>

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import raindrop from '../public/svgs/rain-drop.svg';
 import { useTransitionXContext } from '../context/transitionX';
 import { useTransitionYContext } from '../context/transitionY';
+import { useState } from 'react';
 
 const cloudCirclesTransformList = [
     "translate(-40px, -2px)",
@@ -42,6 +43,7 @@ export default function headerTab({destinationPath, expandCircleFunction, disabl
 
     const [transitionX, setTransitionX] = useTransitionXContext();
     const [transitionY, setTransitionY] = useTransitionYContext();
+    const [isTabClicked, setIsTabClicked] = useState(false);
     const router = useRouter();
 
     function handleTabClicked(event) {
