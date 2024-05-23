@@ -506,6 +506,60 @@ BACKGROUND ELEMENTS STYLING
     mask-size: max(100px, 30vw) max(100px, 30vw);
 }
 
+/*Foliage*/
+.foliage {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.baseGrassBlade {
+    position: relative;
+    height: 30vh;
+    width: 5vh;
+
+    bottom: -5vh;
+    mask-image: url('/images/masks/grassBladeMask.png');
+    mask-size: 5vh 30vh;
+
+    transform-origin: 1.25vh 30vh;
+
+    animation: swayGrassLeftBend 10s ease-in-out 0s infinite forwards;
+}
+
+.grassBladeLeftBend {
+    animation: swayGrassLeftBend 10s ease-in-out 0s infinite forwards;
+}
+
+.grassBladeRightBend {
+    animation: swayGrassRightBend 10s ease-in-out 0s infinite forwards;
+}
+
+@keyframes swayGrassLeftBend {
+    0% {
+        transform: rotate(-1deg) translateY(1vh);
+    }
+    50% {
+        transform: rotate(1deg);
+    }
+    100% {
+        transform: rotate(-1deg) translateY(1vh);
+    }  
+}
+
+@keyframes swayGrassRightBend {
+    0% {
+        transform: rotate(-1deg) translateY(1vh) scaleX(-1);
+    }
+    50% {
+        transform: rotate(1deg) scaleX(-1);
+    }
+    100% {
+        transform: rotate(-1deg) translateY(1vh) scaleX(-1);
+    }  
+}
+
 /*Lilypad with Lotus*/
 
 .maximizeButtonContainer {
