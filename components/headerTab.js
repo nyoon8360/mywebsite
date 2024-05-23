@@ -44,7 +44,6 @@ export default function headerTab({destinationPath, expandCircleFunction, disabl
     const [transitionX, setTransitionX] = useTransitionXContext();
     const [transitionY, setTransitionY] = useTransitionYContext();
     const [isTabClicked, setIsTabClicked] = useState(false);
-    const router = useRouter();
 
     function handleTabClicked(event) {
         let currentTarget = event.currentTarget;
@@ -52,6 +51,7 @@ export default function headerTab({destinationPath, expandCircleFunction, disabl
         currentTarget.children[2].style.top = '100vh';
         currentTarget.children[2].style.visibility = 'visible';
 
+        setIsTabClicked(true);
         setTransitionY(currentTarget.offsetTop + 15);
         setTransitionX(currentTarget.offsetLeft + (parseInt(getComputedStyle(currentTarget).width)/2));
     }
@@ -63,20 +63,40 @@ export default function headerTab({destinationPath, expandCircleFunction, disabl
         expandCircleFunction(destinationPath);
     }
 
-    return (
-        <div className={styles.mainContainer} onMouseEnter={disabled ? null : tabMouseEnterEvent} onMouseLeave={disabled ? null :tabMouseLeaveEvent} onClick={disabled ? null : handleTabClicked} style={disabled ? {cursor: 'default'} : null}>
-            <div className={styles.tab}>
-                {children}
+    if (!isTabClicked) {
+        return (
+            <div className={styles.mainContainer} onMouseEnter={disabled ? null : tabMouseEnterEvent} onMouseLeave={disabled ? null :tabMouseLeaveEvent} onClick={disabled ? null : handleTabClicked} style={disabled ? {cursor: 'default'} : null}>
+                <div className={styles.tab}>
+                    {children}
+                </div>
+                <div className={styles.cloudContainer}>
+                    <div className={`${styles.cloudCircle} ${styles.cloudCirclePath1}`}/>
+                    <div className={`${styles.cloudCircle} ${styles.cloudCirclePath2}`}/>
+                    <div className={`${styles.cloudCircle} ${styles.cloudCirclePath3}`}/>
+                    <div className={`${styles.cloudCircle} ${styles.cloudCirclePath4}`}/>
+                    <div className={`${styles.cloudCircle} ${styles.cloudCirclePath5}`}/>
+                    <div className={`${styles.cloudCircle} ${styles.cloudCirclePath6}`}/>
+                </div>
+                <Image className={styles.rainDrop} src={raindrop} height={30} width={30} alt='raindrop' onTransitionEnd={handleRaindropTransitionEnd}/>
             </div>
-            <div className={styles.cloudContainer}>
-                <div className={`${styles.cloudCircle} ${styles.cloudCirclePath1}`}/>
-                <div className={`${styles.cloudCircle} ${styles.cloudCirclePath2}`}/>
-                <div className={`${styles.cloudCircle} ${styles.cloudCirclePath3}`}/>
-                <div className={`${styles.cloudCircle} ${styles.cloudCirclePath4}`}/>
-                <div className={`${styles.cloudCircle} ${styles.cloudCirclePath5}`}/>
-                <div className={`${styles.cloudCircle} ${styles.cloudCirclePath6}`}/>
+        )
+    } else {
+        return (
+            <div className={styles.mainContainer} style={{cursor: 'default'}}>
+                <div className={styles.tab}>
+                    {children}
+                </div>
+                <div className={styles.cloudContainer}>
+                    <div className={`${styles.cloudCircle}`} style={{transform: "translate(-40px, -2px)", opacity: "1"}}/>
+                    <div className={`${styles.cloudCircle}`} style={{transform: "translate(40px, -2px)", opacity: "1"}}/>
+                    <div className={`${styles.cloudCircle}`} style={{transform: "translate(-12px, -14px)", opacity: "1"}}/>
+                    <div className={`${styles.cloudCircle}`} style={{transform: "translate(16px, -16px)", opacity: "1"}}/>
+                    <div className={`${styles.cloudCircle}`} style={{transform: "translate(-12px, 10px)", opacity: "1"}}/>
+                    <div className={`${styles.cloudCircle}`} style={{transform: "translate(14px, 8px)", opacity: "1"}}/>
+                </div>
+                <Image className={styles.rainDrop} src={raindrop} height={30} width={30} alt='raindrop' onTransitionEnd={handleRaindropTransitionEnd}/>
             </div>
-            <Image className={styles.rainDrop} src={raindrop} height={30} width={30} alt='raindrop' onTransitionEnd={handleRaindropTransitionEnd}/>
-        </div>
-    )
+        )
+    }
+    
 }

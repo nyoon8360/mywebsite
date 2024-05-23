@@ -176,8 +176,6 @@ export default function Layout({ children }) {
 
         fireflyWingsElement.style.left = `${newLocation}vw`;
         fireflyWingsElement.style.transitionDuration = `${randomDuration}s`;
-
-        console.log(`New path: ${newLocation}vw in ${randomDuration} seconds. MA: ${randomMovementAmount}`);
     }
 
     //give firefly a new random vertical path
@@ -197,8 +195,6 @@ export default function Layout({ children }) {
 
         fireflyElement.style.top = `${newLocation}vh`;
         fireflyElement.style.transitionDuration = `${randomDuration}s`;
-
-        console.log(`New path: ${newLocation}vh in ${randomDuration} seconds`);
     }
 
     //===============
@@ -306,8 +302,13 @@ export default function Layout({ children }) {
                         </div>
                     </div>
 
-                    <div className={styles.folliage}>
-
+                    <div className={styles.foliage}>
+                        <div className={`${styles.baseGrassBlade} ${styles.grassBladeLeftBend}`} style={{left: '17vh', bottom: '-10vh', animationDelay: '-9s', backgroundColor: 'rgb(0, 172, 0)', zIndex: '1'}}/>
+                        <div className={`${styles.baseGrassBlade} ${styles.grassBladeLeftBend}`} style={{left: '13.5vh', bottom: '-7vh', animationDelay: '-4s', backgroundColor: 'rgb(0, 134, 0)', zIndex: '1'}}/>
+                        <div className={`${styles.baseGrassBlade} ${styles.grassBladeLeftBend}`} style={{left: '10vh', bottom: '-5vh', animationDelay: '-7s', backgroundColor: 'rgb(0, 95, 0)', zIndex: '2'}}/>
+                        <div className={`${styles.baseGrassBlade} ${styles.grassBladeLeftBend}`} style={{left: '6.7vh',bottom: '-3vh', backgroundColor: 'rgb(1, 73, 1)', zIndex: '3'}}/>
+                        <div className={`${styles.baseGrassBlade} ${styles.grassBladeRightBend}`} style={{left: '8.5vh',bottom: '-6vh', animationDelay: '-5s', backgroundColor: 'rgb(0, 95, 0)', zIndex: '2'}}/>
+                        <div className={`${styles.baseGrassBlade} ${styles.grassBladeRightBend}`} style={{left: '5vh',bottom: '-8vh', animationDelay: '-2s', backgroundColor: 'rgb(0, 134, 0)', zIndex: '1'}}/>
                     </div>
 
                     <div className={styles.shoreContainer}>
