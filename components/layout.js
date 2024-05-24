@@ -277,9 +277,8 @@ export default function Layout({ children }) {
         <div>
             <div className={styles.backgroundContainer}>
                 <div className={`${styles.sky} ${styles.animatedTimeElement}`}>
-                    <div className={`${styles.skyFilter} ${styles.animatedTimeElement}`}>
-
-                    </div>
+                    <div className={`${styles.stars} ${styles.animatedTimeElement}`}/>
+                    <div className={`${styles.skyFilter} ${styles.animatedTimeElement}`}/>
                 </div>
                 <div id='lake' className={`${styles.lake} ${styles.animatedTimeElement}`} onMouseDown={handleLakeMouseDown}>
                     <div className={`${styles.lakeFilter} ${styles.animatedTimeElement}`}/>
