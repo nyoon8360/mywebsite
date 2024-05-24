@@ -194,6 +194,7 @@ BACKGROUND ELEMENTS STYLING
     height: 100%;
     width: 100%;
 
+    pointer-events: none;
     background: linear-gradient(transparent, transparent 80%, rgba(255, 167, 3, 0.726) 100%);
 
     animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards animateSkyFilter;
@@ -379,6 +380,7 @@ BACKGROUND ELEMENTS STYLING
 
     left: 50%;
     transform: translateX(-50%);
+    pointer-events: none;
 
     z-index: 1;
 }
@@ -458,6 +460,7 @@ BACKGROUND ELEMENTS STYLING
     display: flex;
     flex-direction: row;
     align-items: center;
+    pointer-events: none;
 
     justify-content: space-between;
 }
@@ -466,44 +469,16 @@ BACKGROUND ELEMENTS STYLING
     width: max(100px, 30vw);
     height: max(100px, 30vw);
 
-    background-color: rgb(66, 66, 66);
-
-    mask-image: url('/images/masks/mountainLeftMask.png');
-    mask-size: max(100px, 30vw) max(100px, 30vw);
-}
-
-.leftMountainSnow {
-    width: max(100px, 30vw);
-    height: max(100px, 30vw);
-
-    background:
-    linear-gradient(.43turn,white 28% , transparent 33%),
-    linear-gradient(.55turn, white 37%, transparent 42%);
-
-    mask-image: url('/images/masks/mountainLeftMask.png');
-    mask-size: max(100px, 30vw) max(100px, 30vw);
+    background-image: url('/images/background/mountainLeft.png');
+    background-size: max(100px, 30vw) max(100px, 30vw);
 }
 
 .rightMountain {
     width: max(100px, 30vw);
     height: max(100px, 30vw);
 
-    background-color: rgb(66, 66, 66);
-
-    mask-image: url('/images/masks/mountainRightMask.png');
-    mask-size: max(100px, 30vw) max(100px, 30vw);
-}
-
-.rightMountainSnow {
-    width: max(100px, 30vw);
-    height: max(100px, 30vw);
-
-    background:
-    linear-gradient(.46turn,white 38% , transparent 43%),
-    linear-gradient(.53turn, white 29%, transparent 33%);
-
-    mask-image: url('/images/masks/mountainRightMask.png');
-    mask-size: max(100px, 30vw) max(100px, 30vw);
+    background-image: url('/images/background/mountainRight.png');
+    background-size: max(100px, 30vw) max(100px, 30vw);
 }
 
 /*Foliage*/
@@ -512,6 +487,7 @@ BACKGROUND ELEMENTS STYLING
     position: fixed;
     bottom: 0;
     right: 0;
+    pointer-events: none;
 }
 
 .baseGrassBlade {
@@ -762,6 +738,67 @@ BACKGROUND ELEMENTS STYLING
     position: fixed;
     transition-timing-function: ease-in-out;
     transition-property: left;
+}
+
+/*Stars*/
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 50%;
+    bottom: 50%;
+
+    background-color:transparent;
+    background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 400px 400px, 400px 400px, 300px 300px, 300px 300px;
+    background-position: -30px -80px, 130px -50px, -90px -120px, 80px 50px;
+
+    mask-image: linear-gradient(black 50%, transparent 70%);
+
+    animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards hideStars;
+}
+
+@keyframes hideStars {
+    0%, 24% {
+        opacity: 0;
+    }
+
+    26%, 68% {
+        opacity: 1;
+    }
+    
+    70%, 100% {
+        opacity: 0;
+    }
+}
+
+.shootingStar {
+    position: absolute;
+    width: 3px;
+    height: 150px;
+
+    left: 100px;
+    bottom: 50vh;
+
+    background-color: white;
+    mask-image: linear-gradient(black, black 5px, rgba(0, 0, 0, 0.7) 6px, transparent 70%);
+    transform: rotate(210deg);
+
+    animation: moveShootingStar 0.8s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+
+@keyframes moveShootingStar {
+    0% {
+        transform: rotate(210deg);
+    }
+
+    100% {
+        transform: translate(-57.5vh, 100vh) rotate(210deg);
+    }
 }
 
 /*=================
