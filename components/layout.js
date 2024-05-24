@@ -23,6 +23,7 @@ export default function Layout({ children }) {
     const baseRippleSize = 2;
     const maxRippleSize = 50;
     const randomRippleInterval = 5000;
+    const randomShootingStarInterval = 12000;
     var backgroundAnimationDuration = 0;
 
     const [transitionX, setTransitionX] = useTransitionXContext();
@@ -266,7 +267,7 @@ export default function Layout({ children }) {
         shrinkingCircleRadius = Math.max(screen.width, screen.height) * 2;
 
         //set interval for random ripples on lake
-        const interval = setInterval(() => {
+        const rippleInterval = setInterval(() => {
             let lakeElement = document.getElementById('lake');
             let lakeHeight = parseInt(getComputedStyle(lakeElement).height);
             let lakeWidth = parseInt(getComputedStyle(lakeElement).width);
@@ -276,6 +277,10 @@ export default function Layout({ children }) {
 
             handleLakeMouseDown({currentTarget: lakeElement, clientX: randX, clientY: randY});
         }, randomRippleInterval);
+
+        const shootingStarInterval = setInterval(() => {
+            handleStarsClicked({currentTarget: document.getElementById('stars')});
+        }, randomShootingStarInterval);
 
         //initiate random paths for fireflies and random blink delay
         let fireflies = document.getElementById('fireflyContainer').children;
@@ -288,7 +293,8 @@ export default function Layout({ children }) {
         }
 
         return () => {
-            clearInterval(interval);
+            clearInterval(rippleInterval);
+            clearInterval(shootingStarInterval);
         };
     });
 
@@ -297,7 +303,6 @@ export default function Layout({ children }) {
             <div className={styles.backgroundContainer}>
                 <div className={`${styles.sky} ${styles.animatedTimeElement}`}>
                     <div id='stars' className={`${styles.stars} ${styles.animatedTimeElement}`} onClick={handleStarsClicked}>
-                        <div className={styles.shootingStar}></div>
                     </div>
                     <div className={`${styles.skyFilter} ${styles.animatedTimeElement}`}/>
                 </div>
