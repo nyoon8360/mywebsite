@@ -319,12 +319,8 @@ export default function Layout({ children }) {
                     
                 </div>
                 <div className={styles.mountainsContainer}>
-                    <div className={styles.leftMountain}>
-                        <div className={styles.leftMountainSnow}></div>
-                    </div>
-                    <div className={styles.rightMountain}>
-                        <div className={styles.rightMountainSnow}></div>
-                    </div>
+                    <div className={styles.leftMountain}/>
+                    <div className={styles.rightMountain}/>
                 </div>
                 <div className={styles.sunMoonContainer}>
                     <div className={`${styles.sun} ${styles.animatedTimeElement}`}/>

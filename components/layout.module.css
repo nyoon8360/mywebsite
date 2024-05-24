@@ -466,44 +466,16 @@ BACKGROUND ELEMENTS STYLING
     width: max(100px, 30vw);
     height: max(100px, 30vw);
 
-    background-color: rgb(66, 66, 66);
-
-    mask-image: url('/images/masks/mountainLeftMask.png');
-    mask-size: max(100px, 30vw) max(100px, 30vw);
-}
-
-.leftMountainSnow {
-    width: max(100px, 30vw);
-    height: max(100px, 30vw);
-
-    background:
-    linear-gradient(.43turn,white 28% , transparent 33%),
-    linear-gradient(.55turn, white 37%, transparent 42%);
-
-    mask-image: url('/images/masks/mountainLeftMask.png');
-    mask-size: max(100px, 30vw) max(100px, 30vw);
+    background-image: url('/images/background/mountainLeft.png');
+    background-size: max(100px, 30vw) max(100px, 30vw);
 }
 
 .rightMountain {
     width: max(100px, 30vw);
     height: max(100px, 30vw);
 
-    background-color: rgb(66, 66, 66);
-
-    mask-image: url('/images/masks/mountainRightMask.png');
-    mask-size: max(100px, 30vw) max(100px, 30vw);
-}
-
-.rightMountainSnow {
-    width: max(100px, 30vw);
-    height: max(100px, 30vw);
-
-    background:
-    linear-gradient(.46turn,white 38% , transparent 43%),
-    linear-gradient(.53turn, white 29%, transparent 33%);
-
-    mask-image: url('/images/masks/mountainRightMask.png');
-    mask-size: max(100px, 30vw) max(100px, 30vw);
+    background-image: url('/images/background/mountainRight.png');
+    background-size: max(100px, 30vw) max(100px, 30vw);
 }
 
 /*Foliage*/
