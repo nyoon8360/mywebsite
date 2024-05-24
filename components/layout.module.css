@@ -194,6 +194,7 @@ BACKGROUND ELEMENTS STYLING
     height: 100%;
     width: 100%;
 
+    pointer-events: none;
     background: linear-gradient(transparent, transparent 80%, rgba(255, 167, 3, 0.726) 100%);
 
     animation: var(--background-animation-duration) linear var(--background-animation-delay) infinite backwards animateSkyFilter;
@@ -379,6 +380,7 @@ BACKGROUND ELEMENTS STYLING
 
     left: 50%;
     transform: translateX(-50%);
+    pointer-events: none;
 
     z-index: 1;
 }
@@ -458,6 +460,7 @@ BACKGROUND ELEMENTS STYLING
     display: flex;
     flex-direction: row;
     align-items: center;
+    pointer-events: none;
 
     justify-content: space-between;
 }
@@ -484,6 +487,7 @@ BACKGROUND ELEMENTS STYLING
     position: fixed;
     bottom: 0;
     right: 0;
+    pointer-events: none;
 }
 
 .baseGrassBlade {
@@ -765,9 +769,35 @@ BACKGROUND ELEMENTS STYLING
     26%, 68% {
         opacity: 1;
     }
-
+    
     70%, 100% {
         opacity: 0;
+    }
+}
+
+.shootingStar {
+    position: absolute;
+    width: 3px;
+    height: 150px;
+
+    left: 100px;
+    bottom: 50vh;
+
+    background-color: white;
+    mask-image: linear-gradient(black, black 5px, rgba(0, 0, 0, 0.7) 6px, transparent 70%);
+    transform: rotate(210deg);
+
+    animation: moveShootingStar 0.8s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+
+@keyframes moveShootingStar {
+    0% {
+        transform: rotate(210deg);
+    }
+
+    100% {
+        transform: translate(-57.5vh, 100vh) rotate(210deg);
     }
 }
 

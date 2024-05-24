@@ -197,6 +197,25 @@ export default function Layout({ children }) {
         fireflyElement.style.transitionDuration = `${randomDuration}s`;
     }
 
+    //spawn shooting stars when stars element is clicked
+    function handleStarsClicked(event) {
+        let stars = event.currentTarget;
+        let starsWidth = getComputedStyle(stars).width;
+
+        let randomX = Math.floor(Math.random() * parseInt(starsWidth)) + 150;
+
+        let shootingStar = document.createElement('div');
+        shootingStar.className = styles.shootingStar;
+        shootingStar.style.left = `${randomX}px`;
+        shootingStar.style.animationPlayState = 'running';
+
+        stars.appendChild(shootingStar);
+
+        shootingStar.addEventListener('animationend', () => {
+            shootingStar.remove();
+        });
+    }
+
     //===============
     //OTHER FUNCTIONS
     //===============
@@ -277,7 +296,9 @@ export default function Layout({ children }) {
         <div>
             <div className={styles.backgroundContainer}>
                 <div className={`${styles.sky} ${styles.animatedTimeElement}`}>
-                    <div className={`${styles.stars} ${styles.animatedTimeElement}`}/>
+                    <div id='stars' className={`${styles.stars} ${styles.animatedTimeElement}`} onClick={handleStarsClicked}>
+                        <div className={styles.shootingStar}></div>
+                    </div>
                     <div className={`${styles.skyFilter} ${styles.animatedTimeElement}`}/>
                 </div>
                 <div id='lake' className={`${styles.lake} ${styles.animatedTimeElement}`} onMouseDown={handleLakeMouseDown}>
