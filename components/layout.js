@@ -278,6 +278,7 @@ export default function Layout({ children }) {
             handleLakeMouseDown({currentTarget: lakeElement, clientX: randX, clientY: randY});
         }, randomRippleInterval);
 
+        //set interval for random shooting stars
         const shootingStarInterval = setInterval(() => {
             handleStarsClicked({currentTarget: document.getElementById('stars')});
         }, randomShootingStarInterval);

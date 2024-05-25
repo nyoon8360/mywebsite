@@ -21,7 +21,7 @@ export default function Projects() {
         <Layout>
             <h3 className={styles.projectTitle}>Personal Website</h3>
             <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
-                <Image className={styles.projectThumbnail} src='/images/personal_website_thumbnail.png' alt='Personal Project Website' height={300} width={400}/>
+                <Image className={styles.projectThumbnail} src='/images/website-thumbnail.png' alt='Personal Project Website' height={300} width={400}/>
                 
                 <h4 className={styles.sectionText}>Description</h4>
                 <p className={styles.bodyText}>
