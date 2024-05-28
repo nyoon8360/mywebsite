@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useTransitionXContext } from '../context/transitionX';
 import { useTransitionYContext } from '../context/transitionY';
 import { useEffect } from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 var shrinkingCircleRadius;
 
@@ -294,10 +295,11 @@ export default function Layout({ children }) {
             clearInterval(rippleInterval);
             clearInterval(shootingStarInterval);
         };
-    });
+    },[]);
 
     return (
         <div>
+            <SpeedInsights />
             <div className={styles.backgroundContainer}>
                 <div className={`${styles.sky} ${styles.animatedTimeElement}`}>
                     <div id='stars' className={`${styles.stars} ${styles.animatedTimeElement}`} onClick={handleStarsClicked}>
