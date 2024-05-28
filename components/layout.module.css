@@ -73,7 +73,7 @@ CONTAINERS AND MAIN COMPONENTS
 
     min-height: 79.8vh;
 
-    background: linear-gradient(.25turn, transparent, transparent 1%, rgba(0, 0, 0, 0.7) 2%, rgba(0, 0, 0, 0.7) 98%, transparent 99%, transparent);
+    background: linear-gradient(.25turn, transparent, transparent 1%, rgba(0, 0, 0, 0.8) 2%, rgba(0, 0, 0, 0.8) 98%, transparent 99%, transparent);
 
     overflow: hidden;
 }

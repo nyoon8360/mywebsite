@@ -1,8 +1,10 @@
 .bodyText {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    margin: 30px 0px 30px 0px;
+    margin-bottom: 16px;
     color: var(--main-text-color);
+    padding-left: 16px;
+    line-height: 22px;
 }
 
 .categoryTitle {
@@ -18,7 +20,7 @@
     font-size: 20px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     color: var(--main-text-color);
 }
 
@@ -28,4 +30,26 @@
     border: none;
     height: 2px;
     background-color: var(--main-text-color);
+}
+
+.interestThumbnail {
+    border-color: var(--secondary-text-color);
+    border-width: 3px;
+    border-style: solid;
+
+    height: max(240px, min(450px, 40vw));
+    width: max(320px, min(600px, 52vw));
+}
+
+.instagramEmbedContainer {
+    display: inline-block;
+    margin-bottom: 0px;
+    width: 330px;
+}
+
+.instagramEmbedLayout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }

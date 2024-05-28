@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useTransitionXContext } from '../context/transitionX';
 import { useTransitionYContext } from '../context/transitionY';
 import { useEffect } from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 var shrinkingCircleRadius;
 
@@ -29,23 +30,6 @@ export default function Layout({ children }) {
     const [transitionX, setTransitionX] = useTransitionXContext();
     const [transitionY, setTransitionY] = useTransitionYContext();
     
-    //==============================
-    //TRANSITION ANIMATION FUNCTIONS
-    //==============================
-    function expandCircle(destinationPath) {
-        let expandingCircleElement = document.getElementById('expandingCircle');
-        let expandingCircleRadius = Math.max(screen.width, screen.height) * 2;
-
-        expandingCircleElement.style.top = '100vh';
-        expandingCircleElement.style.left = `${transitionX}px`;
-        expandingCircleElement.style.height = `${expandingCircleRadius}px`;
-        expandingCircleElement.style.width = `${expandingCircleRadius}px`;
-
-        setTimeout(() => {
-            router.push(destinationPath);
-        }, 800);
-    }
-
     //==============
     //EVENT HANDLERS
     //==============
@@ -250,6 +234,20 @@ export default function Layout({ children }) {
     function stopEventProp(event) {
         event.stopPropagation();
     }
+
+    function expandCircle(destinationPath) {
+        let expandingCircleElement = document.getElementById('expandingCircle');
+        let expandingCircleRadius = Math.max(screen.width, screen.height) * 2;
+
+        expandingCircleElement.style.top = '100vh';
+        expandingCircleElement.style.left = `${transitionX}px`;
+        expandingCircleElement.style.height = `${expandingCircleRadius}px`;
+        expandingCircleElement.style.width = `${expandingCircleRadius}px`;
+
+        setTimeout(() => {
+            router.push(destinationPath);
+        }, 800);
+    }
     
     //=====
     //HOOKS
@@ -297,10 +295,11 @@ export default function Layout({ children }) {
             clearInterval(rippleInterval);
             clearInterval(shootingStarInterval);
         };
-    });
+    },[]);
 
     return (
         <div>
+            <SpeedInsights />
             <div className={styles.backgroundContainer}>
                 <div className={`${styles.sky} ${styles.animatedTimeElement}`}>
                     <div id='stars' className={`${styles.stars} ${styles.animatedTimeElement}`} onClick={handleStarsClicked}>
@@ -310,13 +309,9 @@ export default function Layout({ children }) {
                 <div id='lake' className={`${styles.lake} ${styles.animatedTimeElement}`} onMouseDown={handleLakeMouseDown}>
                     <div className={`${styles.lakeFilter} ${styles.animatedTimeElement}`}/>
                     <div className={`${styles.lakeMoonReflection} ${styles.animatedTimeElement}`}/>
-                    <div id='ripplesContainer' className={styles.ripplesContainer}>
-                        
-                    </div>
+                    <div id='ripplesContainer' className={styles.ripplesContainer}></div>
                     <div id='maxButtonContainer' className={styles.maximizeButtonContainer} onClick={handleMaximizeButtonClicked}>
-                        <div className={styles.lilypad}>
-                            
-                        </div>
+                        <div className={styles.lilypad}/>
                         <div className={`${styles.lotusPetal} ${styles.lotusPetalMiddle}`}/>
                         <div id='petalContainer'>
                             <div className={`${styles.lotusPetal} ${styles.lotusPetalLeft1}`}/>
@@ -338,9 +333,7 @@ export default function Layout({ children }) {
                     </div>
 
                     <div className={styles.shoreContainer}>
-                        <div className={styles.shoreLeft}>
-
-                        </div>
+                        <div className={styles.shoreLeft}/>
                     </div>
                     
                 </div>
@@ -355,31 +348,31 @@ export default function Layout({ children }) {
                 <div id='fireflyContainer' className={`${styles.fireflyContainer} ${styles.animatedTimeElement}`}>
 
                     <div className={styles.fireflyWings} style={{left: '10vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
-                        <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '10vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                        <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '10vh'}} onTransitionEnd={handleFireflyTransitionEnd}/>
                     </div>
 
                     <div className={styles.fireflyWings} style={{left: '40vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
-                        <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '40vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                        <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '40vh'}} onTransitionEnd={handleFireflyTransitionEnd}/>
                     </div>
 
                     <div className={styles.fireflyWings} style={{left: '50vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
-                        <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '50vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                        <div className={`${styles.baseFirefly} ${styles.fireflySmall}`} style={{top: '50vh'}} onTransitionEnd={handleFireflyTransitionEnd}/>
                     </div>
 
                     <div className={styles.fireflyWings} style={{left: '10vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
-                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '70vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '70vh'}} onTransitionEnd={handleFireflyTransitionEnd}/>
                     </div>
 
                     <div className={styles.fireflyWings} style={{left: '80vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
-                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '30vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '30vh'}} onTransitionEnd={handleFireflyTransitionEnd}/>
                     </div>
 
                     <div className={styles.fireflyWings} style={{left: '60vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
-                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '20vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '20vh'}} onTransitionEnd={handleFireflyTransitionEnd}/>
                     </div>
 
                     <div className={styles.fireflyWings} style={{left: '70vw'}} onTransitionEnd={handleFireflyWingsTransitionEnd}>
-                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '90vh'}} onTransitionEnd={handleFireflyTransitionEnd}></div>
+                        <div className={`${styles.baseFirefly} ${styles.fireflyMedium}`} style={{top: '90vh'}} onTransitionEnd={handleFireflyTransitionEnd}/>
                     </div>
                     
                 </div>
@@ -387,7 +380,7 @@ export default function Layout({ children }) {
             <MainHeader expandCircleFunction={expandCircle}></MainHeader>
             <div id='contentMask' className={styles.contentMask} onMouseDown={handleObstructionMouseDown}>
                 <div id='contentContainer' className={styles.contentContainer} onMouseDown={stopEventProp}>
-                    <div id='bottomContentBlocker' className={styles.bottomContentBlocker} onMouseDown={handleObstructionMouseDown}></div>
+                    <div id='bottomContentBlocker' className={styles.bottomContentBlocker} onMouseDown={handleObstructionMouseDown}/>
                     <div className={styles.contentOverflowContainer}>
                         <div className={styles.controlsContainer}>
                             <div className={styles.controlButtons} onClick={handleSunriseButtonClicked}>
@@ -405,8 +398,8 @@ export default function Layout({ children }) {
                 </div>
             </div>
             <div id='transitionContainer' className={styles.transitionContainer}>
-                <div id='shrinkingCircle' className={styles.shrinkingCircle} style={{left: transitionX, top: transitionY, height: shrinkingCircleRadius, width: shrinkingCircleRadius, visibility: transitionX == 0 ? 'hidden' : 'visible'}}></div>
-                <div id='expandingCircle' className={styles.expandingCircle}></div>
+                <div id='shrinkingCircle' className={styles.shrinkingCircle} style={{left: transitionX, top: transitionY, height: shrinkingCircleRadius, width: shrinkingCircleRadius, visibility: transitionX == 0 ? 'hidden' : 'visible'}}/>
+                <div id='expandingCircle' className={styles.expandingCircle}/>
             </div>
         </div>
     );
