@@ -98,5 +98,5 @@
 
     visibility: hidden;
 
-    transition: all .8s cubic-bezier(.26,.02,.47,.17);
+    transition: top .8s cubic-bezier(.26,.02,.47,.17);
 }

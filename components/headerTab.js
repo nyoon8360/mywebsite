@@ -1,10 +1,8 @@
 import styles from './headerTab.module.css';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import raindrop from '../public/svgs/rain-drop.svg';
-import { useTransitionXContext } from '../context/transitionX';
-import { useTransitionYContext } from '../context/transitionY';
+import { useTransitionContext } from '../context/transition';
 import { useState } from 'react';
 
 const cloudCirclesTransformList = [
@@ -41,8 +39,7 @@ export default function headerTab({destinationPath, expandCircleFunction, disabl
     //throw error if component has child that is not just inner text
     if (typeof children != 'string') throw new Error('Children must only be inner text.');
 
-    const [transitionX, setTransitionX] = useTransitionXContext();
-    const [transitionY, setTransitionY] = useTransitionYContext();
+    const [transition, setTransition] = useTransitionContext();
     const [isTabClicked, setIsTabClicked] = useState(false);
 
     function handleTabClicked(event) {
@@ -52,8 +49,11 @@ export default function headerTab({destinationPath, expandCircleFunction, disabl
         currentTarget.children[2].style.visibility = 'visible';
 
         setIsTabClicked(true);
-        setTransitionY(currentTarget.offsetTop + 15);
-        setTransitionX(currentTarget.offsetLeft + (parseInt(getComputedStyle(currentTarget).width)/2));
+        setTransition({
+            xLocation: currentTarget.offsetLeft + (parseInt(getComputedStyle(currentTarget).width)/2),
+            yLocation: currentTarget.offsetTop + 15,
+            runBefore: transition.runBefore
+        });
     }
 
     function handleRaindropTransitionEnd(event) {

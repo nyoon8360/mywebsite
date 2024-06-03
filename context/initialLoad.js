@@ -2,7 +2,7 @@ import { useState, createContext, useContext } from "react";
 
 const Context = createContext();
 
-export function TransitionXProvider({children}) {
+export function InitialLoadProvider({children}) {
     const [transitionX, setTransitionX] = useState(0);
 
     return (
