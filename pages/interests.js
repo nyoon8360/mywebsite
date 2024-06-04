@@ -57,7 +57,7 @@ export default function Resume() {
                     the many new styles that have yet to come.
                 </p>
 
-                <h4 className={styles.sectionText}>Favorite Artists</h4>
+                <h4 className={styles.sectionText}>Favorite Tattoo Artists</h4>
                 
                 <div className={styles.instagramEmbedLayout}>
                     <div className={styles.instagramEmbedContainer}>

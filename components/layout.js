@@ -2,12 +2,11 @@ import MainHeader from '../components/mainHeader';
 import styles from './layout.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useTransitionXContext } from '../context/transitionX';
-import { useTransitionYContext } from '../context/transitionY';
-import { useEffect } from 'react';
+import { useTransitionContext } from '../context/transition';
+import { useEffect, useState } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-var shrinkingCircleRadius;
+var shrinkingCircleRadius = 0;
 
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
@@ -27,8 +26,7 @@ export default function Layout({ children }) {
     const randomShootingStarInterval = 12000;
     var backgroundAnimationDuration = 0;
 
-    const [transitionX, setTransitionX] = useTransitionXContext();
-    const [transitionY, setTransitionY] = useTransitionYContext();
+    const [transition, setTransition] = useTransitionContext();
     
     //==============
     //EVENT HANDLERS
@@ -236,15 +234,21 @@ export default function Layout({ children }) {
     }
 
     function expandCircle(destinationPath) {
+
         let expandingCircleElement = document.getElementById('expandingCircle');
         let expandingCircleRadius = Math.max(screen.width, screen.height) * 2;
 
         expandingCircleElement.style.top = '100vh';
-        expandingCircleElement.style.left = `${transitionX}px`;
+        expandingCircleElement.style.left = `${transition.xLocation}px`;
         expandingCircleElement.style.height = `${expandingCircleRadius}px`;
         expandingCircleElement.style.width = `${expandingCircleRadius}px`;
 
         setTimeout(() => {
+            setTransition({
+                xLocation: transition.xLocation,
+                yLocation: transition.yLocation,
+                runBefore: true
+            })
             router.push(destinationPath);
         }, 800);
     }
@@ -256,11 +260,10 @@ export default function Layout({ children }) {
     //set vars that can not be set before mount
     useEffect(() => {
         backgroundAnimationDuration = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--background-animation-duration').slice(0, -1));
-        if (transitionX != 0) {
-            let shrinkingCircleElement = document.getElementById('shrinkingCircle');
-            shrinkingCircleElement.style.width = null;
-            shrinkingCircleElement.style.height = null;
-        }
+
+        let shrinkingCircleElement = document.getElementById('shrinkingCircle');
+        shrinkingCircleElement.style.width = null;
+        shrinkingCircleElement.style.height = null;
 
         shrinkingCircleRadius = Math.max(screen.width, screen.height) * 2;
 
@@ -398,7 +401,7 @@ export default function Layout({ children }) {
                 </div>
             </div>
             <div id='transitionContainer' className={styles.transitionContainer}>
-                <div id='shrinkingCircle' className={styles.shrinkingCircle} style={{left: transitionX, top: transitionY, height: shrinkingCircleRadius, width: shrinkingCircleRadius, visibility: transitionX == 0 ? 'hidden' : 'visible'}}/>
+                <div id='shrinkingCircle' className={styles.shrinkingCircle} style={{left: transition.xLocation, top: transition.yLocation, height: shrinkingCircleRadius, width: shrinkingCircleRadius, visibility: transition.runBefore ? 'visible' : 'hidden'}}/>
                 <div id='expandingCircle' className={styles.expandingCircle}/>
             </div>
         </div>
