@@ -98,5 +98,4 @@ export default function headerTab({destinationPath, expandCircleFunction, disabl
             </div>
         )
     }
-    
 }

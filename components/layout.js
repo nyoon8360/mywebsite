@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 var shrinkingCircleRadius = 0;
-var initialLoad = true;
 
 //layout component to contain the header, transition animation div, and page content
 export default function Layout({ children }) {
@@ -265,7 +264,6 @@ export default function Layout({ children }) {
         let shrinkingCircleElement = document.getElementById('shrinkingCircle');
         shrinkingCircleElement.style.width = null;
         shrinkingCircleElement.style.height = null;
-        initialLoad = false;
 
         shrinkingCircleRadius = Math.max(screen.width, screen.height) * 2;
 
