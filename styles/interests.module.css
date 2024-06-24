@@ -48,8 +48,8 @@
 }
 
 .instagramEmbedLayout {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fit, 330px);
+    justify-content: space-between;
 }

@@ -5,7 +5,7 @@ import { Reveal } from 'react-awesome-reveal';
 import { keyframes } from '@emotion/react';
 import InstagramEmbed from '../components/instagramEmbed';
 
-export default function Resume() {
+export default function Interests() {
     const fadeUpAnimation = keyframes`
         from {
             opacity: 0;
@@ -24,7 +24,9 @@ export default function Resume() {
             <Reveal keyframes={fadeUpAnimation} duration={2000} triggerOnce='true'>
                 <Image className={styles.interestThumbnail} src='/images/scythe-trilogy.png' alt='scythe trilogy' height={300} width={400}/>
                 <h4 className={styles.sectionText}>Scythe by Neal Shusterman</h4>
-                <p className={styles.bodyText}>Lorem Ipsum</p>
+                <p className={styles.bodyText}>
+                    When experiencing a fictional narrative
+                </p>
                 <p className={styles.bodyText}>interests page</p>
             </Reveal>
 
@@ -88,7 +90,6 @@ export default function Resume() {
                 <p className={styles.bodyText}>Lorem Ipsum</p>
                 <p className={styles.bodyText}>interests page</p>
             </Reveal>
-            
         </Layout>
     )
 }
