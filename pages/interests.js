@@ -25,7 +25,7 @@ export default function Interests() {
                 <Image className={styles.interestThumbnail} src='/images/scythe-trilogy.png' alt='scythe trilogy' height={300} width={400}/>
                 <h4 className={styles.sectionText}>Scythe by Neal Shusterman</h4>
                 <p className={styles.bodyText}>
-                    When experiencing a fictional narrative
+                    Lorem Ipsum
                 </p>
                 <p className={styles.bodyText}>interests page</p>
             </Reveal>
