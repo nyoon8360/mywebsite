@@ -47,6 +47,8 @@
 
     height: max(240px, min(450px, 40vw));
     width: max(320px, min(600px, 52vw));
+
+    object-fit: contain;
 }
 
 .githubLogoP2 {
